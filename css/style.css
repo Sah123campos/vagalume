@@ -1,0 +1,103 @@
+/* VAGALUME — estilos da página (o jogo em si é desenhado no canvas) */
+:root {
+  --bg: #07050f;
+  --ink: #f6efe0;
+  --dim: #9b93b5;
+  --accent: #ffd86b;
+  --panel: #171229;
+  --border: #f3e9d2;
+  --bad: #ff7b85;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  overflow: hidden;
+  font-family: ui-monospace, "Cascadia Mono", "DejaVu Sans Mono", monospace;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+#game {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+body.has-touch #game { bottom: 34vh; }
+@media (orientation: landscape) {
+  body.has-touch #game { bottom: 0; left: 18vw; right: 18vw; }
+}
+#screen {
+  display: block;
+  background: #000;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  outline: none;
+  box-shadow: 0 0 0 1px #1d1636, 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* carregamento */
+#loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: radial-gradient(ellipse at 50% 40%, #2a1d4a 0%, #0d0a24 60%, #07050f 100%);
+  transition: opacity 0.5s;
+}
+#loading.done { opacity: 0; pointer-events: none; }
+.ld-title { font-size: 34px; letter-spacing: 8px; color: #fff6d0; text-shadow: 0 0 18px rgba(255, 216, 107, 0.5); }
+.ld-bar { width: min(260px, 70vw); height: 8px; border: 1px solid var(--border); background: #120e24; }
+.ld-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.2s; }
+.ld-text { font-size: 13px; color: var(--dim); text-align: center; padding: 0 16px; }
+
+/* toque */
+#touch { display: none; position: fixed; inset: auto 0 0 0; height: 34vh; pointer-events: none; user-select: none; -webkit-user-select: none; }
+#touch.show { display: block; }
+@media (orientation: landscape) { #touch { height: 100%; inset: 0; } }
+#touch button {
+  pointer-events: auto;
+  position: absolute;
+  border: 2px solid rgba(243, 233, 210, 0.7);
+  background: rgba(23, 18, 41, 0.75);
+  color: var(--ink);
+  font: inherit;
+  font-weight: bold;
+  border-radius: 10px;
+  touch-action: none;
+}
+#touch button.on { background: rgba(255, 216, 107, 0.45); }
+.dpad { position: absolute; left: 4vmin; bottom: 4vmin; width: 36vmin; height: 36vmin; }
+.dpad button { width: 33%; height: 33%; font-size: 4vmin; }
+.d-up { left: 33.5%; top: 0; }
+.d-down { left: 33.5%; bottom: 0; }
+.d-left { left: 0; top: 33.5%; }
+.d-right { right: 0; top: 33.5%; }
+.abtns { position: absolute; right: 4vmin; bottom: 4vmin; width: 40vmin; height: 36vmin; }
+.b-a { right: 0; top: 24%; width: 15vmin; height: 15vmin; border-radius: 50% !important; font-size: 5vmin; background: rgba(255, 216, 107, 0.25) !important; }
+.b-b { right: 17vmin; top: 44%; width: 13vmin; height: 13vmin; border-radius: 50% !important; font-size: 4.5vmin; }
+.b-menu { left: 0; top: 0; width: 17vmin; height: 8vmin; font-size: 2.6vmin; }
+.b-run { left: 0; bottom: 0; width: 17vmin; height: 8vmin; font-size: 2.6vmin; }
+
+/* erros */
+#error-overlay { display: none; position: fixed; inset: 0; background: rgba(5, 3, 12, 0.82); z-index: 50; align-items: center; justify-content: center; padding: 16px; }
+#error-overlay.show { display: flex; }
+.err-box { background: var(--panel); border: 2px solid var(--border); max-width: 560px; width: 100%; padding: 16px; box-shadow: 4px 4px 0 #000; }
+.err-title { color: var(--bad); font-size: 16px; margin-bottom: 8px; }
+.err-detail { white-space: pre-wrap; word-break: break-word; font-size: 12px; color: var(--ink); background: #0d0a1a; padding: 8px; max-height: 40vh; overflow: auto; margin: 0 0 8px; }
+.err-help { font-size: 12px; color: var(--dim); margin-bottom: 12px; }
+.err-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.err-actions button { background: #2a2045; color: var(--ink); border: 1px solid var(--border); padding: 6px 12px; font: inherit; cursor: pointer; }
+.err-actions button:hover, .err-actions button:focus { background: #3a2c60; outline: 1px solid var(--accent); }
+
+/* depuração */
+#debug-panel { position: fixed; top: 4px; left: 4px; z-index: 40; background: rgba(10, 8, 20, 0.88); color: #cfe; font-size: 11px; padding: 6px 8px; max-width: 46vw; max-height: 90vh; overflow: auto; border: 1px solid #3a6; white-space: pre; display: none; pointer-events: none; }
+#debug-panel.show { display: block; }

@@ -1,0 +1,4425 @@
+{
+ "_comentario": "Mapas: layout em ASCII (legenda abaixo, pode ser sobrescrita por mapa) + entidades. Ver README, seção Mapas.",
+ "legendExterior": {
+  ".": "grass",
+  ",": "flowers",
+  "\"": "tallgrass",
+  ":": "path",
+  "=": "stone",
+  "s": "sand",
+  "~": "water",
+  "b": "bridge",
+  "#": "cliff",
+  "T": "tree",
+  "t": "bush",
+  "o": "rock",
+  "f": "fence",
+  "h": "hedge",
+  "u": "stump",
+  "m": "mushroom",
+  "k": "crystal",
+  " ": "void",
+  "x": "invisible",
+  "_": "asphalt",
+  "-": "road_h",
+  "|": "road_v",
+  "^": "stairs",
+  "*": "blank",
+  "d": "darkfloor",
+  "Y": {
+   "t": "tree",
+   "solid": false
+  }
+ },
+ "legendInterior": {
+  "#": "wall",
+  ".": "floor",
+  ",": "floor2",
+  "r": {
+   "t": "rug",
+   "c": "#c8506a"
+  },
+  "R": {
+   "t": "rug",
+   "c": "#5a7ad0"
+  },
+  "P": {
+   "t": "rug",
+   "c": "#8a6ab8"
+  },
+  "c": "counter",
+  " ": "void",
+  "^": "stairs",
+  "x": "invisible",
+  "~": "water",
+  "d": "darkfloor",
+  "g": "grass",
+  "k": "crystal",
+  "b": "bridge"
+ },
+ "worldmap": {
+  "nodes": {
+   "quintal": {
+    "name": "Quintal",
+    "x": 132,
+    "y": 24,
+    "maps": [
+     "quintal",
+     "arvore"
+    ],
+    "color": "#7cc47a"
+   },
+   "vila": {
+    "name": "Vila Pavio",
+    "x": 132,
+    "y": 70,
+    "maps": [
+     "vila",
+     "prefeitura",
+     "padaria",
+     "biblioteca",
+     "oficina",
+     "pousada",
+     "casa_brisa"
+    ],
+    "color": "#e8a05a"
+   },
+   "campos": {
+    "name": "Campos Pastel",
+    "x": 70,
+    "y": 86,
+    "maps": [
+     "campos"
+    ],
+    "color": "#ff9fc8"
+   },
+   "floresta": {
+    "name": "Floresta",
+    "x": 20,
+    "y": 60,
+    "maps": [
+     "floresta",
+     "coracao"
+    ],
+    "color": "#3f9470"
+   },
+   "gruta": {
+    "name": "Gruta",
+    "x": 74,
+    "y": 140,
+    "maps": [
+     "gruta",
+     "gruta_fundo"
+    ],
+    "color": "#4a6ab0"
+   },
+   "bairro": {
+    "name": "Bairro Esquecido",
+    "x": 176,
+    "y": 152,
+    "maps": [
+     "bairro",
+     "bairro_casa3",
+     "bairro_casa5",
+     "casa7",
+     "abandonada"
+    ],
+    "color": "#8a8a96"
+   },
+   "rochedo": {
+    "name": "Rochedo Uivante",
+    "x": 214,
+    "y": 70,
+    "maps": [
+     "rochedo"
+    ],
+    "color": "#8a96a8"
+   },
+   "farol": {
+    "name": "Farol",
+    "x": 240,
+    "y": 24,
+    "maps": [
+     "farol_base",
+     "farol_topo"
+    ],
+    "color": "#d84a4a"
+   }
+  },
+  "links": [
+   [
+    "quintal",
+    "vila"
+   ],
+   [
+    "vila",
+    "campos"
+   ],
+   [
+    "campos",
+    "floresta"
+   ],
+   [
+    "campos",
+    "gruta"
+   ],
+   [
+    "vila",
+    "bairro"
+   ],
+   [
+    "vila",
+    "rochedo"
+   ],
+   [
+    "rochedo",
+    "farol"
+   ]
+  ]
+ },
+ "maps": {
+  "arvore": {
+   "name": "Casa da Árvore",
+   "region": "quintal",
+   "interior": "arvore",
+   "music": "quarto",
+   "particles": "dust",
+   "safe": true,
+   "ambientSound": "casa",
+   "battleBg": "casa",
+   "layout": [
+    "##############",
+    "##############",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "##...rrrr...##",
+    "##...rrrr...##",
+    "##..........##",
+    "##..........##",
+    "##############"
+   ],
+   "entities": [
+    {
+     "id": "cama",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "pages": [
+      {
+       "cond": "!flag:acordou",
+       "variant": 1
+      },
+      {
+       "variant": 0,
+       "script": "arvore_cama"
+      }
+     ],
+     "prop": "cama_lume"
+    },
+    {
+     "id": "mesa",
+     "type": "obj",
+     "x": 8,
+     "y": 2,
+     "variantFlag": "pegou_lamparina",
+     "prop": "escrivaninha",
+     "script": "arvore_mesa"
+    },
+    {
+     "id": "espelho",
+     "type": "obj",
+     "x": 11,
+     "y": 2,
+     "prop": "espelho",
+     "script": "arvore_espelho"
+    },
+    {
+     "id": "desenho",
+     "type": "obj",
+     "x": 6,
+     "y": 1,
+     "prop": "desenho",
+     "script": "arvore_desenho"
+    },
+    {
+     "id": "janela1",
+     "type": "obj",
+     "x": 4,
+     "y": 1,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "variant": 1
+      },
+      {
+       "variant": 0
+      }
+     ],
+     "prop": "janela",
+     "script": "arvore_janela"
+    },
+    {
+     "id": "janela2",
+     "type": "obj",
+     "x": 9,
+     "y": 1,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "variant": 1
+      },
+      {
+       "variant": 0
+      }
+     ],
+     "prop": "janela",
+     "script": "arvore_janela"
+    },
+    {
+     "id": "planta",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 1,
+     "prop": "planta",
+     "text": [
+      "Uma samambaia. Você rega ela toda manhã.",
+      "Ela parece satisfeita com a vida. Pelo menos alguém."
+     ]
+    },
+    {
+     "id": "estante",
+     "type": "obj",
+     "x": 11,
+     "y": 5,
+     "prop": "estante",
+     "script": "arvore_estante"
+    },
+    {
+     "id": "bau",
+     "type": "chest",
+     "x": 2,
+     "y": 7,
+     "prop": "bau_brinquedo",
+     "items": {
+      "biscoito": 2,
+      "suco_caju": 1
+     }
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 11,
+     "y": 7
+    },
+    {
+     "id": "carta",
+     "type": "obj",
+     "x": 7,
+     "y": 7,
+     "cond": "!flag:leu_carta",
+     "solid": false,
+     "prop": "papel",
+     "script": "arvore_carta"
+    },
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 6,
+     "y": 8,
+     "to": "quintal",
+     "tx": 11,
+     "ty": 7,
+     "tdir": "down",
+     "w": 1,
+     "h": 1,
+     "prop": "alcapao",
+     "variant": 1,
+     "lockedIf": "!flag:pegou_lamparina",
+     "lockedText": "(Melhor não sair sem a LAMPARINA. Lá fora pode estar escuro.)"
+    }
+   ]
+  },
+  "quintal": {
+   "name": "Bosque do Quintal",
+   "region": "quintal",
+   "theme": "vila",
+   "music": "vila",
+   "battleBg": "quintal",
+   "safe": true,
+   "variants": [
+    {
+     "cond": "phase==3",
+     "dark": 0.62,
+     "music": "vila_noite",
+     "particles": "fireflies",
+     "ambientSound": "grilos"
+    }
+   ],
+   "layout": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTT.........TTTTTTTTT",
+    "TT................,,....TT",
+    "TT................,,....TT",
+    "TT,,....................TT",
+    "TT,,................t...TT",
+    "TT........:::...........TT",
+    "TT........:::..........tTT",
+    "TT........:::.....,,....TT",
+    "TT........:::.....,,....TT",
+    "TT,,......:::..........tTT",
+    "TT...\"\"...:::..,........TT",
+    "TT...\"\",..:::......t....TT",
+    "TTTTT.....:::...\"\"...TTTTT",
+    "TTTTT.....:::........TTTTT",
+    "TT.TTTTTTT:::.TTTTTTTTTTTT",
+    "TTTTTTTTTT:::TTTTTTTTTTTTT",
+    "TTTTTTTTTT:::TTTTTTTTTTTTT"
+   ],
+   "entities": [
+    {
+     "id": "casa_arvore",
+     "type": "building",
+     "x": 9,
+     "y": 1,
+     "style": "arvore",
+     "w": 5,
+     "h": 6,
+     "door": 2,
+     "to": "arvore",
+     "tx": 6,
+     "ty": 7,
+     "tdir": "up"
+    },
+    {
+     "id": "brisa",
+     "type": "npc",
+     "x": 14,
+     "y": 9,
+     "sprite": "brisa",
+     "dir": "left",
+     "cond": "!flag:brisa_entrou",
+     "script": "quintal_brisa_falar"
+    },
+    {
+     "id": "chegada",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "quintal_brisa_chega",
+     "trigger": "auto",
+     "cond": [
+      "flag:pegou_lamparina",
+      "!flag:brisa_entrou"
+     ],
+     "w": 1,
+     "h": 1
+    },
+    {
+     "id": "brilho",
+     "type": "obj",
+     "x": 4,
+     "y": 8,
+     "pages": [
+      {
+       "cond": "!flag:botao_quintal",
+       "prop": "arbusto_brilho",
+       "script": "quintal_brilho"
+      },
+      {
+       "prop": "arbusto",
+       "text": "Só um arbusto. Satisfeito por ter guardado um segredo."
+      }
+     ]
+    },
+    {
+     "id": "pneu",
+     "type": "obj",
+     "x": 6,
+     "y": 4,
+     "prop": "pneu",
+     "script": "quintal_pneu"
+    },
+    {
+     "id": "correio",
+     "type": "obj",
+     "x": 16,
+     "y": 6,
+     "prop": "caixa_correio",
+     "script": "quintal_correio"
+    },
+    {
+     "id": "placa",
+     "type": "obj",
+     "x": 13,
+     "y": 14,
+     "prop": "placa",
+     "text": [
+      "↓ VILA PAVIO",
+      "Alguém riscou embaixo, com giz: \"a Lume dorme demais\"."
+     ]
+    },
+    {
+     "id": "para_vila",
+     "type": "door",
+     "x": 10,
+     "y": 17,
+     "to": "vila",
+     "tx": 21,
+     "ty": 1,
+     "tdir": "down",
+     "w": 3,
+     "h": 1
+    }
+   ]
+  },
+  "vila": {
+   "name": "Vila Pavio",
+   "region": "vila",
+   "theme": "vila",
+   "music": "vila",
+   "battleBg": "quintal",
+   "safe": true,
+   "variants": [
+    {
+     "cond": "phase==3",
+     "dark": 0.6,
+     "music": "vila_noite",
+     "particles": "fireflies",
+     "ambientSound": "grilos",
+     "glitch": 0.01
+    }
+   ],
+   "layout": [
+    "TTTTTTTTTTTTTTTTTTTT:::TTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTT:::TTTTTTTTTTTTTTTTTTTTT",
+    "TT..................:::...................TT",
+    "TT.,,......,,.......:::.,,.......,........TT",
+    "TT.,................:::............s~~~~~~TT",
+    "TT..................:::............s~~~~~~TT",
+    "TT..................:::............s~~~~~~TT",
+    "TT..................:::............s~~~~~~TT",
+    "TTt.............:...:::............s~~~~~~TT",
+    "TT..............:...:::............s~~~~~~TT",
+    "TT.......:...tt.:...:::...........ts~~~~~~TT",
+    "TT.......:......:...:::.....:......s~~~~~~TT",
+    "TT,,.....:......:...:::.....:......s~~~~~~TT",
+    "TT.......:..\"..==============....t.s~~~~~~TT",
+    "TT.......:..\"..==============.t....s~~~~~~TT",
+    "TT.......:.....==============......s~~~~~~TT",
+    "TT....:..:.....==============......s~~~~~~TT",
+    ":::::::::::::::==============:::::::bbbbbb::",
+    ":::::::::::::::==============:::::::bbbbbb::",
+    "TT.............==============......s~~~~~~TT",
+    "TT...\"\".....,,.==============.,....s~~~~~~TT",
+    "TT,,...\"..t.........::.........,...s~~~~~~TT",
+    "TT..................::........ffffff~~~~~~TT",
+    "TT.................t::........f....s~~~~~~TT",
+    "TT..................::........f....s~~~~~~TT",
+    "TTt.................::........f....s~~~~~~TT",
+    "TT..................::.............s~~~~~~TT",
+    "TT...::::::::::::::::::::::::::::::s~~~~~~TT",
+    "TT...::::::::::::::::::::::::::::::s~~~~~~TT",
+    "TT.................................s~~~~~~TT",
+    "TT.t......,,.....,,.......,,.....t.s~~~~~~TT",
+    "TT...T.......T..........\"\"T......T........TT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "entities": [
+    {
+     "id": "prefeitura",
+     "type": "building",
+     "x": 24,
+     "y": 6,
+     "style": "prefeitura",
+     "w": 8,
+     "h": 5,
+     "door": 4,
+     "to": "prefeitura",
+     "tx": 7,
+     "ty": 8,
+     "tdir": "up"
+    },
+    {
+     "id": "biblioteca",
+     "type": "building",
+     "x": 6,
+     "y": 5,
+     "style": "biblioteca",
+     "w": 7,
+     "h": 5,
+     "door": 3,
+     "to": "biblioteca",
+     "tx": 7,
+     "ty": 8,
+     "tdir": "up"
+    },
+    {
+     "id": "casa_brisa",
+     "type": "building",
+     "x": 14,
+     "y": 3,
+     "style": "casa_brisa",
+     "w": 5,
+     "h": 5,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "variant": "night"
+      },
+      {}
+     ],
+     "door": 2,
+     "to": "casa_brisa",
+     "tx": 5,
+     "ty": 7,
+     "tdir": "up"
+    },
+    {
+     "id": "padaria",
+     "type": "building",
+     "x": 3,
+     "y": 12,
+     "style": "padaria",
+     "w": 6,
+     "h": 4,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "variant": "night"
+      },
+      {}
+     ],
+     "door": 3,
+     "to": "padaria",
+     "tx": 6,
+     "ty": 7,
+     "tdir": "up"
+    },
+    {
+     "id": "oficina",
+     "type": "building",
+     "x": 4,
+     "y": 23,
+     "style": "oficina",
+     "w": 6,
+     "h": 4,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "variant": "night"
+      },
+      {}
+     ],
+     "door": 3,
+     "to": "oficina",
+     "tx": 6,
+     "ty": 7,
+     "tdir": "up"
+    },
+    {
+     "id": "pousada",
+     "type": "building",
+     "x": 22,
+     "y": 22,
+     "style": "pousada",
+     "w": 7,
+     "h": 5,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "variant": "night"
+      },
+      {}
+     ],
+     "door": 3,
+     "to": "pousada",
+     "tx": 7,
+     "ty": 8,
+     "tdir": "up"
+    },
+    {
+     "id": "abandonada",
+     "type": "building",
+     "x": 31,
+     "y": 23,
+     "style": "abandonada",
+     "w": 5,
+     "h": 4,
+     "lockedIf": "phase<3",
+     "lockedText": "A porta não abre. {p}Lá dentro, parece que alguém respira devagar.",
+     "pages": [
+      {
+       "cond": "phase>=3",
+       "variant": "lit"
+      },
+      {}
+     ],
+     "door": 2,
+     "to": "abandonada",
+     "tx": 5,
+     "ty": 8,
+     "tdir": "up"
+    },
+    {
+     "id": "casa_goncalo",
+     "type": "building",
+     "x": 12,
+     "y": 23,
+     "style": "branco",
+     "w": 4,
+     "h": 4,
+     "pages": [
+      {
+       "cond": "phase<5",
+       "style": "branco"
+      },
+      {
+       "style": "casa_verde",
+       "door": 1
+      }
+     ]
+    },
+    {
+     "id": "goncalo_toque",
+     "type": "obj",
+     "x": 13,
+     "y": 27,
+     "solid": false,
+     "trigger": "action",
+     "cond": "phase<5",
+     "script": "vila_branco"
+    },
+    {
+     "id": "fonte",
+     "type": "obj",
+     "x": 20,
+     "y": 16,
+     "prop": "fonte",
+     "script": "vila_fonte"
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 24,
+     "y": 14
+    },
+    {
+     "id": "poste0",
+     "type": "obj",
+     "x": 15,
+     "y": 12,
+     "prop": "poste",
+     "text": "Um poste com uma vela dentro. Ela acena para você."
+    },
+    {
+     "id": "poste1",
+     "type": "obj",
+     "x": 28,
+     "y": 12,
+     "prop": "poste",
+     "text": "Um poste de luz. Dentro, uma vela cochila."
+    },
+    {
+     "id": "poste2",
+     "type": "obj",
+     "x": 15,
+     "y": 21,
+     "prop": "poste",
+     "text": "Um poste de luz. Dentro, uma vela cochila."
+    },
+    {
+     "id": "poste3",
+     "type": "obj",
+     "x": 28,
+     "y": 21,
+     "prop": "poste",
+     "text": "Um poste de luz. Dentro, uma vela cochila."
+    },
+    {
+     "id": "poste4",
+     "type": "obj",
+     "x": 19,
+     "y": 26,
+     "prop": "poste",
+     "text": "Um poste de luz. Dentro, uma vela cochila."
+    },
+    {
+     "id": "poste5",
+     "type": "obj",
+     "x": 33,
+     "y": 19,
+     "prop": "poste",
+     "text": "Um poste de luz. Dentro, uma vela cochila."
+    },
+    {
+     "id": "banco",
+     "type": "obj",
+     "x": 16,
+     "y": 19,
+     "prop": "banco",
+     "text": "Um banco de praça. Quentinho de sol."
+    },
+    {
+     "id": "placa_n",
+     "type": "obj",
+     "x": 19,
+     "y": 3,
+     "prop": "placa",
+     "text": [
+      "VILA PAVIO",
+      "População: muitas velas, uma capivara e alguns outros."
+     ]
+    },
+    {
+     "id": "placa_o",
+     "type": "obj",
+     "x": 3,
+     "y": 16,
+     "prop": "placa",
+     "text": "← CAMPOS PASTEL  •  FLORESTA SUSSURRANTE (mais longe)"
+    },
+    {
+     "id": "placa_l",
+     "type": "obj",
+     "x": 34,
+     "y": 16,
+     "prop": "placa",
+     "text": "→ ROCHEDO UIVANTE e o FAROL"
+    },
+    {
+     "id": "correio",
+     "type": "obj",
+     "x": 13,
+     "y": 16,
+     "prop": "caixa_correio",
+     "text": "A caixa de correio da vila. Alguém escreveu: \"SEU LESMA, CADÊ MINHA CARTA DE 3 ANOS ATRÁS\"."
+    },
+    {
+     "id": "barco",
+     "type": "obj",
+     "x": 37,
+     "y": 12,
+     "prop": "barco",
+     "text": "O barquinho do Seu Coaxo. Tem um furo remendado com chiclete."
+    },
+    {
+     "id": "barreira_o",
+     "type": "obj",
+     "x": 2,
+     "y": 18,
+     "cond": "!flag:prefeito_fase1",
+     "prop": "barreira",
+     "text": "Uma barreira listrada. \"PROIBIDO SAIR — ORDEM DO PREFEITO\"."
+    },
+    {
+     "id": "barreira_l",
+     "type": "obj",
+     "x": 36,
+     "y": 18,
+     "cond": "phase<4",
+     "prop": "barreira",
+     "text": "\"PONTE INTERDITADA — O VENTO LEVOU AS TÁBUAS\"."
+    },
+    {
+     "id": "guarda_o",
+     "type": "npc",
+     "x": 2,
+     "y": 17,
+     "sprite": "guarda",
+     "dir": "right",
+     "pages": [
+      {
+       "cond": "!flag:prefeito_fase1"
+      },
+      {
+       "x": 3,
+       "y": 15,
+       "dir": "down"
+      }
+     ],
+     "script": "vila_guarda_oeste"
+    },
+    {
+     "id": "guarda_l",
+     "type": "npc",
+     "x": 36,
+     "y": 17,
+     "sprite": "guarda",
+     "dir": "left",
+     "pages": [
+      {
+       "cond": "phase<4"
+      },
+      {
+       "x": 34,
+       "y": 15,
+       "dir": "down"
+      }
+     ],
+     "script": "vila_guarda_ponte"
+    },
+    {
+     "id": "pingo",
+     "type": "npc",
+     "x": 17,
+     "y": 14,
+     "sprite": "cerinha_rosa",
+     "dir": "down",
+     "move": "wander",
+     "radius": 2,
+     "pages": [
+      {
+       "cond": "phase==3",
+       "x": 13,
+       "y": 8
+      },
+      {}
+     ],
+     "script": "vila_pingo"
+    },
+    {
+     "id": "fagulhinha",
+     "type": "npc",
+     "x": 26,
+     "y": 19,
+     "sprite": "cerinha_azul",
+     "dir": "down",
+     "move": "wander",
+     "radius": 2,
+     "script": "vila_fagulhinha"
+    },
+    {
+     "id": "pedra",
+     "type": "npc",
+     "x": 18,
+     "y": 19,
+     "sprite": "pedra",
+     "dir": "down",
+     "noTurn": true,
+     "script": "vila_pedra"
+    },
+    {
+     "id": "lesma",
+     "type": "npc",
+     "x": 12,
+     "y": 17,
+     "sprite": "lesma",
+     "dir": "right",
+     "script": "vila_lesma"
+    },
+    {
+     "id": "coaxo",
+     "type": "npc",
+     "x": 35,
+     "y": 12,
+     "sprite": "coaxo",
+     "dir": "right",
+     "script": "vila_coaxo"
+    },
+    {
+     "id": "beto",
+     "type": "npc",
+     "x": 10,
+     "y": 20,
+     "sprite": "menino_a",
+     "dir": "up",
+     "move": "look",
+     "script": "vila_beto"
+    },
+    {
+     "id": "lia",
+     "type": "npc",
+     "x": 30,
+     "y": 13,
+     "sprite": "menina_a",
+     "dir": "left",
+     "script": "vila_lia"
+    },
+    {
+     "id": "goncalo",
+     "type": "npc",
+     "x": 14,
+     "y": 28,
+     "sprite": "velhinho",
+     "dir": "down",
+     "cond": "phase>=5",
+     "script": "vila_goncalo"
+    },
+    {
+     "id": "prefeito_noite",
+     "type": "npc",
+     "x": 21,
+     "y": 13,
+     "sprite": "prefeito",
+     "dir": "down",
+     "cond": [
+      "phase==3",
+      "!flag:cena_noite"
+     ],
+     "script": "vila_prefeito_noite"
+    },
+    {
+     "id": "cena_noite",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "vila_noite_cena",
+     "trigger": "auto",
+     "cond": [
+      "phase==3",
+      "!flag:cena_noite"
+     ],
+     "w": 1,
+     "h": 1
+    },
+    {
+     "id": "cena_ponte",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "vila_ponte_cena",
+     "trigger": "auto",
+     "cond": [
+      "phase>=4",
+      "!flag:cena_ponte"
+     ],
+     "w": 1,
+     "h": 1
+    },
+    {
+     "id": "para_quintal",
+     "type": "door",
+     "x": 20,
+     "y": 0,
+     "to": "quintal",
+     "tx": 11,
+     "ty": 16,
+     "tdir": "up",
+     "w": 3,
+     "h": 1
+    },
+    {
+     "id": "para_campos",
+     "type": "door",
+     "x": 0,
+     "y": 17,
+     "to": "campos",
+     "tx": 38,
+     "ty": 15,
+     "tdir": "left",
+     "w": 1,
+     "h": 2
+    },
+    {
+     "id": "para_rochedo",
+     "type": "door",
+     "x": 43,
+     "y": 17,
+     "to": "rochedo",
+     "tx": 2,
+     "ty": 30,
+     "tdir": "right",
+     "w": 1,
+     "h": 2
+    }
+   ]
+  },
+  "prefeitura": {
+   "name": "Prefeitura",
+   "region": "vila",
+   "interior": "prefeitura",
+   "music": "vila",
+   "safe": true,
+   "battleBg": "casa",
+   "layout": [
+    "################",
+    "################",
+    "##............##",
+    "##............##",
+    "##....cccc....##",
+    "##....rrrr....##",
+    "##....rrrr....##",
+    "##............##",
+    "##............##",
+    "#######..#######"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 7,
+     "y": 9,
+     "to": "vila",
+     "tx": 28,
+     "ty": 11,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "prefeito",
+     "type": "npc",
+     "x": 8,
+     "y": 3,
+     "sprite": "prefeito",
+     "dir": "down",
+     "script": "prefeito_falar"
+    },
+    {
+     "id": "secretaria",
+     "type": "npc",
+     "x": 12,
+     "y": 6,
+     "sprite": "secretaria",
+     "dir": "left",
+     "script": "prefeitura_secretaria"
+    },
+    {
+     "id": "relogio",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "prop": "relogio",
+     "script": "prefeitura_relogio"
+    },
+    {
+     "id": "retrato",
+     "type": "obj",
+     "x": 10,
+     "y": 1,
+     "variant": 2,
+     "prop": "quadro",
+     "script": "prefeitura_retrato"
+    },
+    {
+     "id": "mapa_parede",
+     "type": "obj",
+     "x": 5,
+     "y": 1,
+     "variant": 0,
+     "prop": "quadro",
+     "text": [
+      "Um mapa antigo de Algodoal pintado à mão.",
+      "Alguém desenhou um coração em cima do FAROL."
+     ]
+    },
+    {
+     "id": "planta1",
+     "type": "obj",
+     "x": 2,
+     "y": 7,
+     "prop": "planta",
+     "text": "Uma planta de escritório. Já viu muitas reuniões chatas."
+    },
+    {
+     "id": "planta2",
+     "type": "obj",
+     "x": 13,
+     "y": 7,
+     "variant": 2,
+     "prop": "planta",
+     "text": "Esta planta é de plástico. Ela não sabe disso."
+    },
+    {
+     "id": "estante",
+     "type": "obj",
+     "x": 13,
+     "y": 2,
+     "prop": "estante",
+     "text": [
+      "Pastas: \"ATAS\", \"ATAS DAS ATAS\", \"VELAS DESAPARECIDAS\".",
+      "E uma pasta nova, em branco: \"ESQUECIDOS\"."
+     ]
+    },
+    {
+     "id": "mesinha",
+     "type": "obj",
+     "x": 2,
+     "y": 4,
+     "prop": "mesinha",
+     "text": "Um bule de chá frio e uma xícara com marca de cera."
+    }
+   ]
+  },
+  "padaria": {
+   "name": "Padaria da Dona Broa",
+   "region": "vila",
+   "interior": "padaria",
+   "music": "loja",
+   "safe": true,
+   "battleBg": "casa",
+   "layout": [
+    "##############",
+    "##############",
+    "##..........##",
+    "##..........##",
+    "##cccccc....##",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "######..######"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 6,
+     "y": 8,
+     "to": "vila",
+     "tx": 6,
+     "ty": 16,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "broa",
+     "type": "npc",
+     "x": 4,
+     "y": 3,
+     "sprite": "dona_broa",
+     "dir": "down",
+     "script": "padaria_broa"
+    },
+    {
+     "id": "forno1",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "prop": "balcao_forno",
+     "text": "O forno ronca baixinho. Cheiro de pão de queijo."
+    },
+    {
+     "id": "forno2",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "prop": "balcao_forno",
+     "text": "Outro forno. Esse aqui é só para bolos. Ele leva isso a sério."
+    },
+    {
+     "id": "paes",
+     "type": "obj",
+     "x": 5,
+     "y": 4,
+     "solid": false,
+     "prop": "paes"
+    },
+    {
+     "id": "caixa",
+     "type": "obj",
+     "x": 7,
+     "y": 4,
+     "solid": false,
+     "prop": "caixa_registradora"
+    },
+    {
+     "id": "saco1",
+     "type": "obj",
+     "x": 10,
+     "y": 2,
+     "prop": "saco_farinha",
+     "text": "Um saco de farinha. Muito branco. Muito macio. Muito tentador."
+    },
+    {
+     "id": "saco2",
+     "type": "obj",
+     "x": 11,
+     "y": 2,
+     "prop": "saco_farinha",
+     "text": "Outro saco de farinha. Esse tem um formato estranhamente humano. Não, esse não. O outro."
+    },
+    {
+     "id": "saco_toco",
+     "type": "obj",
+     "x": 11,
+     "y": 3,
+     "pages": [
+      {
+       "cond": "!party:toco",
+       "variant": 1,
+       "script": "padaria_toco"
+      },
+      {
+       "variant": 0,
+       "text": "Um saco de farinha com a marca do corpo do TOCO."
+      }
+     ],
+     "prop": "saco_farinha"
+    },
+    {
+     "id": "mesa",
+     "type": "obj",
+     "x": 3,
+     "y": 6,
+     "prop": "mesa",
+     "text": "Uma mesinha com toalha de crochê."
+    },
+    {
+     "id": "cadeira",
+     "type": "obj",
+     "x": 5,
+     "y": 6,
+     "prop": "cadeira",
+     "text": "Uma cadeira. Faltou uma."
+    },
+    {
+     "id": "planta",
+     "type": "obj",
+     "x": 11,
+     "y": 6,
+     "variant": 1,
+     "prop": "planta",
+     "text": "Um pé de manjericão. A Dona Broa usa no pão de... não, não usa."
+    },
+    {
+     "id": "barril",
+     "type": "obj",
+     "x": 9,
+     "y": 2,
+     "prop": "barril",
+     "text": "Um barril de fubá. Fubá até a tampa."
+    }
+   ]
+  },
+  "biblioteca": {
+   "name": "Biblioteca",
+   "region": "vila",
+   "interior": "biblioteca",
+   "music": "quarto",
+   "safe": true,
+   "battleBg": "casa",
+   "layout": [
+    "################",
+    "################",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##cccc........##",
+    "##............##",
+    "#######..#######"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 7,
+     "y": 10,
+     "to": "vila",
+     "tx": 9,
+     "ty": 10,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "traca",
+     "type": "npc",
+     "x": 3,
+     "y": 7,
+     "sprite": "dona_traca",
+     "dir": "down",
+     "script": "biblio_traca"
+    },
+    {
+     "id": "livro_azul",
+     "type": "obj",
+     "x": 4,
+     "y": 2,
+     "variant": 0,
+     "prop": "estante_cor",
+     "script": "biblio_livro_azul"
+    },
+    {
+     "id": "livro_verde",
+     "type": "obj",
+     "x": 6,
+     "y": 2,
+     "variant": 1,
+     "prop": "estante_cor",
+     "script": "biblio_livro_verde"
+    },
+    {
+     "id": "livro_vermelho",
+     "type": "obj",
+     "x": 9,
+     "y": 2,
+     "variant": 2,
+     "prop": "estante_cor",
+     "script": "biblio_livro_vermelho"
+    },
+    {
+     "id": "livro_amarelo",
+     "type": "obj",
+     "x": 12,
+     "y": 2,
+     "variant": 3,
+     "prop": "estante_cor",
+     "script": "biblio_livro_amarelo"
+    },
+    {
+     "id": "est2",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 2,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est3",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "variant": 3,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est5",
+     "type": "obj",
+     "x": 5,
+     "y": 2,
+     "variant": 5,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est7",
+     "type": "obj",
+     "x": 7,
+     "y": 2,
+     "variant": 7,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est8",
+     "type": "obj",
+     "x": 8,
+     "y": 2,
+     "variant": 8,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est10",
+     "type": "obj",
+     "x": 10,
+     "y": 2,
+     "variant": 10,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est11",
+     "type": "obj",
+     "x": 11,
+     "y": 2,
+     "variant": 11,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "estante_secreta",
+     "type": "obj",
+     "x": 13,
+     "y": 2,
+     "cond": "!flag:biblio_secreta",
+     "prop": "estante",
+     "script": "biblio_estante_secreta"
+    },
+    {
+     "id": "escada_secreta",
+     "type": "door",
+     "x": 13,
+     "y": 2,
+     "to": "biblioteca_secreta",
+     "tx": 4,
+     "ty": 6,
+     "tdir": "up",
+     "w": 1,
+     "h": 1,
+     "prop": "escada_desce",
+     "cond": "flag:biblio_secreta"
+    },
+    {
+     "id": "estm4",
+     "type": "obj",
+     "x": 4,
+     "y": 5,
+     "variant": 24,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "estm5",
+     "type": "obj",
+     "x": 5,
+     "y": 5,
+     "variant": 25,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "estm6",
+     "type": "obj",
+     "x": 6,
+     "y": 5,
+     "variant": 26,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "estm9",
+     "type": "obj",
+     "x": 9,
+     "y": 5,
+     "variant": 29,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "est_nina",
+     "type": "obj",
+     "x": 10,
+     "y": 5,
+     "pages": [
+      {
+       "cond": "!party:nina",
+       "script": "biblio_nina"
+      },
+      {
+       "script": "biblio_estante"
+      }
+     ],
+     "variant": 7,
+     "prop": "estante"
+    },
+    {
+     "id": "estm11",
+     "type": "obj",
+     "x": 11,
+     "y": 5,
+     "variant": 31,
+     "prop": "estante",
+     "script": "biblio_estante"
+    },
+    {
+     "id": "atril",
+     "type": "obj",
+     "x": 8,
+     "y": 7,
+     "prop": "atril",
+     "script": "biblio_atril"
+    },
+    {
+     "id": "globo",
+     "type": "obj",
+     "x": 13,
+     "y": 7,
+     "prop": "globo",
+     "text": "Um globo de Algodoal. Ele só tem um continente, e é redondinho."
+    },
+    {
+     "id": "abajur",
+     "type": "obj",
+     "x": 12,
+     "y": 8,
+     "prop": "abajur",
+     "text": "Um abajur com franjas. A Dona Traça evita olhar para ele."
+    }
+   ]
+  },
+  "biblioteca_secreta": {
+   "name": "Sala Secreta",
+   "region": "vila",
+   "interior": "casa",
+   "music": "triste",
+   "safe": true,
+   "dark": 0.55,
+   "lantern": 60,
+   "particles": "dust",
+   "layout": [
+    "##########",
+    "##########",
+    "##......##",
+    "##......##",
+    "##.RRRR.##",
+    "##.RRRR.##",
+    "##.RRRR.##",
+    "##......##",
+    "##########"
+   ],
+   "entities": [
+    {
+     "id": "subir",
+     "type": "door",
+     "x": 4,
+     "y": 7,
+     "to": "biblioteca",
+     "tx": 13,
+     "ty": 3,
+     "tdir": "down",
+     "w": 1,
+     "h": 1,
+     "prop": "escada_desce"
+    },
+    {
+     "id": "mesa",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "variant": 1,
+     "prop": "escrivaninha",
+     "script": "secreta_diario"
+    },
+    {
+     "id": "vela1",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "prop": "vela_grande",
+     "text": "Uma vela grossa. Alguém acendeu ela há pouco tempo... ou há muito tempo e ela é teimosa."
+    },
+    {
+     "id": "vela2",
+     "type": "obj",
+     "x": 7,
+     "y": 2,
+     "prop": "vela_grande",
+     "text": "Outra vela. A chama se inclina na sua direção, curiosa."
+    },
+    {
+     "id": "foto",
+     "type": "obj",
+     "x": 5,
+     "y": 1,
+     "prop": "foto",
+     "text": [
+      "Uma foto: o Vô Faísca segurando uma criança de capa amarela num barquinho.",
+      "Os dois estão rindo de alguma coisa que não aparece na foto."
+     ]
+    },
+    {
+     "id": "bau",
+     "type": "chest",
+     "x": 7,
+     "y": 6,
+     "prop": "bau",
+     "items": {
+      "guarana": 2,
+      "curativo": 1
+     }
+    }
+   ]
+  },
+  "oficina": {
+   "name": "Oficina do Seu Parafuso",
+   "region": "vila",
+   "interior": "oficina",
+   "music": "loja",
+   "safe": true,
+   "battleBg": "casa",
+   "layout": [
+    "##############",
+    "##############",
+    "##..........##",
+    "##..........##",
+    "##ccccc.....##",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "######..######"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 6,
+     "y": 8,
+     "to": "vila",
+     "tx": 7,
+     "ty": 27,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "parafuso",
+     "type": "npc",
+     "x": 4,
+     "y": 3,
+     "sprite": "seu_parafuso",
+     "dir": "down",
+     "script": "oficina_parafuso"
+    },
+    {
+     "id": "bancada",
+     "type": "obj",
+     "x": 9,
+     "y": 2,
+     "prop": "bancada",
+     "text": "Uma bancada cheia de ferramentas. Tudo no lugar certo. Exceto três engrenagens."
+    },
+    {
+     "id": "engrenagens",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "prop": "engrenagens",
+     "text": "Uma pilha de engrenagens. Faltam três buracos na pilha, do tamanho exato de três engrenagens."
+    },
+    {
+     "id": "barril",
+     "type": "obj",
+     "x": 12,
+     "y": 6,
+     "prop": "barril",
+     "text": "Um barril de óleo. Cheira a máquina feliz."
+    },
+    {
+     "id": "caixa1",
+     "type": "obj",
+     "x": 2,
+     "y": 6,
+     "prop": "caixa",
+     "text": "Uma caixa escrito \"PEÇAS QUE SOBRARAM DE COISAS QUE NÃO SOBRARAM\"."
+    },
+    {
+     "id": "caixa2",
+     "type": "obj",
+     "x": 3,
+     "y": 6,
+     "prop": "caixa",
+     "text": "Uma caixa vazia. Seu Parafuso guarda caixas vazias \"para emergências\"."
+    },
+    {
+     "id": "relogio",
+     "type": "obj",
+     "x": 12,
+     "y": 2,
+     "prop": "relogio",
+     "text": "Um relógio de corda. Ele está atrasado exatamente uma vida."
+    }
+   ]
+  },
+  "casa_brisa": {
+   "name": "Casa da Brisa",
+   "region": "vila",
+   "interior": "casa",
+   "music": "vila",
+   "safe": true,
+   "battleBg": "casa",
+   "layout": [
+    "############",
+    "############",
+    "##........##",
+    "##........##",
+    "##..RRRR..##",
+    "##..RRRR..##",
+    "##........##",
+    "##........##",
+    "#####..#####"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 5,
+     "y": 8,
+     "to": "vila",
+     "tx": 16,
+     "ty": 8,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "pipoca",
+     "type": "npc",
+     "x": 6,
+     "y": 4,
+     "sprite": "pipoca",
+     "dir": "down",
+     "move": "wander",
+     "radius": 1,
+     "script": "brisa_pipoca"
+    },
+    {
+     "id": "cama1",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 0,
+     "prop": "cama",
+     "text": "A cama da BRISA. Lençol de estrelinha, totalmente desarrumado."
+    },
+    {
+     "id": "cama2",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "variant": 2,
+     "prop": "cama",
+     "text": "A cama do PIPOCA. Tem um dinossauro de pelúcia de guarda."
+    },
+    {
+     "id": "geladeira",
+     "type": "obj",
+     "x": 9,
+     "y": 2,
+     "prop": "geladeira",
+     "script": "brisa_geladeira"
+    },
+    {
+     "id": "fogao",
+     "type": "obj",
+     "x": 8,
+     "y": 2,
+     "prop": "fogao",
+     "text": "Um fogão com uma panela de arroz de ontem."
+    },
+    {
+     "id": "foto",
+     "type": "obj",
+     "x": 5,
+     "y": 1,
+     "prop": "foto",
+     "script": "brisa_foto"
+    },
+    {
+     "id": "pipa",
+     "type": "obj",
+     "x": 6,
+     "y": 1,
+     "prop": "pipa_parede",
+     "text": "Uma pipa vermelha, igual à que a Brisa sempre empina."
+    },
+    {
+     "id": "trofeus",
+     "type": "obj",
+     "x": 9,
+     "y": 5,
+     "prop": "estante",
+     "text": [
+      "Troféus de bets, de queimada e um de \"MAIS BARULHENTA DA ESCOLA\".",
+      "Esse último foi a professora que inventou."
+     ]
+    },
+    {
+     "id": "sofa",
+     "type": "obj",
+     "x": 2,
+     "y": 6,
+     "prop": "sofa",
+     "text": "Um sofá com marcas de pulo."
+    }
+   ]
+  },
+  "pousada": {
+   "name": "Pousada Cama-de-Gato",
+   "region": "vila",
+   "interior": "pousada",
+   "music": "quarto",
+   "safe": true,
+   "battleBg": "casa",
+   "layout": [
+    "################",
+    "################",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##ccc.........##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "#######..#######"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 7,
+     "y": 9,
+     "to": "vila",
+     "tx": 25,
+     "ty": 27,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "la",
+     "type": "npc",
+     "x": 3,
+     "y": 4,
+     "sprite": "dona_la",
+     "dir": "down",
+     "script": "pousada_la"
+    },
+    {
+     "id": "cama0",
+     "type": "obj",
+     "x": 7,
+     "y": 2,
+     "variant": 0,
+     "prop": "cama",
+     "script": "pousada_cama"
+    },
+    {
+     "id": "cama1",
+     "type": "obj",
+     "x": 9,
+     "y": 2,
+     "variant": 1,
+     "prop": "cama",
+     "script": "pousada_cama"
+    },
+    {
+     "id": "cama2",
+     "type": "obj",
+     "x": 11,
+     "y": 2,
+     "variant": 2,
+     "prop": "cama",
+     "script": "pousada_cama"
+    },
+    {
+     "id": "cama3",
+     "type": "obj",
+     "x": 13,
+     "y": 2,
+     "variant": 3,
+     "prop": "cama",
+     "script": "pousada_cama"
+    },
+    {
+     "id": "viajante",
+     "type": "npc",
+     "x": 10,
+     "y": 6,
+     "sprite": "viajante",
+     "dir": "left",
+     "script": "pousada_viajante"
+    },
+    {
+     "id": "cesto",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "prop": "cesto_la",
+     "text": "Um cesto de novelos de lã. Um deles tem marcas de dentinhos de gato."
+    },
+    {
+     "id": "planta",
+     "type": "obj",
+     "x": 13,
+     "y": 7,
+     "variant": 2,
+     "prop": "planta",
+     "text": "Uma planta. Tem um pelinho laranja grudado nela."
+    },
+    {
+     "id": "quadro",
+     "type": "obj",
+     "x": 4,
+     "y": 1,
+     "variant": 1,
+     "prop": "quadro",
+     "text": "Um quadro de uma ovelha dormindo numa nuvem. Ou de uma nuvem dormindo numa ovelha."
+    },
+    {
+     "id": "novelo",
+     "type": "npc",
+     "x": 3,
+     "y": 7,
+     "sprite": "novelo",
+     "dir": "down",
+     "cond": "flag:novelo_devolvido",
+     "move": "wander",
+     "radius": 2,
+     "script": "pousada_novelo"
+    }
+   ]
+  },
+  "campos": {
+   "name": "Campos Pastel",
+   "region": "campos",
+   "theme": "campos",
+   "music": "campos",
+   "battleBg": "campos",
+   "particles": "petals",
+   "safe": true,
+   "variants": [
+    {
+     "cond": "phase==3",
+     "dark": 0.55,
+     "music": "vila_noite",
+     "particles": "fireflies"
+    }
+   ],
+   "layout": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTT..........................TTTTTTT",
+    "TT.........................,,....TTTTTTT",
+    "TT...,,...t......t....................TT",
+    "TT...,................................TT",
+    "TT..........,,......:............,,...TT",
+    "TT..................:.................TT",
+    "TT..................:.................TT",
+    "TT..................:..........\"\".....TT",
+    ":::::::::::::::::::::.................TT",
+    ":::::::::::::::::::::.............t...TT",
+    "TT.................::........,,.......TT",
+    "TT............t....::.................TT",
+    "TT......,,.........::.................TT",
+    "TT.................:::::::::::::::::::::",
+    "TT..t..............:::::::::::::::::::::",
+    "TT..........................::........TT",
+    "TT...........\"\".............::........TT",
+    "TT...........\"..............::........TT",
+    "TT.,,.......................::.....,,.TT",
+    "TT.,.......t.~~~~~~~~....:::::........TT",
+    "TT..........~~~~~~~~~....:::::........TT",
+    "TT..........~~~~~~~~~.................TT",
+    "TT....\"\"....~~~~~~~~~.................TT",
+    "TT........,,.~~~~~~~~.........,.......TT",
+    "TTTTTT........~~~~~~...........,...t..TT",
+    "TTTTTT....................\"\"..........TT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "entities": [
+    {
+     "id": "caverna",
+     "type": "building",
+     "x": 24,
+     "y": 18,
+     "style": "caverna",
+     "w": 4,
+     "h": 3,
+     "theme": "campos",
+     "lockedIf": "!flag:prefeito_fase1",
+     "lockedText": "Escuro demais. Melhor voltar com os amigos.",
+     "door": 1,
+     "to": "gruta",
+     "tx": 6,
+     "ty": 3,
+     "tdir": "down"
+    },
+    {
+     "id": "arvore_pipa",
+     "type": "obj",
+     "x": 20,
+     "y": 5,
+     "pages": [
+      {
+       "cond": [
+        "!item:pipa_pipoca",
+        "!flag:pipa_devolvida",
+        "!flag:pipa_vendida",
+        "!flag:pipa_caiu"
+       ],
+       "prop": "pipa_arvore",
+       "script": "campos_arvore_pipa"
+      },
+      {
+       "prop": "flor_gigante",
+       "variant": 3,
+       "text": "Uma árvore de pirulito muito alta. Ela parece aliviada."
+      }
+     ]
+    },
+    {
+     "id": "barraca",
+     "type": "obj",
+     "x": 8,
+     "y": 18,
+     "prop": "barraca",
+     "text": "A barraca do Sapo Conselheiro. Uma placa: \"SENTIMENTOS A GRANEL\"."
+    },
+    {
+     "id": "sapo",
+     "type": "npc",
+     "x": 11,
+     "y": 18,
+     "sprite": "sapo",
+     "dir": "left",
+     "script": "campos_sapo"
+    },
+    {
+     "id": "toalha",
+     "type": "obj",
+     "x": 28,
+     "y": 7,
+     "prop": "toalha",
+     "script": "campos_piquenique"
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 31,
+     "y": 14
+    },
+    {
+     "id": "flor0",
+     "type": "obj",
+     "x": 4,
+     "y": 7,
+     "variant": 0,
+     "prop": "flor_gigante",
+     "text": "Uma flor gigante. Cheira a algodão-doce e a manhã de sábado."
+    },
+    {
+     "id": "flor1",
+     "type": "obj",
+     "x": 15,
+     "y": 3,
+     "variant": 1,
+     "prop": "flor_gigante",
+     "text": "Uma flor do tamanho de um guarda-chuva. Ela se vira para seguir você."
+    },
+    {
+     "id": "flor2",
+     "type": "obj",
+     "x": 34,
+     "y": 18,
+     "variant": 2,
+     "prop": "flor_gigante",
+     "text": "Uma flor gigante. Tem uma abelha dormindo dentro."
+    },
+    {
+     "id": "flor3",
+     "type": "obj",
+     "x": 8,
+     "y": 22,
+     "variant": 3,
+     "prop": "flor_gigante",
+     "text": "Uma flor gigante. Cheira a algodão-doce e a manhã de sábado."
+    },
+    {
+     "id": "flor4",
+     "type": "obj",
+     "x": 31,
+     "y": 24,
+     "variant": 0,
+     "prop": "flor_gigante",
+     "text": "Uma flor do tamanho de um guarda-chuva. Ela se vira para seguir você."
+    },
+    {
+     "id": "flor5",
+     "type": "obj",
+     "x": 36,
+     "y": 9,
+     "variant": 1,
+     "prop": "flor_gigante",
+     "text": "Uma flor gigante. Tem uma abelha dormindo dentro."
+    },
+    {
+     "id": "nuvem0",
+     "type": "obj",
+     "x": 14,
+     "y": 14,
+     "prop": "nuvem_algodao",
+     "text": "Uma nuvem de algodão-doce que pousou para descansar. Não morda."
+    },
+    {
+     "id": "nuvem1",
+     "type": "obj",
+     "x": 31,
+     "y": 4,
+     "prop": "nuvem_algodao",
+     "text": "Uma nuvem de algodão-doce que pousou para descansar. Não morda."
+    },
+    {
+     "id": "nuvem2",
+     "type": "obj",
+     "x": 9,
+     "y": 26,
+     "prop": "nuvem_algodao",
+     "text": "Uma nuvem de algodão-doce que pousou para descansar. Não morda."
+    },
+    {
+     "id": "placa_o",
+     "type": "obj",
+     "x": 3,
+     "y": 9,
+     "prop": "placa",
+     "text": "← FLORESTA SUSSURRANTE. \"Não escute o que as árvores dizem. (Ou escute. Elas são legais.)\""
+    },
+    {
+     "id": "placa_lago",
+     "type": "obj",
+     "x": 22,
+     "y": 20,
+     "prop": "placa",
+     "text": [
+      "LAGUINHO DOS CAMPOS.",
+      "\"Não nade. Ass.: o laguinho.\"",
+      "Embaixo, em outra letra: \"Tem uma caverna aqui do lado. Não entre também.\""
+     ]
+    },
+    {
+     "id": "e1",
+     "type": "enemy",
+     "x": 30,
+     "y": 10,
+     "troop": "pirulinhos",
+     "esprite": "pirulinho",
+     "move": "wander",
+     "radius": 3
+    },
+    {
+     "id": "e2",
+     "type": "enemy",
+     "x": 14,
+     "y": 7,
+     "troop": "campos_a",
+     "esprite": "abelhao",
+     "move": "chase",
+     "sight": 4
+    },
+    {
+     "id": "e3",
+     "type": "enemy",
+     "x": 6,
+     "y": 13,
+     "troop": "campos_b",
+     "esprite": "nuvenzinha",
+     "move": "wander"
+    },
+    {
+     "id": "e4",
+     "type": "enemy",
+     "x": 8,
+     "y": 25,
+     "troop": "campos_c",
+     "esprite": "pirulinho",
+     "move": "chase",
+     "sight": 4
+    },
+    {
+     "id": "e5",
+     "type": "enemy",
+     "x": 33,
+     "y": 23,
+     "troop": "abelhas",
+     "esprite": "abelhao",
+     "move": "wander"
+    },
+    {
+     "id": "para_vila",
+     "type": "door",
+     "x": 39,
+     "y": 15,
+     "to": "vila",
+     "tx": 2,
+     "ty": 17,
+     "tdir": "right",
+     "w": 1,
+     "h": 2
+    },
+    {
+     "id": "para_floresta",
+     "type": "door",
+     "x": 0,
+     "y": 10,
+     "to": "floresta",
+     "tx": 41,
+     "ty": 16,
+     "tdir": "left",
+     "w": 1,
+     "h": 2
+    }
+   ]
+  },
+  "floresta": {
+   "name": "Floresta Sussurrante",
+   "region": "floresta",
+   "theme": "floresta",
+   "music": "floresta",
+   "battleBg": "floresta",
+   "particles": "fireflies",
+   "dark": 0.25,
+   "lantern": 70,
+   "ambientSound": "grilos",
+   "safe": true,
+   "layout": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTT.,.TTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTT...m.........\"\".......TTT",
+    "TTTTTTTTTTTTTTTTTTT.::::::::::::::::::::.TTT",
+    "TTTTTTTTTTTTTTTTTTT.:.....\"\".......m...:.TTT",
+    "TTTTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTT.:mTTT",
+    "TTTTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTT.m.....:....mTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTT..,.......,..TTTTTTTTTTTT\":.TTT",
+    "TTTTTTTTTTTTT.............TTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTT.............TTTTTTTTTTTT.:.TTT",
+    "::::::::::::::............TTTTTTTTTTTT.:.TTT",
+    "::::::::::::::............TTTTTTTTTTTT.:.:::",
+    "TTTTTTTTTTTTT.............TTTTTTTTTTTT.:.:::",
+    "TTTTTTTTTTTTT...\"\"....\"...TTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTT.,........u..TTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTTm....:.....m.TTTTTTTTTTTT.:\"TTT",
+    "TTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTTTTm:.TTT",
+    "TTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTTTTTT.:.TTTTTTTTTTTTTTTTTT.:.TTT",
+    "TTTTTTTTTTTTTTTTT.:..,.................:.TTT",
+    "TTTTTTTTTTTTTTTTT.::::::::::::::::::::::.TTT",
+    "TTTTTTTTTTTTTTTTT......m.Y...............TTT",
+    "TTTTTTTTTTTTTTTTTTTTTT......mTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTT.,..,..TTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTT.......TTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "entities": [
+    {
+     "id": "toco_receita",
+     "type": "obj",
+     "x": 23,
+     "y": 19,
+     "script": "floresta_toco"
+    },
+    {
+     "id": "pedra_lua",
+     "type": "obj",
+     "x": 18,
+     "y": 12,
+     "prop": "pedra_lua",
+     "text": [
+      "Uma pedra com a lua desenhada. Ela fica ao NORTE das corujas.",
+      "Alguém escreveu: \"olhem para mim\"."
+     ]
+    },
+    {
+     "id": "coruja1",
+     "type": "obj",
+     "x": 16,
+     "y": 15,
+     "variantVar": "coruja1",
+     "prop": "estatua_coruja",
+     "script": "floresta_coruja1"
+    },
+    {
+     "id": "coruja2",
+     "type": "obj",
+     "x": 19,
+     "y": 15,
+     "variantVar": "coruja2",
+     "prop": "estatua_coruja",
+     "script": "floresta_coruja2"
+    },
+    {
+     "id": "coruja3",
+     "type": "obj",
+     "x": 22,
+     "y": 15,
+     "variantVar": "coruja3",
+     "prop": "estatua_coruja",
+     "script": "floresta_coruja3"
+    },
+    {
+     "id": "arvore_sussurro",
+     "type": "obj",
+     "x": 24,
+     "y": 14,
+     "script": "floresta_sussurro"
+    },
+    {
+     "id": "arvore_sussurro2",
+     "type": "obj",
+     "x": 37,
+     "y": 24,
+     "text": [
+      "As folhas sussurram: \"...tem um caminho onde as árvores mentem...\"",
+      "\"...ao sul... onde o chão pisca...\""
+     ]
+    },
+    {
+     "id": "arvore_sussurro3",
+     "type": "obj",
+     "x": 21,
+     "y": 4,
+     "text": [
+      "As árvores sussurram: \"...a menina de capa amarela... a menina que dorme...\"",
+      "Quando você chega perto, elas se calam."
+     ]
+    },
+    {
+     "id": "cipo0",
+     "type": "obj",
+     "x": 12,
+     "y": 15,
+     "cond": "!flag:floresta_portao",
+     "prop": "cipos",
+     "script": "floresta_cipos"
+    },
+    {
+     "id": "cipo1",
+     "type": "obj",
+     "x": 12,
+     "y": 16,
+     "cond": "!flag:floresta_portao",
+     "prop": "cipos",
+     "script": "floresta_cipos"
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 15,
+     "y": 17
+    },
+    {
+     "id": "vulto",
+     "type": "npc",
+     "x": 30,
+     "y": 2,
+     "sprite": "sombra_alta",
+     "dir": "down",
+     "move": "watcher",
+     "radius": 4,
+     "flag": "viu_vulto",
+     "cond": "!flag:viu_vulto",
+     "noShadow": true
+    },
+    {
+     "id": "novelo",
+     "type": "npc",
+     "x": 24,
+     "y": 30,
+     "sprite": "novelo",
+     "dir": "down",
+     "cond": [
+      "!item:novelo",
+      "!flag:novelo_devolvido"
+     ],
+     "move": "wander",
+     "radius": 1,
+     "script": "floresta_novelo"
+    },
+    {
+     "id": "bau_engrenagem",
+     "type": "chest",
+     "x": 27,
+     "y": 30,
+     "prop": "bau",
+     "items": {
+      "engrenagem": 1,
+      "pao_queijo": 2
+     }
+    },
+    {
+     "id": "brilho_chao",
+     "type": "obj",
+     "x": 25,
+     "y": 27,
+     "solid": false,
+     "prop": "pegadas",
+     "text": "Aqui o chão parece... piscar. Como se uma das árvores ao sul fosse só desenho."
+    },
+    {
+     "id": "init_corujas",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "floresta_init",
+     "trigger": "auto",
+     "cond": "!flag:corujas_init",
+     "w": 1,
+     "h": 1
+    },
+    {
+     "id": "e1",
+     "type": "enemy",
+     "x": 39,
+     "y": 10,
+     "troop": "floresta_a",
+     "esprite": "cogumelo",
+     "move": "wander",
+     "radius": 2
+    },
+    {
+     "id": "e2",
+     "type": "enemy",
+     "x": 27,
+     "y": 6,
+     "troop": "floresta_c",
+     "esprite": "raposa",
+     "move": "chase",
+     "sight": 5
+    },
+    {
+     "id": "e3",
+     "type": "enemy",
+     "x": 33,
+     "y": 27,
+     "troop": "floresta_d",
+     "esprite": "raposa",
+     "move": "chase",
+     "sight": 4
+    },
+    {
+     "id": "e4",
+     "type": "enemy",
+     "x": 18,
+     "y": 23,
+     "troop": "floresta_b",
+     "esprite": "coruja",
+     "move": "static"
+    },
+    {
+     "id": "e5",
+     "type": "enemy",
+     "x": 23,
+     "y": 17,
+     "troop": "floresta_a",
+     "esprite": "cogumelo",
+     "move": "wander",
+     "radius": 2
+    },
+    {
+     "id": "para_campos",
+     "type": "door",
+     "x": 43,
+     "y": 16,
+     "to": "campos",
+     "tx": 2,
+     "ty": 10,
+     "tdir": "right",
+     "w": 1,
+     "h": 2
+    },
+    {
+     "id": "para_coracao",
+     "type": "door",
+     "x": 0,
+     "y": 15,
+     "to": "coracao",
+     "tx": 21,
+     "ty": 9,
+     "tdir": "left",
+     "w": 1,
+     "h": 2
+    }
+   ]
+  },
+  "coracao": {
+   "name": "Coração da Floresta",
+   "region": "floresta",
+   "theme": "floresta",
+   "music": "floresta",
+   "battleBg": "floresta",
+   "particles": "fireflies",
+   "dark": 0.35,
+   "lantern": 70,
+   "safe": true,
+   "variants": [
+    {
+     "cond": "!flag:raiz_derrotada",
+     "music": "misterio"
+    }
+   ],
+   "layout": [
+    "TTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTT",
+    "TT....................TT",
+    "TT.m................m.TT",
+    "TT....................TT",
+    "TT...,,..........,....TT",
+    "TT................,...TT",
+    "TT....................TT",
+    "TT....................TT",
+    "TT............::::::::::",
+    "TT............::::::::::",
+    "TT....................TT",
+    "TT....................TT",
+    "TT....................TT",
+    "TT....m...............TT",
+    "TT...,...........,....TT",
+    "TT.m................m.TT",
+    "TT....................TT",
+    "TTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "entities": [
+    {
+     "id": "mamae",
+     "type": "obj",
+     "x": 9,
+     "y": 6,
+     "esprite": "mamae_raiz",
+     "foot": [
+      4,
+      3
+     ],
+     "solid": true,
+     "pages": [
+      {
+       "cond": "!flag:raiz_derrotada",
+       "script": "raiz_chefe"
+      },
+      {
+       "script": "raiz_depois"
+      }
+     ]
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 19,
+     "y": 13
+    },
+    {
+     "id": "para_floresta",
+     "type": "door",
+     "x": 23,
+     "y": 9,
+     "to": "floresta",
+     "tx": 2,
+     "ty": 15,
+     "tdir": "right",
+     "w": 1,
+     "h": 2
+    }
+   ]
+  },
+  "gruta": {
+   "name": "Gruta das Águas Paradas",
+   "region": "gruta",
+   "interior": "gruta",
+   "theme": "gruta",
+   "music": "gruta",
+   "battleBg": "gruta",
+   "dark": 0.88,
+   "lantern": 48,
+   "particles": "bubbles",
+   "ambientSound": "caverna",
+   "safe": true,
+   "puzzles": {
+    "main": {
+     "flag": "gruta_portao",
+     "script": "gruta_portao_abre"
+    }
+   },
+   "layout": [
+    "####################################",
+    "####################################",
+    "##dddd^dddd####ddddddddddddddddddd##",
+    "##ddddddddd####ddddddddddddddddddd##",
+    "##dddddddddddddddddddddddddddddddd##",
+    "##ddddddddddddddddd~~~~~~~~~~~dddd##",
+    "##ddddddddd####dddd~~~~~~~~~~~dddd##",
+    "##ddddddddd####dddddddddddd~~~dddd##",
+    "###############dddd~~~~~ddd~~~dddd##",
+    "###############dddd~~~~~~~~~~~dddd##",
+    "###############dddd~~~~~~~~~~~dddd##",
+    "###############ddddddddddddddddddd##",
+    "###############ddddddddddddddddddd##",
+    "###############dd###################",
+    "###############dd###################",
+    "###dddddddddddddd###################",
+    "###dddddddddddddd###################",
+    "###dddddddddddddd###################",
+    "###dddddddddddddd###################",
+    "###dddddddddddddd###################",
+    "###dddddddddddddd###################",
+    "###dddddddddddddd###################",
+    "#########d##########################",
+    "#########d##########################",
+    "#########d##########################",
+    "####################################"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 6,
+     "y": 2,
+     "to": "campos",
+     "tx": 25,
+     "ty": 21,
+     "tdir": "down",
+     "w": 1,
+     "h": 1
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 16,
+     "y": 3
+    },
+    {
+     "id": "bau_engrenagem",
+     "type": "chest",
+     "x": 33,
+     "y": 4,
+     "prop": "bau",
+     "items": {
+      "engrenagem": 1,
+      "guarana": 1
+     }
+    },
+    {
+     "id": "bau_ilha",
+     "type": "chest",
+     "x": 25,
+     "y": 7,
+     "prop": "bau",
+     "items": {
+      "guarda_chuva_arcoiris": 1
+     }
+    },
+    {
+     "id": "garrafa",
+     "type": "obj",
+     "x": 32,
+     "y": 11,
+     "cond": "!flag:pagina_gruta",
+     "solid": false,
+     "prop": "papel",
+     "script": "gruta_garrafa"
+    },
+    {
+     "id": "luz0",
+     "type": "light",
+     "x": 4,
+     "y": 3,
+     "light": 30,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz1",
+     "type": "light",
+     "x": 13,
+     "y": 4,
+     "light": 30,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz2",
+     "type": "light",
+     "x": 31,
+     "y": 3,
+     "light": 30,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz3",
+     "type": "light",
+     "x": 16,
+     "y": 11,
+     "light": 30,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz4",
+     "type": "light",
+     "x": 4,
+     "y": 19,
+     "light": 30,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz5",
+     "type": "light",
+     "x": 15,
+     "y": 17,
+     "light": 30,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "pedra1",
+     "type": "boulder",
+     "x": 6,
+     "y": 17,
+     "solved": [
+      6,
+      19,
+      "gruta_portao"
+     ]
+    },
+    {
+     "id": "pedra2",
+     "type": "boulder",
+     "x": 10,
+     "y": 18,
+     "solved": [
+      12,
+      19,
+      "gruta_portao"
+     ]
+    },
+    {
+     "id": "placa1",
+     "type": "plate",
+     "x": 6,
+     "y": 19,
+     "group": "main"
+    },
+    {
+     "id": "placa2",
+     "type": "plate",
+     "x": 12,
+     "y": 19,
+     "group": "main"
+    },
+    {
+     "id": "portao",
+     "type": "obj",
+     "x": 9,
+     "y": 22,
+     "cond": "!flag:gruta_portao",
+     "prop": "portao",
+     "text": "Um portão de ferro, enferrujado de lágrima. Duas placas no chão parecem controlá-lo."
+    },
+    {
+     "id": "placa_dica",
+     "type": "obj",
+     "x": 4,
+     "y": 15,
+     "prop": "placa",
+     "text": [
+      "\"Duas pedras, duas placas, um portão.\"",
+      "\"Se as pedras empacarem, saia da sala e volte: elas lembram onde estavam.\""
+     ]
+    },
+    {
+     "id": "pegada0",
+     "type": "obj",
+     "x": 9,
+     "y": 23,
+     "variant": 0,
+     "solid": false,
+     "cond": "flag:gruta_portao",
+     "prop": "pegadas"
+    },
+    {
+     "id": "pegada1",
+     "type": "obj",
+     "x": 9,
+     "y": 24,
+     "variant": 1,
+     "solid": false,
+     "cond": "flag:gruta_portao",
+     "prop": "pegadas"
+    },
+    {
+     "id": "voz",
+     "type": "trigger",
+     "x": 15,
+     "y": 14,
+     "script": "gruta_voz",
+     "w": 2,
+     "h": 1,
+     "trigger": "touch",
+     "cond": "!flag:gruta_voz"
+    },
+    {
+     "id": "para_fundo",
+     "type": "door",
+     "x": 9,
+     "y": 24,
+     "to": "gruta_fundo",
+     "tx": 9,
+     "ty": 12,
+     "tdir": "up",
+     "w": 1,
+     "h": 1,
+     "prop": "escada_desce"
+    },
+    {
+     "id": "e1",
+     "type": "enemy",
+     "x": 26,
+     "y": 3,
+     "troop": "gruta_a",
+     "esprite": "peixe_lanterna",
+     "move": "chase",
+     "sight": 4
+    },
+    {
+     "id": "e2",
+     "type": "enemy",
+     "x": 31,
+     "y": 9,
+     "troop": "gruta_b",
+     "esprite": "caranguejo",
+     "move": "wander",
+     "radius": 2
+    },
+    {
+     "id": "e3",
+     "type": "enemy",
+     "x": 18,
+     "y": 11,
+     "troop": "gruta_c",
+     "esprite": "medusa",
+     "move": "wander",
+     "radius": 2
+    },
+    {
+     "id": "e4",
+     "type": "enemy",
+     "x": 13,
+     "y": 20,
+     "troop": "gruta_a",
+     "esprite": "medusa",
+     "move": "wander",
+     "radius": 1
+    }
+   ]
+  },
+  "gruta_fundo": {
+   "name": "Fundo da Gruta",
+   "region": "gruta",
+   "interior": "gruta",
+   "theme": "gruta",
+   "music": "misterio",
+   "battleBg": "gruta",
+   "dark": 0.75,
+   "lantern": 56,
+   "particles": "bubbles",
+   "ambientSound": "caverna",
+   "safe": true,
+   "variants": [
+    {
+     "cond": "flag:fundo_derrotada",
+     "music": "gruta",
+     "dark": 0.6
+    }
+   ],
+   "layout": [
+    "####################",
+    "####################",
+    "##dddddddddddddddd##",
+    "##ddd~~~~~~~~~~ddd##",
+    "##ddd~~~~~~~~~~ddd##",
+    "##ddd~~~~~~~~~~ddd##",
+    "##ddd~~~~~~~~~~ddd##",
+    "##ddd~~~~~~~~~~ddd##",
+    "##ddd~~~~~~~~~~ddd##",
+    "##dddddddddddddddd##",
+    "##dddddddddddddddd##",
+    "##dddddddddddddddd##",
+    "##dddddddddddddddd##",
+    "##ddddddd^dddddddd##",
+    "####################",
+    "####################"
+   ],
+   "entities": [
+    {
+     "id": "coisa",
+     "type": "obj",
+     "x": 7,
+     "y": 4,
+     "esprite": "coisa_fundo",
+     "foot": [
+      6,
+      3
+     ],
+     "solid": true,
+     "cond": "!flag:fundo_derrotada",
+     "text": "...A água está parada demais."
+    },
+    {
+     "id": "chefe",
+     "type": "trigger",
+     "x": 6,
+     "y": 10,
+     "script": "fundo_chefe",
+     "w": 8,
+     "h": 1,
+     "trigger": "touch",
+     "cond": "!flag:fundo_derrotada"
+    },
+    {
+     "id": "luz0",
+     "type": "light",
+     "x": 3,
+     "y": 3,
+     "light": 28,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz1",
+     "type": "light",
+     "x": 16,
+     "y": 3,
+     "light": 28,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz2",
+     "type": "light",
+     "x": 3,
+     "y": 12,
+     "light": 28,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "luz3",
+     "type": "light",
+     "x": 16,
+     "y": 12,
+     "light": 28,
+     "glow": "rgba(120,220,255,0.18)"
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 16,
+     "y": 11
+    },
+    {
+     "id": "subir",
+     "type": "door",
+     "x": 9,
+     "y": 13,
+     "to": "gruta",
+     "tx": 9,
+     "ty": 23,
+     "tdir": "up",
+     "w": 1,
+     "h": 1,
+     "prop": "escada_desce"
+    }
+   ]
+  },
+  "abandonada": {
+   "name": "Casa Abandonada",
+   "region": "bairro",
+   "interior": "abandonada",
+   "music": "misterio",
+   "battleBg": "bairro",
+   "dark": 0.72,
+   "lantern": 46,
+   "particles": "dust",
+   "ambientSound": "pingos",
+   "glitch": 0.015,
+   "safe": false,
+   "layout": [
+    "##########################",
+    "##########################",
+    "##.........###############",
+    "##.........###############",
+    "##.........,,,,,,,,,,,,,##",
+    "##.........,,,,,,,,,,,,,##",
+    "##.........###############",
+    "##.........###############",
+    "##.........###############",
+    "#####..###################"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 5,
+     "y": 9,
+     "to": "vila",
+     "tx": 33,
+     "ty": 27,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "sofa",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "variant": 1,
+     "prop": "sofa",
+     "text": [
+      "Um sofá coberto de poeira. Tem o formato de alguém que sentou ali muitas vezes.",
+      "A poeira está desarrumada, como se alguém tivesse acabado de levantar."
+     ]
+    },
+    {
+     "id": "telefone",
+     "type": "obj",
+     "x": 8,
+     "y": 2,
+     "variant": 1,
+     "prop": "mesinha",
+     "script": "aband_telefone"
+    },
+    {
+     "id": "foto",
+     "type": "obj",
+     "x": 6,
+     "y": 1,
+     "prop": "foto",
+     "script": "aband_foto"
+    },
+    {
+     "id": "tv",
+     "type": "obj",
+     "x": 2,
+     "y": 6,
+     "prop": "tv",
+     "text": [
+      "Uma TV ligada sem antena. Só chiado.",
+      "...no meio do chiado, por um segundo, você acha que escutou alguém dizer o seu nome."
+     ]
+    },
+    {
+     "id": "relogio",
+     "type": "obj",
+     "x": 10,
+     "y": 2,
+     "prop": "relogio",
+     "text": "Um relógio parado às 11:47. Igualzinho ao da Prefeitura."
+    },
+    {
+     "id": "quadro",
+     "type": "obj",
+     "x": 16,
+     "y": 3,
+     "pages": [
+      {
+       "cond": "var:loop>=2",
+       "variant": 3,
+       "text": "O quadro agora está de cabeça para baixo. E está todo preto. Não, não está preto: é a noite, vista de dentro da água."
+      },
+      {
+       "variant": 1,
+       "text": "Um quadro de uma casa. Esta casa. Com uma luz acesa na janela."
+      }
+     ],
+     "prop": "quadro"
+    },
+    {
+     "id": "quadro2",
+     "type": "obj",
+     "x": 20,
+     "y": 3,
+     "variant": 0,
+     "prop": "quadro",
+     "text": "Um quadro de um lago tranquilo. Tranquilo demais."
+    },
+    {
+     "id": "alcapao",
+     "type": "door",
+     "x": 4,
+     "y": 7,
+     "to": "bairro",
+     "tx": 3,
+     "ty": 9,
+     "tdir": "down",
+     "w": 1,
+     "h": 1,
+     "prop": "alcapao",
+     "pages": [
+      {
+       "cond": "item:chave_porao",
+       "variant": 1
+      },
+      {
+       "variant": 0
+      }
+     ],
+     "lockedIf": "!item:chave_porao",
+     "lockedText": "Um alçapão trancado. A fechadura é fria como água de rio."
+    },
+    {
+     "id": "toca",
+     "type": "trigger",
+     "x": 11,
+     "y": 4,
+     "script": "aband_toca",
+     "w": 1,
+     "h": 2,
+     "trigger": "touch",
+     "cond": "!flag:telefone_tocou"
+    },
+    {
+     "id": "loop",
+     "type": "trigger",
+     "x": 23,
+     "y": 4,
+     "script": "aband_loop",
+     "w": 1,
+     "h": 2,
+     "trigger": "touch",
+     "pages": [
+      {
+       "cond": "!item:chave_porao"
+      },
+      {
+       "script": "aband_parede"
+      }
+     ]
+    },
+    {
+     "id": "chave",
+     "type": "obj",
+     "x": 18,
+     "y": 4,
+     "cond": [
+      "var:loop>=3",
+      "!item:chave_porao"
+     ],
+     "solid": false,
+     "prop": "chave",
+     "script": "aband_chave"
+    },
+    {
+     "id": "vulto",
+     "type": "npc",
+     "x": 22,
+     "y": 5,
+     "sprite": "sombra_alta",
+     "dir": "left",
+     "cond": "var:loop==2",
+     "move": "watcher",
+     "radius": 7,
+     "noShadow": true
+    },
+    {
+     "id": "entrada",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "aband_entrada",
+     "trigger": "auto",
+     "cond": "!flag:aband_entrou",
+     "w": 1,
+     "h": 1
+    }
+   ]
+  },
+  "bairro": {
+   "name": "Bairro Esquecido",
+   "region": "bairro",
+   "theme": "bairro",
+   "music": "bairro",
+   "battleBg": "bairro",
+   "dark": 0.32,
+   "lantern": 72,
+   "particles": "ash",
+   "ambientSound": "pingos",
+   "tint": "rgba(30,30,55,0.10)",
+   "glitch": 0.02,
+   "safe": true,
+   "layout": [
+    "####################################",
+    "####################################",
+    "##......\"\"............\"........\"..##",
+    "##.............\"..................##",
+    "##................................##",
+    "##................................##",
+    "##................................##",
+    "##................................##",
+    "##::::::::::::::::::::::::::::::::##",
+    "##::::::::::::::::::::::::::::::::##",
+    "##________________________________##",
+    "##_--__--__--__--__--__--__--__--_##",
+    "##________________________________##",
+    "##________________________________##",
+    "##::::::::::::::::::::::::::::::::##",
+    "##::::::::::::::::::::::::::::::::##",
+    "##:..............................:##",
+    "##:..............................:##",
+    "##:..............................:##",
+    "##:..............................:##",
+    "##::::::::::::::::::::::::::::::::##",
+    "##::::::::::::::::::::::::::::::::##",
+    "####################################",
+    "####################################"
+   ],
+   "entities": [
+    {
+     "id": "casa1",
+     "type": "building",
+     "x": 3,
+     "y": 3,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 1,
+     "door": 2
+    },
+    {
+     "id": "porta1",
+     "type": "obj",
+     "x": 5,
+     "y": 7,
+     "solid": false,
+     "script": "bairro_porta_pintada"
+    },
+    {
+     "id": "casa3",
+     "type": "building",
+     "x": 10,
+     "y": 3,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 3,
+     "door": 2,
+     "to": "bairro_casa3",
+     "tx": 5,
+     "ty": 7,
+     "tdir": "up"
+    },
+    {
+     "id": "casa5",
+     "type": "building",
+     "x": 17,
+     "y": 3,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 5,
+     "door": 2,
+     "to": "bairro_casa5",
+     "tx": 5,
+     "ty": 7,
+     "tdir": "up"
+    },
+    {
+     "id": "casa7",
+     "type": "building",
+     "x": 24,
+     "y": 2,
+     "style": "bairro",
+     "w": 7,
+     "h": 5,
+     "number": 7,
+     "door": 3,
+     "to": "casa7",
+     "tx": 3,
+     "ty": 8,
+     "tdir": "up"
+    },
+    {
+     "id": "casa2",
+     "type": "building",
+     "x": 4,
+     "y": 16,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 2,
+     "door": 2
+    },
+    {
+     "id": "porta2",
+     "type": "obj",
+     "x": 6,
+     "y": 20,
+     "solid": false,
+     "script": "bairro_porta_pintada"
+    },
+    {
+     "id": "casa4",
+     "type": "building",
+     "x": 12,
+     "y": 16,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 4,
+     "door": 2
+    },
+    {
+     "id": "porta4",
+     "type": "obj",
+     "x": 14,
+     "y": 20,
+     "solid": false,
+     "script": "bairro_porta_pintada"
+    },
+    {
+     "id": "casa6",
+     "type": "building",
+     "x": 20,
+     "y": 16,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 6,
+     "door": 2,
+     "pages": [
+      {
+       "cond": "!flag:menina_sumiu",
+       "girl": 1
+      },
+      {}
+     ]
+    },
+    {
+     "id": "porta6",
+     "type": "obj",
+     "x": 22,
+     "y": 20,
+     "solid": false,
+     "script": "bairro_porta_pintada"
+    },
+    {
+     "id": "casa8",
+     "type": "building",
+     "x": 27,
+     "y": 16,
+     "style": "bairro",
+     "w": 5,
+     "h": 4,
+     "number": 8,
+     "door": 2
+    },
+    {
+     "id": "porta8",
+     "type": "obj",
+     "x": 29,
+     "y": 20,
+     "solid": false,
+     "script": "bairro_porta_pintada"
+    },
+    {
+     "id": "menina",
+     "type": "trigger",
+     "x": 19,
+     "y": 14,
+     "script": "bairro_menina",
+     "w": 5,
+     "h": 2,
+     "trigger": "touch",
+     "cond": "!flag:menina_sumiu"
+    },
+    {
+     "id": "subir",
+     "type": "door",
+     "x": 2,
+     "y": 8,
+     "to": "abandonada",
+     "tx": 4,
+     "ty": 6,
+     "tdir": "up",
+     "w": 1,
+     "h": 1,
+     "prop": "escada_desce"
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 6,
+     "y": 14
+    },
+    {
+     "id": "correio",
+     "type": "obj",
+     "x": 9,
+     "y": 8,
+     "variant": 1,
+     "prop": "caixa_correio",
+     "script": "bairro_correio"
+    },
+    {
+     "id": "lixo",
+     "type": "obj",
+     "x": 31,
+     "y": 15,
+     "prop": "lixeira",
+     "script": "bairro_lixo"
+    },
+    {
+     "id": "carro",
+     "type": "obj",
+     "x": 13,
+     "y": 12,
+     "prop": "carro",
+     "text": [
+      "Um carro cinza, parado no meio da rua. Faz tempo.",
+      "No banco de trás tem uma cadeirinha e um guarda-chuva amarelo."
+     ]
+    },
+    {
+     "id": "poste0",
+     "type": "obj",
+     "x": 8,
+     "y": 8,
+     "variant": 0,
+     "prop": "poste_rua",
+     "text": "Um poste de rua de verdade. Daqueles que zumbem."
+    },
+    {
+     "id": "poste1",
+     "type": "obj",
+     "x": 15,
+     "y": 8,
+     "variant": 1,
+     "prop": "poste_rua",
+     "text": "Um poste apagado. Ele pisca quando você não está olhando."
+    },
+    {
+     "id": "poste2",
+     "type": "obj",
+     "x": 22,
+     "y": 8,
+     "variant": 0,
+     "prop": "poste_rua",
+     "text": "Um poste de rua de verdade. Daqueles que zumbem."
+    },
+    {
+     "id": "poste3",
+     "type": "obj",
+     "x": 29,
+     "y": 8,
+     "variant": 1,
+     "prop": "poste_rua",
+     "text": "Um poste apagado. Ele pisca quando você não está olhando."
+    },
+    {
+     "id": "m1",
+     "type": "enemy",
+     "x": 19,
+     "y": 15,
+     "troop": "bairro_b",
+     "esprite": "manequim",
+     "move": "creep"
+    },
+    {
+     "id": "m2",
+     "type": "enemy",
+     "x": 30,
+     "y": 20,
+     "troop": "bairro_b",
+     "esprite": "manequim",
+     "move": "creep"
+    },
+    {
+     "id": "r1",
+     "type": "enemy",
+     "x": 25,
+     "y": 12,
+     "troop": "bairro_c",
+     "esprite": "rabisco",
+     "move": "chase",
+     "sight": 5
+    },
+    {
+     "id": "t1",
+     "type": "enemy",
+     "x": 10,
+     "y": 15,
+     "troop": "bairro_a",
+     "esprite": "tv_estatica",
+     "move": "static"
+    },
+    {
+     "id": "d1",
+     "type": "enemy",
+     "x": 16,
+     "y": 21,
+     "troop": "bairro_d",
+     "esprite": "tv_estatica",
+     "move": "wander"
+    },
+    {
+     "id": "chegada",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "bairro_chegada",
+     "trigger": "auto",
+     "cond": "!flag:entrou_bairro",
+     "w": 1,
+     "h": 1
+    }
+   ]
+  },
+  "bairro_casa3": {
+   "name": "Casa 3",
+   "region": "bairro",
+   "interior": "quarto_real",
+   "music": null,
+   "battleBg": "bairro",
+   "dark": 0.4,
+   "lantern": 70,
+   "ambientSound": "pingos",
+   "safe": true,
+   "layout": [
+    "############",
+    "############",
+    "##........##",
+    "##........##",
+    "##........##",
+    "##........##",
+    "##........##",
+    "##........##",
+    "#####..#####"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 5,
+     "y": 8,
+     "to": "bairro",
+     "tx": 12,
+     "ty": 7,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "cama",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 0,
+     "prop": "cama",
+     "text": [
+      "A cama está arrumada. Arrumada demais.",
+      "Ninguém dorme aqui faz um tempo."
+     ]
+    },
+    {
+     "id": "mesa",
+     "type": "obj",
+     "x": 7,
+     "y": 2,
+     "variant": 1,
+     "prop": "escrivaninha",
+     "script": "casa3_mesa"
+    },
+    {
+     "id": "poster",
+     "type": "obj",
+     "x": 4,
+     "y": 1,
+     "variant": 1,
+     "prop": "poster",
+     "text": "Um pôster de um peixe-boi. Escrito: \"SALVE OS PEIXES-BOI\". Tem uma assinatura de criança embaixo: LUME."
+    },
+    {
+     "id": "pipa",
+     "type": "obj",
+     "x": 5,
+     "y": 1,
+     "prop": "pipa_parede",
+     "text": "Uma pipa vermelha com rabiola amarela. Igual à da Brisa. Igual demais."
+    },
+    {
+     "id": "calendario",
+     "type": "obj",
+     "x": 9,
+     "y": 1,
+     "prop": "calendario",
+     "script": "casa3_calendario"
+    },
+    {
+     "id": "janela",
+     "type": "obj",
+     "x": 2,
+     "y": 1,
+     "variant": 1,
+     "prop": "janela",
+     "text": "Lá fora não tem nada. Nem escuro. Só nada."
+    },
+    {
+     "id": "mochila",
+     "type": "obj",
+     "x": 9,
+     "y": 5,
+     "prop": "caixa",
+     "text": [
+      "Uma mochila escolar. Dentro: um estojo, um caderno de matemática e um bilhete:",
+      "\"Lume, não esquece a autorização do passeio! — Profa. Rita\""
+     ]
+    },
+    {
+     "id": "pelucia",
+     "type": "obj",
+     "x": 2,
+     "y": 6,
+     "prop": "cesto_la",
+     "text": "Um cesto com bichos de pelúcia. Um polvo, um sapo e um farol de pelúcia."
+    }
+   ]
+  },
+  "bairro_casa5": {
+   "name": "Casa 5",
+   "region": "bairro",
+   "interior": "bairro",
+   "music": null,
+   "battleBg": "bairro",
+   "dark": 0.4,
+   "lantern": 70,
+   "ambientSound": "pingos",
+   "safe": true,
+   "layout": [
+    "############",
+    "############",
+    "##........##",
+    "##........##",
+    "##........##",
+    "##........##",
+    "##........##",
+    "##........##",
+    "#####..#####"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 5,
+     "y": 8,
+     "to": "bairro",
+     "tx": 19,
+     "ty": 7,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "radio",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 2,
+     "prop": "mesinha",
+     "script": "casa5_radio"
+    },
+    {
+     "id": "geladeira",
+     "type": "obj",
+     "x": 9,
+     "y": 2,
+     "prop": "geladeira",
+     "text": [
+      "Na porta da geladeira, desenhos de criança presos com ímã.",
+      "Um farol. Um barco. Um senhor de barba. Uma menina de capa amarela.",
+      "O último desenho está pela metade."
+     ]
+    },
+    {
+     "id": "pia",
+     "type": "obj",
+     "x": 8,
+     "y": 2,
+     "prop": "pia",
+     "text": "A torneira pinga. Ploc. Ploc. É o único som da casa."
+    },
+    {
+     "id": "fogao",
+     "type": "obj",
+     "x": 7,
+     "y": 2,
+     "prop": "fogao",
+     "text": "Um prato coberto com outro prato. Alguém guardou comida pra quando você voltasse."
+    },
+    {
+     "id": "mesa",
+     "type": "obj",
+     "x": 4,
+     "y": 5,
+     "prop": "mesa",
+     "script": "casa5_mesa"
+    },
+    {
+     "id": "cadeira",
+     "type": "obj",
+     "x": 6,
+     "y": 5,
+     "prop": "cadeira",
+     "text": "Uma cadeira virada para a janela. Como se alguém esperasse."
+    }
+   ]
+  },
+  "casa7": {
+   "name": "Casa 7",
+   "region": "bairro",
+   "interior": "hospital",
+   "music": null,
+   "battleBg": "boss_ninguem",
+   "ambientSound": "hospital",
+   "dark": 0.15,
+   "safe": false,
+   "variants": [
+    {
+     "cond": "flag:ninguem_derrotada",
+     "music": "triste"
+    }
+   ],
+   "layout": [
+    "######################",
+    "######################",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "###..#################"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 3,
+     "y": 9,
+     "to": "bairro",
+     "tx": 27,
+     "ty": 7,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "leito0",
+     "type": "obj",
+     "x": 3,
+     "y": 2,
+     "variant": 0,
+     "prop": "cama_hospital",
+     "text": "Um leito vazio. O lençol está esticado."
+    },
+    {
+     "id": "leito1",
+     "type": "obj",
+     "x": 7,
+     "y": 2,
+     "variant": 0,
+     "prop": "cama_hospital",
+     "text": "Um leito vazio. Tem um balão murcho preso na grade."
+    },
+    {
+     "id": "leito2",
+     "type": "obj",
+     "x": 11,
+     "y": 2,
+     "variant": 0,
+     "prop": "cama_hospital",
+     "text": "Um leito vazio. Ainda está morno."
+    },
+    {
+     "id": "leito_lume",
+     "type": "obj",
+     "x": 17,
+     "y": 2,
+     "variant": 2,
+     "prop": "cama_hospital",
+     "script": "casa7_leito"
+    },
+    {
+     "id": "monitor",
+     "type": "obj",
+     "x": 18,
+     "y": 2,
+     "prop": "monitor",
+     "text": "Um monitor. Bip. Bip. Bip. O ritmo é calmo. Calmo demais para um sonho."
+    },
+    {
+     "id": "placa214",
+     "type": "obj",
+     "x": 15,
+     "y": 1,
+     "variant": 1,
+     "prop": "quadro",
+     "text": "Uma plaquinha na parede: \"QUARTO 214\"."
+    },
+    {
+     "id": "planta",
+     "type": "obj",
+     "x": 20,
+     "y": 7,
+     "variant": 2,
+     "prop": "planta",
+     "text": "Flores num copo de plástico. Ainda estão frescas. Alguém troca todo dia."
+    },
+    {
+     "id": "ninguem",
+     "type": "npc",
+     "x": 15,
+     "y": 5,
+     "sprite": "dona_ninguem",
+     "dir": "left",
+     "cond": "!flag:ninguem_derrotada"
+    },
+    {
+     "id": "chefe",
+     "type": "trigger",
+     "x": 11,
+     "y": 3,
+     "script": "casa7_chefe",
+     "w": 1,
+     "h": 6,
+     "trigger": "touch",
+     "cond": "!flag:ninguem_derrotada"
+    },
+    {
+     "id": "entrada",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "casa7_entrada",
+     "trigger": "auto",
+     "cond": "!flag:casa7_entrou",
+     "w": 1,
+     "h": 1
+    }
+   ]
+  },
+  "rochedo": {
+   "name": "Rochedo Uivante",
+   "region": "rochedo",
+   "theme": "rochedo",
+   "music": "rochedo",
+   "battleBg": "rochedo",
+   "particles": "wind",
+   "ambientSound": "ventania",
+   "safe": true,
+   "layout": [
+    "##############################",
+    "##############################",
+    "##.....................s~~~~~~",
+    "##.....................s~~~~~~",
+    "##..o.............\"\"...s~~~~~~",
+    "##.............:.......s~~~~~~",
+    "##......:::::::::......s~~~~~~",
+    "##...\"..:::::::::......s~~~~~~",
+    "##......::.............s~~~~~~",
+    "##......::...o....,,...s~~~~~~",
+    "########::#############s~~~~~~",
+    "########::#############s~~~~~~",
+    "##......::.............s~~~~~~",
+    "##......:::::::::::::..s~~~~~~",
+    "##......:::::::::::::..s~~~~~~",
+    "##...............o.::..s~~~~~~",
+    "##.................::..s~~~~~~",
+    "###.###############::##s~~~~~~",
+    "###.###############::##s~~~~~~",
+    "##.................::..s~~~~~~",
+    "##..............o..::..s~~~~~~",
+    "##..\"\".............::..s~~~~~~",
+    "##.........::::::::::..s~~~~~~",
+    "##....o....::::::::::..s~~~~~~",
+    "##.........::..........s~~~~~~",
+    "###########::##########s~~~~~~",
+    "###########::##########s~~~~~~",
+    "##....,,...::..........s~~~~~~",
+    "##.........::..\"\"....o.s~~~~~~",
+    ":::::::::::::..........s~~~~~~",
+    ":::::::::::::..........s~~~~~~",
+    "##..\"..................s~~~~~~",
+    "########################~~~~~~",
+    "########################~~~~~~"
+   ],
+   "entities": [
+    {
+     "id": "farol",
+     "type": "building",
+     "x": 13,
+     "y": 2,
+     "style": "farol",
+     "w": 4,
+     "h": 3,
+     "pages": [
+      {
+       "cond": "flag:farol_aceso",
+       "variant": "lit"
+      },
+      {
+       "cond": "flag:brasas_no_farol",
+       "variant": "open"
+      },
+      {}
+     ],
+     "lockedIf": "!flag:brasas_no_farol",
+     "lockedText": "A porta do farol está trancada. Três pedestais vazios esperam por alguma coisa.",
+     "door": 2,
+     "to": "farol_base",
+     "tx": 6,
+     "ty": 8,
+     "tdir": "up"
+    },
+    {
+     "id": "pedestal0",
+     "type": "obj",
+     "x": 11,
+     "y": 6,
+     "pages": [
+      {
+       "cond": "flag:brasas_no_farol",
+       "variant": 1
+      },
+      {
+       "variant": 0
+      }
+     ],
+     "prop": "pedestal",
+     "script": "rochedo_pedestal"
+    },
+    {
+     "id": "pedestal1",
+     "type": "obj",
+     "x": 13,
+     "y": 6,
+     "pages": [
+      {
+       "cond": "flag:brasas_no_farol",
+       "variant": 2
+      },
+      {
+       "variant": 0
+      }
+     ],
+     "prop": "pedestal",
+     "script": "rochedo_pedestal"
+    },
+    {
+     "id": "pedestal2",
+     "type": "obj",
+     "x": 18,
+     "y": 6,
+     "pages": [
+      {
+       "cond": "flag:brasas_no_farol",
+       "variant": 3
+      },
+      {
+       "variant": 0
+      }
+     ],
+     "prop": "pedestal",
+     "script": "rochedo_pedestal"
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 17,
+     "y": 8
+    },
+    {
+     "id": "goncalo",
+     "type": "npc",
+     "x": 5,
+     "y": 21,
+     "sprite": "velhinho",
+     "dir": "right",
+     "cond": "phase<5",
+     "script": "rochedo_goncalo"
+    },
+    {
+     "id": "bau_relampago",
+     "type": "chest",
+     "x": 4,
+     "y": 13,
+     "prop": "bau",
+     "items": {
+      "taco_relampago": 1
+     }
+    },
+    {
+     "id": "bau_estrela",
+     "type": "chest",
+     "x": 22,
+     "y": 27,
+     "prop": "bau",
+     "items": {
+      "lamparina_estrela": 1
+     }
+    },
+    {
+     "id": "placa",
+     "type": "obj",
+     "x": 4,
+     "y": 28,
+     "prop": "placa",
+     "text": [
+      "ROCHEDO UIVANTE",
+      "\"Segure o chapéu. E o lanche. Principalmente o lanche.\""
+     ]
+    },
+    {
+     "id": "e1",
+     "type": "enemy",
+     "x": 16,
+     "y": 29,
+     "troop": "rochedo_a",
+     "esprite": "gaivota",
+     "move": "chase",
+     "sight": 5
+    },
+    {
+     "id": "e2",
+     "type": "enemy",
+     "x": 15,
+     "y": 21,
+     "troop": "rochedo_b",
+     "esprite": "sombra",
+     "move": "wander",
+     "radius": 2
+    },
+    {
+     "id": "e3",
+     "type": "enemy",
+     "x": 5,
+     "y": 15,
+     "troop": "rochedo_c",
+     "esprite": "sombra",
+     "move": "static"
+    },
+    {
+     "id": "e4",
+     "type": "enemy",
+     "x": 14,
+     "y": 13,
+     "troop": "rochedo_a",
+     "esprite": "gaivota",
+     "move": "chase",
+     "sight": 4
+    },
+    {
+     "id": "e5",
+     "type": "enemy",
+     "x": 4,
+     "y": 7,
+     "troop": "farol_a",
+     "esprite": "sombra",
+     "move": "wander",
+     "radius": 2
+    },
+    {
+     "id": "para_vila",
+     "type": "door",
+     "x": 0,
+     "y": 29,
+     "to": "vila",
+     "tx": 41,
+     "ty": 17,
+     "tdir": "left",
+     "w": 1,
+     "h": 2
+    }
+   ]
+  },
+  "farol_base": {
+   "name": "Farol — Casa do Vô",
+   "region": "farol",
+   "interior": "farol",
+   "music": "farol",
+   "battleBg": "farol",
+   "safe": true,
+   "particles": "dust",
+   "layout": [
+    "##############",
+    "##############",
+    "##.....^....##",
+    "##..........##",
+    "##..........##",
+    "##..PPPPP...##",
+    "##..PPPPP...##",
+    "##..........##",
+    "##..........##",
+    "######..######"
+   ],
+   "entities": [
+    {
+     "id": "saida",
+     "type": "door",
+     "x": 6,
+     "y": 9,
+     "to": "rochedo",
+     "tx": 15,
+     "ty": 5,
+     "tdir": "down",
+     "w": 2,
+     "h": 1
+    },
+    {
+     "id": "escada",
+     "type": "door",
+     "x": 7,
+     "y": 2,
+     "to": "farol_topo",
+     "tx": 7,
+     "ty": 9,
+     "tdir": "up",
+     "w": 1,
+     "h": 1,
+     "enterScript": "farol_memorias"
+    },
+    {
+     "id": "cama",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 1,
+     "prop": "cama",
+     "text": [
+      "A cama do Vô. Arrumada com cuidado de marinheiro: nem uma dobra.",
+      "Em cima do travesseiro, um gorro de lã azul."
+     ]
+    },
+    {
+     "id": "fogao",
+     "type": "obj",
+     "x": 4,
+     "y": 2,
+     "prop": "fogao",
+     "text": "Uma chaleira fria. Duas canecas: uma grande, uma pequena com o nome \"LUME\" pintado torto."
+    },
+    {
+     "id": "varas",
+     "type": "obj",
+     "x": 11,
+     "y": 2,
+     "prop": "varas_pesca",
+     "text": [
+      "Varas de pesca. Uma é bem pequena.",
+      "Você lembra do peso dela nas mãos. Você não deveria lembrar disso."
+     ]
+    },
+    {
+     "id": "foto",
+     "type": "obj",
+     "x": 9,
+     "y": 1,
+     "prop": "foto",
+     "script": "farol_foto"
+    },
+    {
+     "id": "radio",
+     "type": "obj",
+     "x": 12,
+     "y": 5,
+     "variant": 2,
+     "prop": "mesinha",
+     "script": "farol_radio"
+    },
+    {
+     "id": "mesa",
+     "type": "obj",
+     "x": 5,
+     "y": 4,
+     "prop": "mesa",
+     "text": "Uma mesa com um mapa de marés aberto. Um dia está marcado com um X vermelho."
+    },
+    {
+     "id": "bau",
+     "type": "chest",
+     "x": 2,
+     "y": 7,
+     "prop": "bau",
+     "items": {
+      "diario_estrelas": 1,
+      "brigadeiro": 2
+     }
+    },
+    {
+     "id": "lampiao",
+     "type": "save",
+     "x": 11,
+     "y": 7
+    }
+   ]
+  },
+  "farol_topo": {
+   "name": "Topo do Farol",
+   "region": "farol",
+   "interior": "farol",
+   "music": null,
+   "battleBg": "boss_apagador",
+   "dark": 0.7,
+   "lantern": 60,
+   "safe": false,
+   "variants": [
+    {
+     "cond": "flag:farol_aceso",
+     "dark": 0,
+     "music": "triste"
+    }
+   ],
+   "layout": [
+    "################",
+    "################",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "##............##",
+    "################"
+   ],
+   "entities": [
+    {
+     "id": "lampada",
+     "type": "obj",
+     "x": 6,
+     "y": 3,
+     "variantFlag": "farol_aceso",
+     "prop": "lampada_farol",
+     "script": "topo_lampada"
+    },
+    {
+     "id": "janela1",
+     "type": "obj",
+     "x": 3,
+     "y": 1,
+     "variant": 1,
+     "prop": "janela",
+     "text": "Lá embaixo, Algodoal inteira dorme no escuro."
+    },
+    {
+     "id": "janela2",
+     "type": "obj",
+     "x": 12,
+     "y": 1,
+     "variant": 1,
+     "prop": "janela",
+     "text": "O mar não se mexe. O céu também não."
+    },
+    {
+     "id": "apagador",
+     "type": "npc",
+     "x": 7,
+     "y": 6,
+     "sprite": "apagador",
+     "dir": "down",
+     "cond": "!flag:farol_aceso"
+    },
+    {
+     "id": "chefe",
+     "type": "trigger",
+     "x": 5,
+     "y": 8,
+     "script": "topo_chefe",
+     "w": 5,
+     "h": 1,
+     "trigger": "touch",
+     "cond": "!flag:farol_aceso"
+    },
+    {
+     "id": "carta_vo",
+     "type": "obj",
+     "x": 9,
+     "y": 6,
+     "cond": "flag:farol_aceso",
+     "solid": false,
+     "prop": "papel",
+     "script": "topo_carta"
+    },
+    {
+     "id": "descer",
+     "type": "door",
+     "x": 2,
+     "y": 9,
+     "to": "farol_base",
+     "tx": 7,
+     "ty": 3,
+     "tdir": "down",
+     "w": 1,
+     "h": 1,
+     "prop": "escada_desce"
+    }
+   ]
+  },
+  "hospital": {
+   "name": "Quarto 214",
+   "region": "farol",
+   "interior": "hospital",
+   "music": "hospital",
+   "ambientSound": "hospital",
+   "safe": false,
+   "noRun": true,
+   "noFollowers": true,
+   "layout": [
+    "##############",
+    "##############",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "##..........##",
+    "##############"
+   ],
+   "entities": [
+    {
+     "id": "leito",
+     "type": "obj",
+     "x": 6,
+     "y": 3,
+     "variant": 1,
+     "prop": "cama_hospital",
+     "text": "Você."
+    },
+    {
+     "id": "monitor",
+     "type": "obj",
+     "x": 7,
+     "y": 3,
+     "prop": "monitor",
+     "text": "Bip. Bip. Bip."
+    },
+    {
+     "id": "janela",
+     "type": "obj",
+     "x": 4,
+     "y": 1,
+     "variant": 0,
+     "prop": "janela",
+     "text": "Lá fora tem sol."
+    },
+    {
+     "id": "pipa",
+     "type": "obj",
+     "x": 9,
+     "y": 1,
+     "prop": "pipa_parede",
+     "text": "Uma pipa vermelha encostada na parede."
+    },
+    {
+     "id": "flores",
+     "type": "obj",
+     "x": 2,
+     "y": 2,
+     "variant": 2,
+     "prop": "planta",
+     "text": "Flores num copo de plástico."
+    },
+    {
+     "id": "bia",
+     "type": "npc",
+     "x": 8,
+     "y": 4,
+     "sprite": "bia",
+     "dir": "left",
+     "noTurn": true
+    },
+    {
+     "id": "epilogo",
+     "type": "trigger",
+     "x": 0,
+     "y": 0,
+     "script": "epilogo",
+     "trigger": "auto",
+     "cond": "!flag:epilogo_visto",
+     "w": 1,
+     "h": 1
+    }
+   ]
+  }
+ }
+}

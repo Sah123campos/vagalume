@@ -1,0 +1,101 @@
+{
+  "quests": {
+    "q_despertar": {
+      "title": "Bom Dia, Lume", "type": "main", "giver": "Bilhete do Prefeito",
+      "desc": "O Farol apagou ontem à noite. O Prefeito Pavio quer ver você na Prefeitura.",
+      "autoStart": "flag:leu_carta", "sequential": true,
+      "steps": [
+        { "id": "lamparina", "text": "Pegar a LAMPARINA na escrivaninha", "done": "flag:pegou_lamparina" },
+        { "id": "sair", "text": "Descer da Casa da Árvore (alçapão)", "done": "seen:quintal" },
+        { "id": "prefeitura", "text": "Ir à Prefeitura da Vila Pavio", "done": "flag:falou_prefeito" }
+      ],
+      "rewards": { "exp": 20 }
+    },
+    "q_amigos": {
+      "title": "Reunir os Amigos", "type": "main", "giver": "Prefeito Pavio",
+      "desc": "Ninguém sai da vila sozinho com o Esquecimento lá fora. Encontre TOCO e NINA e volte à Prefeitura.",
+      "steps": [
+        { "id": "toco", "text": "Encontrar TOCO (foi à Padaria)", "done": "party:toco" },
+        { "id": "nina", "text": "Encontrar NINA (adora a Biblioteca)", "done": "party:nina" },
+        { "id": "voltar", "text": "Voltar ao Prefeito Pavio", "done": "flag:prefeito_fase1" }
+      ],
+      "rewards": { "exp": 40, "money": 30, "items": { "pao_queijo": 2 } }
+    },
+    "q_farol": {
+      "title": "O Farol Apagado", "type": "main", "giver": "Prefeito Pavio",
+      "desc": "A Chama-Mãe do Farol se partiu em três Brasas. Encontre todas e leve-as ao Farol, no Rochedo Uivante.",
+      "steps": [
+        { "id": "brasa1", "text": "Brasa da Floresta (oeste, depois dos Campos Pastel)", "done": "item:brasa_floresta" },
+        { "id": "brasa2", "text": "Brasa das Águas (gruta sob o laguinho dos Campos)", "done": "item:brasa_aguas" },
+        { "id": "brasa3", "text": "Descobrir onde caiu a terceira Brasa", "done": "item:brasa_esquecida" },
+        { "id": "farol", "text": "Colocar as três Brasas nos pedestais do Farol (Rochedo, a leste)", "done": "flag:brasas_no_farol" }
+      ],
+      "rewards": { "exp": 100 }
+    },
+    "q_ultima_chama": {
+      "title": "A Última Chama", "type": "main", "giver": "O Farol",
+      "desc": "A porta do Farol se abriu. Lá em cima, alguém não quer que a luz volte.",
+      "autoStart": "flag:brasas_no_farol", "sequential": true,
+      "steps": [
+        { "id": "subir", "text": "Subir até a sala da lâmpada", "done": "flag:topo_farol" },
+        { "id": "acender", "text": "Acender o Farol", "done": "flag:farol_aceso" }
+      ]
+    },
+    "q_gato": {
+      "title": "Onde Está o Novelo?", "type": "side", "giver": "Dona Lã (Pousada)",
+      "desc": "O gato da pousada, Novelo, fugiu quando o farol apagou. Dona Lã acha que ele foi atrás de passarinhos na floresta.",
+      "steps": [
+        { "id": "achar", "text": "Encontrar o gato Novelo", "done": "item:novelo" },
+        { "id": "devolver", "text": "Devolver o Novelo à Dona Lã", "done": "flag:novelo_devolvido" }
+      ],
+      "rewards": { "exp": 50, "money": 30, "items": { "sino_gato": 1 } }
+    },
+    "q_engrenagens": {
+      "title": "Engrenagens do Seu Parafuso", "type": "side", "giver": "Seu Parafuso (Oficina)",
+      "desc": "Três engrenagens pularam da oficina quando o farol apagou. Sem elas, Seu Parafuso não consegue consertar nada.",
+      "steps": [
+        { "id": "juntar", "text": "Encontrar 3 Engrenagens Perdidas", "done": "item:engrenagem>=3" },
+        { "id": "entregar", "text": "Entregar ao Seu Parafuso", "done": "flag:engrenagens_entregues" }
+      ],
+      "rewards": { "exp": 90, "items": { "lamparina_cobre": 1, "relogio_corda": 1 } }
+    },
+    "q_receita": {
+      "title": "A Receita Perdida", "type": "side", "giver": "Dona Broa (Padaria)",
+      "desc": "O vento levou as três páginas da receita do Bolo de Fubá Lunar.",
+      "steps": [
+        { "id": "juntar", "text": "Recolher 3 Páginas de Receita", "done": "item:pagina_receita>=3" },
+        { "id": "entregar", "text": "Entregar à Dona Broa", "done": "flag:receita_completa" }
+      ],
+      "rewards": { "exp": 60, "items": { "bolo_lunar": 3 } }
+    },
+    "q_pipa": {
+      "title": "A Pipa do Pipoca", "type": "side", "giver": "Pipoca (Casa da Brisa)",
+      "desc": "A pipa do irmãozinho da Brisa ficou presa numa árvore de pirulito nos Campos Pastel.",
+      "fail": "flag:pipa_vendida",
+      "steps": [
+        { "id": "pegar", "text": "Recuperar a pipa (alguém grande poderia sacudir a árvore)", "done": "item:pipa_pipoca" },
+        { "id": "devolver", "text": "Devolver a pipa ao Pipoca", "done": "flag:pipa_devolvida" }
+      ],
+      "rewards": { "exp": 40, "money": 25, "items": { "estalinho": 3 } }
+    },
+    "q_cartas": {
+      "title": "Cartas Não Enviadas", "type": "side", "giver": "Seu Lesma (Correio)",
+      "desc": "Cartas sem remetente estão aparecendo no Bairro Esquecido. Todas endereçadas a LUME.",
+      "requires": "phase>=3",
+      "steps": [
+        { "id": "juntar", "text": "Encontrar 3 Cartas sem Remetente", "done": "item:carta_perdida>=3" },
+        { "id": "entregar", "text": "Levar as cartas ao Seu Lesma", "done": "flag:cartas_entregues" }
+      ],
+      "rewards": { "exp": 120, "items": { "selo_coragem": 1 } }
+    },
+    "q_biblioteca": {
+      "title": "O Livro que Ninguém Lê", "type": "side", "giver": "Dona Traça (Biblioteca)",
+      "desc": "Dizem que o Vô Faísca escondeu um livro na biblioteca. A pista está no poema do atril.",
+      "steps": [
+        { "id": "enigma", "text": "Resolver o enigma das estantes coloridas", "done": "flag:biblio_secreta" },
+        { "id": "diario", "text": "Encontrar o livro escondido", "done": "item:diario_vo" }
+      ],
+      "rewards": { "exp": 70, "items": { "oculos_vo": 1 } }
+    }
+  }
+}

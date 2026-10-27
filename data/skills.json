@@ -1,0 +1,107 @@
+{
+  "skills": {
+    "encarar": { "name": "Encarar", "user": "lume", "cost": 4, "target": "foe", "fx": "stare", "sfx": "stare", "desc": "LUME encara o alvo em silêncio. ATAQUE e DEFESA dele caem por 3 rodadas.", "msg": "{u} encara {t} em silêncio...", "effects": [{ "type": "buff", "stat": "atq", "mult": 0.8, "turns": 3 }, { "type": "buff", "stat": "def", "mult": 0.8, "turns": 3 }] },
+    "fagulha": { "name": "Fagulha", "user": "lume", "cost": 6, "target": "foe", "fx": "fire", "sfx": "fire", "desc": "Uma faísca da lamparina. Causa dano e deixa o alvo IRRITADO.", "effects": [{ "type": "damage", "power": 1.2 }, { "type": "emotion", "emotion": "irritado", "steps": 1 }] },
+    "respirar": { "name": "Respirar", "user": "lume", "cost": 0, "target": "self", "fx": "shine", "sfx": "emoCalm", "desc": "LUME fecha os olhos e respira fundo. Volta ao normal e recupera um pouco de VIDA e BRILHO.", "msg": "{u} respira fundo...", "effects": [{ "type": "emotion", "emotion": "neutro" }, { "type": "heal", "pct": 0.12 }, { "type": "healBr", "pct": 0.15 }] },
+    "luz_gentil": { "name": "Luz Gentil", "user": "lume", "cost": 7, "target": "ally", "fx": "shine", "sfx": "heal", "field": true, "desc": "Uma luz morna. Deixa um amigo FELIZ e recupera 15% da VIDA dele.", "effects": [{ "type": "emotion", "emotion": "feliz", "steps": 1 }, { "type": "heal", "pct": 0.15 }] },
+    "sombra_fria": { "name": "Sombra Fria", "user": "lume", "cost": 7, "target": "any", "fx": "dark", "sfx": "emoSad", "desc": "A sombra da lamparina pesa sobre o alvo. Deixa TRISTE (amigo ou inimigo).", "effects": [{ "type": "emotion", "emotion": "triste", "steps": 1 }] },
+    "clarao": { "name": "Clarão", "user": "lume", "cost": 14, "target": "foes", "fx": "shine", "sfx": "shine", "desc": "Um clarão súbito. Dano em todos os inimigos, com 30% de chance de deixá-los COM MEDO.", "effects": [{ "type": "damage", "power": 0.9 }, { "type": "emotion", "emotion": "medo", "turns": 2, "chance": 0.3 }] },
+    "vigilia": { "name": "Vigília", "user": "lume", "cost": 12, "target": "self", "priority": 50, "fx": "shine", "sfx": "buff", "desc": "LUME fica de guarda. Nesta rodada, todo o grupo recebe metade do dano. Age antes de todos.", "msg": "{u} fica de VIGÍLIA.", "effects": [{ "type": "guardAll", "mult": 0.5 }] },
+    "lampejo": { "name": "Lampejo Final", "user": "lume", "cost": 28, "target": "foes", "fx": "alltogether", "sfx": "lightup", "desc": "Toda a luz de uma vez. Quanto mais emoções DIFERENTES houver no grupo, mais forte.", "effects": [{ "type": "special", "id": "lampejo" }] },
+
+    "tacada": { "name": "Tacada", "user": "brisa", "cost": 5, "target": "foe", "fx": "bat", "sfx": "swing", "desc": "Uma rebatida com tudo. Dano alto em um inimigo.", "effects": [{ "type": "damage", "power": 1.5 }] },
+    "pirraca": { "name": "Pirraça", "user": "brisa", "cost": 4, "target": "self", "priority": 30, "fx": "star", "sfx": "emoAngry", "desc": "BRISA provoca: os inimigos miram nela por 2 rodadas, e ela fica IRRITADA. Age cedo.", "msg": "{u} mostra a língua para os inimigos!", "effects": [{ "type": "taunt", "turns": 2 }, { "type": "emotion", "emotion": "irritado", "steps": 1 }] },
+    "dobradinha": { "name": "Dobradinha", "user": "brisa", "cost": 7, "target": "foe", "fx": "bat", "sfx": "swing", "desc": "Dois golpes rápidos de taco no mesmo alvo.", "effects": [{ "type": "damage", "power": 0.72, "hits": 2 }] },
+    "rasante": { "name": "Rasante de Pipa", "user": "brisa", "cost": 10, "target": "foes", "fx": "kite", "sfx": "whoosh", "desc": "A pipa mergulha sobre todos os inimigos.", "effects": [{ "type": "damage", "power": 0.75 }] },
+    "grito": { "name": "Grito de Guerra", "user": "brisa", "cost": 9, "target": "allies", "fx": "star", "sfx": "buff", "desc": "\"BORA!\" Todo o grupo ganha ATAQUE por 3 rodadas.", "msg": "{u}: BOOORA!", "effects": [{ "type": "buff", "stat": "atq", "mult": 1.25, "turns": 3 }] },
+    "home_run": { "name": "Rebatida Perfeita", "user": "brisa", "cost": 18, "target": "foe", "fx": "bat", "sfx": "bigHit", "desc": "Só funciona de verdade se BRISA estiver IRRITADA: dano enorme que ignora defesa (mais forte quanto mais irritada).", "effects": [{ "type": "special", "id": "homeRun" }] },
+
+    "abrigo": { "name": "Abrigo", "user": "toco", "cost": 4, "target": "otherAlly", "priority": 40, "fx": "umbrella", "sfx": "buff", "desc": "TOCO cobre um amigo com o guarda-chuva e recebe os golpes no lugar dele (com 25% menos dano) por 2 rodadas.", "effects": [{ "type": "cover", "turns": 2 }] },
+    "lanchinho": { "name": "Lanchinho", "user": "toco", "cost": 6, "target": "ally", "fx": "snack", "sfx": "heal", "field": true, "desc": "TOCO divide o lanche. Recupera 30% da VIDA de um amigo.", "effects": [{ "type": "heal", "pct": 0.3 }] },
+    "bocejo": { "name": "Bocejo", "user": "toco", "cost": 5, "target": "foe", "fx": "sleep", "sfx": "yawn", "desc": "Um bocejo contagiante. O alvo pode ficar SONOLENTO (50% de chance de perder a vez) por 2 rodadas.", "effects": [{ "type": "status", "status": "sonolento", "turns": 2, "chance": 0.8 }] },
+    "chuva_mansa": { "name": "Chuva Mansa", "user": "toco", "cost": 7, "target": "foe", "fx": "umbrella", "sfx": "water", "desc": "Uma garoa sem pressa. Deixa o alvo TRISTE e mais lento.", "effects": [{ "type": "emotion", "emotion": "triste", "steps": 1 }, { "type": "buff", "stat": "vel", "mult": 0.75, "turns": 3 }] },
+    "giratorio": { "name": "Guarda-chuva Giratório", "user": "toco", "cost": 8, "target": "self", "priority": 40, "fx": "umbrella", "sfx": "whoosh", "desc": "Por 2 rodadas, TOCO contra-ataca quem bater nele.", "effects": [{ "type": "counter", "turns": 2 }] },
+    "abraco_urso": { "name": "Abraço de Urso", "user": "toco", "cost": 16, "target": "allies", "fx": "heal", "sfx": "heal", "desc": "Um abraço que cabe todo mundo. Recupera 25% da VIDA de todos e os deixa FELIZES.", "effects": [{ "type": "heal", "pct": 0.25 }, { "type": "emotion", "emotion": "feliz", "steps": 1 }] },
+
+    "verso_doce": { "name": "Verso Doce", "user": "nina", "cost": 5, "target": "ally", "fx": "book", "sfx": "heal", "field": true, "desc": "Um verso que acalma machucados. Recupera 40% da VIDA de um amigo.", "effects": [{ "type": "heal", "pct": 0.4 }] },
+    "rima_alegre": { "name": "Rima Alegre", "user": "nina", "cost": 5, "target": "any", "fx": "book", "sfx": "emoHappy", "desc": "Uma rima boba e contagiante. Deixa o alvo FELIZ (amigo ou inimigo).", "effects": [{ "type": "emotion", "emotion": "feliz", "steps": 1 }] },
+    "poema_triste": { "name": "Poema Triste", "user": "nina", "cost": 5, "target": "any", "fx": "book", "sfx": "emoSad", "desc": "Um poema sobre coisas que acabam. Deixa o alvo TRISTE (amigo ou inimigo).", "effects": [{ "type": "emotion", "emotion": "triste", "steps": 1 }] },
+    "palavra_afiada": { "name": "Palavra Afiada", "user": "nina", "cost": 5, "target": "any", "fx": "book", "sfx": "emoAngry", "desc": "Uma palavra que espeta. Deixa o alvo IRRITADO (amigo ou inimigo).", "effects": [{ "type": "emotion", "emotion": "irritado", "steps": 1 }] },
+    "ponto_final": { "name": "Ponto Final", "user": "nina", "cost": 8, "target": "foe", "fx": "page", "sfx": "page", "desc": "Encerra a emoção do alvo. Se ele sentia algo, sofre dano maior — quanto mais intensa a emoção, mais forte.", "effects": [{ "type": "special", "id": "pontoFinal" }] },
+    "cantiga": { "name": "Cantiga de Ninar", "user": "nina", "cost": 14, "target": "allies", "fx": "heal", "sfx": "heal", "desc": "Uma cantiga antiga. Recupera 30% da VIDA de todo o grupo.", "effects": [{ "type": "heal", "pct": 0.3 }] },
+    "marcador": { "name": "Marcador de Página", "user": "nina", "cost": 18, "target": "allyDead", "fx": "shine", "sfx": "heal", "field": true, "desc": "Marca a página onde o amigo parou. Traz de volta um amigo APAGADO com metade da VIDA.", "effects": [{ "type": "revive", "pct": 0.5 }] },
+
+    "e_cutucada": { "name": "Cutucada", "user": "enemy", "target": "foe", "fx": "claw", "desc": "", "effects": [{ "type": "damage", "power": 0.6 }] },
+    "e_lambida": { "name": "Lambida Doce", "user": "enemy", "target": "foe", "fx": "star", "msg": "{u} deu uma LAMBIDA DOCE em {t}!", "desc": "", "effects": [{ "type": "damage", "power": 0.6 }, { "type": "emotion", "emotion": "feliz", "steps": 1 }] },
+    "e_rodopio": { "name": "Rodopio", "user": "enemy", "target": "foes", "fx": "star", "desc": "", "effects": [{ "type": "damage", "power": 0.55 }] },
+    "e_ferroada": { "name": "Ferroada Fofa", "user": "enemy", "target": "foe", "fx": "claw", "desc": "", "effects": [{ "type": "damage", "power": 1.1 }, { "type": "status", "status": "sonolento", "turns": 2, "chance": 0.3 }] },
+    "e_polen": { "name": "Nuvem de Pólen", "user": "enemy", "target": "foes", "fx": "shine", "msg": "{u} espalhou PÓLEN! Atchim!", "desc": "", "effects": [{ "type": "emotion", "emotion": "irritado", "steps": 1, "chance": 0.5 }] },
+    "e_chuvisco": { "name": "Chuvisco", "user": "enemy", "target": "foe", "fx": "water", "desc": "", "effects": [{ "type": "damage", "power": 0.8 }, { "type": "emotion", "emotion": "triste", "steps": 1 }] },
+    "e_choro": { "name": "Choro Contagiante", "user": "enemy", "target": "foes", "fx": "water", "msg": "{u} começou a chorar... e o choro é contagiante.", "desc": "", "effects": [{ "type": "emotion", "emotion": "triste", "steps": 1, "chance": 0.6 }] },
+    "e_resmungo": { "name": "Resmungo", "user": "enemy", "target": "foe", "fx": "star", "msg": "{u} resmungou alguma coisa muito chata para {t}.", "desc": "", "effects": [{ "type": "damage", "power": 0.5 }, { "type": "emotion", "emotion": "irritado", "steps": 1 }] },
+    "e_esporos": { "name": "Esporos", "user": "enemy", "target": "foes", "fx": "sleep", "desc": "", "effects": [{ "type": "status", "status": "sonolento", "turns": 2, "chance": 0.35 }] },
+    "e_bote": { "name": "Bote Ligeiro", "user": "enemy", "target": "foe", "fx": "claw", "priority": 10, "desc": "", "effects": [{ "type": "damage", "power": 1.15 }] },
+    "e_truque": { "name": "Truque de Folha", "user": "enemy", "target": "self", "fx": "star", "msg": "{u} faz um truque com folhas e se acha o máximo.", "desc": "", "effects": [{ "type": "emotion", "emotion": "feliz", "steps": 1 }] },
+    "e_olhar_insone": { "name": "Olhar Insone", "user": "enemy", "target": "foe", "fx": "stare", "msg": "{u} encara {t} com olhos que nunca dormem...", "desc": "", "effects": [{ "type": "emotion", "emotion": "medo", "turns": 2, "chance": 0.7 }] },
+    "e_pio": { "name": "Pio Arrastado", "user": "enemy", "target": "foes", "fx": "sleep", "desc": "", "effects": [{ "type": "buff", "stat": "vel", "mult": 0.8, "turns": 2 }] },
+    "e_isca_luz": { "name": "Luz Hipnótica", "user": "enemy", "target": "foe", "fx": "shine", "desc": "", "effects": [{ "type": "damage", "power": 0.6 }, { "type": "emotion", "emotion": "medo", "turns": 2, "chance": 0.5 }] },
+    "e_pinca": { "name": "Pinçada", "user": "enemy", "target": "foe", "fx": "claw", "desc": "", "effects": [{ "type": "damage", "power": 1.25 }] },
+    "e_casca": { "name": "Entrar na Xícara", "user": "enemy", "target": "self", "fx": "none", "msg": "{u} se escondeu dentro da xícara.", "desc": "", "effects": [{ "type": "buff", "stat": "def", "mult": 1.6, "turns": 2 }] },
+    "e_lagrima": { "name": "Lágrima Salgada", "user": "enemy", "target": "foe", "fx": "water", "desc": "", "effects": [{ "type": "damage", "power": 0.9 }, { "type": "emotion", "emotion": "triste", "steps": 1 }] },
+    "e_choque": { "name": "Choquinho", "user": "enemy", "target": "foe", "fx": "star", "desc": "", "effects": [{ "type": "damage", "power": 0.8 }, { "type": "status", "status": "atordoado", "turns": 1, "chance": 0.25 }] },
+    "e_garrancho": { "name": "Garrancho", "user": "enemy", "target": "foes", "fx": "dark", "desc": "", "effects": [{ "type": "damage", "power": 0.6 }] },
+    "e_rasura": { "name": "Rasura", "user": "enemy", "target": "foe", "fx": "dark", "msg": "{u} risca um pedaço de {t}.", "desc": "", "effects": [{ "type": "damage", "power": 0.8 }, { "type": "drainBr", "amount": 6 }] },
+    "e_sorriso": { "name": "Sorriso Pintado", "user": "enemy", "target": "foe", "fx": "mask", "msg": "{u} pinta um sorriso no rosto de {t}.", "desc": "", "effects": [{ "type": "damage", "power": 0.5 }, { "type": "emotion", "emotion": "feliz", "steps": 2 }] },
+    "e_abraco_frio": { "name": "Abraço Frio", "user": "enemy", "target": "foe", "fx": "dark", "desc": "", "effects": [{ "type": "damage", "power": 1.1 }, { "type": "emotion", "emotion": "medo", "turns": 2, "chance": 0.4 }] },
+    "e_estatica": { "name": "Estática", "user": "enemy", "target": "foes", "fx": "dark", "msg": "{u} chia. Todo mundo sente uma coisa diferente.", "desc": "", "effects": [{ "type": "special", "id": "randomEmotion" }] },
+    "e_chiado": { "name": "Chiado", "user": "enemy", "target": "foe", "fx": "sleep", "desc": "", "effects": [{ "type": "damage", "power": 0.7 }, { "type": "status", "status": "sonolento", "turns": 2, "chance": 0.5 }] },
+    "e_rasante_gaivota": { "name": "Mergulho Torto", "user": "enemy", "target": "foe", "fx": "kite", "desc": "", "effects": [{ "type": "damage", "power": 1.3 }] },
+    "e_roubo": { "name": "Roubo de Lanche", "user": "enemy", "target": "foe", "fx": "claw", "msg": "{u} avança na mochila de {t}!", "desc": "", "effects": [{ "type": "damage", "power": 0.4 }, { "type": "steal" }] },
+    "e_alongar": { "name": "Alongar-se", "user": "enemy", "target": "foes", "fx": "dark", "msg": "{u} se estica pelo chão até alcançar todos.", "desc": "", "effects": [{ "type": "damage", "power": 0.7 }] },
+    "e_engolir_sombra": { "name": "Sombra Pesada", "user": "enemy", "target": "foe", "fx": "dark", "desc": "", "effects": [{ "type": "damage", "power": 1.0 }, { "type": "buff", "stat": "atq", "mult": 0.8, "turns": 2 }] },
+
+    "b_galhada": { "name": "Galhada", "user": "enemy", "target": "foe", "fx": "roots", "desc": "", "effects": [{ "type": "damage", "power": 1.1 }] },
+    "b_raizes": { "name": "Raízes Raivosas", "user": "enemy", "target": "foes", "fx": "roots", "msg": "Raízes saem do chão por toda parte!", "desc": "", "effects": [{ "type": "damage", "power": 0.7 }] },
+    "b_enraizar": { "name": "Enraizar", "user": "enemy", "target": "foe", "fx": "roots", "msg": "{u} prende {t} com raízes!", "desc": "", "effects": [{ "type": "damage", "power": 0.5 }, { "type": "status", "status": "enraizado", "turns": 1 }] },
+    "b_brotar": { "name": "Brotar", "user": "enemy", "target": "self", "fx": "roots", "msg": "{u} chama um filho de dentro da terra.", "desc": "", "effects": [{ "type": "special", "id": "summon", "enemy": "brotinho", "max": 2 }] },
+    "b_lagrimas_seiva": { "name": "Lágrimas de Seiva", "user": "enemy", "target": "foes", "fx": "water", "desc": "", "effects": [{ "type": "damage", "power": 0.5 }, { "type": "emotion", "emotion": "triste", "steps": 1, "chance": 0.6 }] },
+    "b_cantiga_folhas": { "name": "Cantiga das Folhas", "user": "enemy", "target": "foes", "fx": "sleep", "msg": "{u} canta uma cantiga de ninar antiga...", "desc": "", "effects": [{ "type": "status", "status": "sonolento", "turns": 2, "chance": 0.35 }] },
+    "b_abraco_gelado": { "name": "Abraço Gelado", "user": "enemy", "target": "foe", "fx": "water", "desc": "", "effects": [{ "type": "damage", "power": 1.2 }, { "type": "emotion", "emotion": "medo", "turns": 2, "chance": 0.35 }] },
+    "b_canto_fundo": { "name": "Canto do Fundo", "user": "enemy", "target": "foes", "fx": "tide", "msg": "{u} canta uma canção muito, muito funda.", "desc": "", "effects": [{ "type": "emotion", "emotion": "triste", "steps": 1 }, { "type": "drainBr", "amount": 4 }] },
+    "b_engolir_luz": { "name": "Engolir a Luz", "user": "enemy", "target": "foes", "fx": "dark", "desc": "", "effects": [{ "type": "damage", "power": 0.4 }, { "type": "drainBr", "amount": 8 }] },
+    "b_bolha": { "name": "Bolha Pesada", "user": "enemy", "target": "foe", "fx": "water", "desc": "", "effects": [{ "type": "damage", "power": 0.95 }, { "type": "status", "status": "atordoado", "turns": 1, "chance": 0.2 }] },
+    "b_afundar": { "name": "Afundar", "user": "enemy", "target": "self", "fx": "tide", "msg": "{u}: Fica... aqui... comigo...", "desc": "", "effects": [{ "type": "special", "id": "tideUp", "amount": 2 }] },
+    "b_tapa": { "name": "Tapinha", "user": "enemy", "target": "foe", "fx": "claw", "desc": "", "effects": [{ "type": "damage", "power": 1.2 }] },
+    "b_esquecer": { "name": "Esquecer", "user": "enemy", "target": "foe", "fx": "mask", "msg": "{u} sussurra no ouvido de {t}: \"esquece\".", "desc": "", "effects": [{ "type": "damage", "power": 0.5 }, { "type": "status", "status": "selado", "turns": 2 }] },
+    "b_visita": { "name": "Visita", "user": "enemy", "target": "self", "fx": "mask", "msg": "{u}: Olha quem veio! Visitas!", "desc": "", "effects": [{ "type": "special", "id": "summon", "enemy": "manequim", "max": 2 }] },
+    "b_ninguem_lembra": { "name": "Ninguém Lembra", "user": "enemy", "target": "foes", "fx": "mask", "desc": "", "effects": [{ "type": "damage", "power": 0.5 }, { "type": "special", "id": "stealLaco" }] },
+    "b_mascarar": { "name": "Máscara Emprestada", "user": "enemy", "target": "foe", "fx": "mask", "msg": "{u} cola uma máscara em {t}.", "desc": "", "effects": [{ "type": "damage", "power": 0.7 }, { "type": "special", "id": "randomEmotion" }] },
+    "b_apagar": { "name": "Apagar", "user": "enemy", "target": "foes", "fx": "dark", "msg": "{u} sopra. Todos os sentimentos se apagam.", "desc": "", "effects": [{ "type": "damage", "power": 0.6 }, { "type": "emotion", "emotion": "neutro" }] },
+    "b_cobertor": { "name": "Cobertor Pesado", "user": "enemy", "target": "foes", "fx": "dark", "desc": "", "effects": [{ "type": "damage", "power": 0.8 }, { "type": "status", "status": "sonolento", "turns": 2, "chance": 0.35 }] },
+    "b_sussurro": { "name": "Sussurro", "user": "enemy", "target": "foe", "fx": "stare", "msg": "{u} sussurra: \"lá fora dói\".", "desc": "", "effects": [{ "type": "emotion", "emotion": "medo", "turns": 2 }, { "type": "drainBr", "amount": 6 }] },
+    "b_peso": { "name": "Peso do Sono", "user": "enemy", "target": "foe", "fx": "dark", "desc": "", "effects": [{ "type": "damage", "power": 1.45 }] }
+  },
+  "followups": {
+    "lume": [
+      { "with": "brisa", "name": "Faísca e Pipa", "desc": "BRISA mergulha com a pipa em chamas: dano alto e o alvo fica IRRITADO.", "target": "foe", "fx": "kite", "effects": [{ "type": "damage", "power": 1.6 }, { "type": "emotion", "emotion": "irritado", "steps": 1 }] },
+      { "with": "toco", "name": "Luz no Guarda-chuva", "desc": "TOCO gira o guarda-chuva sob a luz: todos ganham DEFESA por 3 rodadas.", "target": "allies", "fx": "umbrella", "effects": [{ "type": "buff", "stat": "def", "mult": 1.3, "turns": 3 }] },
+      { "with": "nina", "name": "Leitura à Luz de Vela", "desc": "NINA lê baixinho: todos recuperam 15% da VIDA e 5 de BRILHO.", "target": "allies", "fx": "book", "effects": [{ "type": "heal", "pct": 0.15 }, { "type": "healBr", "amount": 5 }] }
+    ],
+    "brisa": [
+      { "with": "lume", "name": "Rebatida Dupla", "desc": "LUME ilumina o ponto fraco: dano e a DEFESA do alvo cai.", "target": "foe", "fx": "lantern", "effects": [{ "type": "damage", "power": 1.4 }, { "type": "buff", "stat": "def", "mult": 0.8, "turns": 2 }] },
+      { "with": "toco", "name": "Catapulta", "desc": "TOCO arremessa BRISA como uma bala de canhão: dano enorme em um inimigo.", "target": "foe", "fx": "bat", "useAttacker": true, "effects": [{ "type": "damage", "power": 2.0 }] },
+      { "with": "nina", "name": "Grito Rimado", "desc": "NINA rima, BRISA grita: todos os inimigos ficam IRRITADOS (a DEFESA deles cai).", "target": "foes", "fx": "book", "effects": [{ "type": "emotion", "emotion": "irritado", "steps": 1 }] }
+    ],
+    "toco": [
+      { "with": "lume", "name": "Abraço Quentinho", "desc": "TOCO abraça LUME: ela recupera 30% da VIDA e fica FELIZ.", "target": "partner", "fx": "heal", "effects": [{ "type": "heal", "pct": 0.3 }, { "type": "emotion", "emotion": "feliz", "steps": 1 }] },
+      { "with": "brisa", "name": "Lançamento", "desc": "TOCO lança BRISA por cima de todos: dano em todos os inimigos.", "target": "foes", "fx": "kite", "effects": [{ "type": "damage", "power": 1.0 }] },
+      { "with": "nina", "name": "Piquenique", "desc": "Pausa para um lanche: todos recuperam 10 de BRILHO e ficam CALMOS.", "target": "allies", "fx": "snack", "effects": [{ "type": "healBr", "amount": 10 }, { "type": "emotion", "emotion": "neutro" }] }
+    ],
+    "nina": [
+      { "with": "lume", "name": "Verso de Luz", "desc": "Dano e o alvo fica TRISTE.", "target": "foe", "fx": "lantern", "effects": [{ "type": "damage", "power": 1.3 }, { "type": "emotion", "emotion": "triste", "steps": 1 }] },
+      { "with": "brisa", "name": "Rima de Combate", "desc": "BRISA ganha muito ATAQUE e fica IRRITADA.", "target": "partner", "fx": "star", "effects": [{ "type": "buff", "stat": "atq", "mult": 1.4, "turns": 3 }, { "type": "emotion", "emotion": "irritado", "steps": 1 }] },
+      { "with": "toco", "name": "Canção do Sono", "desc": "Todos os inimigos podem ficar SONOLENTOS.", "target": "foes", "fx": "sleep", "effects": [{ "type": "status", "status": "sonolento", "turns": 2, "chance": 0.6 }] }
+    ]
+  },
+  "allTogether": { "name": "TODOS JUNTOS!", "desc": "Os quatro atacam todos os inimigos e recuperam 15% da VIDA. Se todos sentem a MESMA emoção, o golpe fica muito mais forte.", "power": 2.2 }
+}

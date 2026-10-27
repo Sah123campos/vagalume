@@ -1,0 +1,106 @@
+{
+  "items": {
+    "biscoito": { "name": "Biscoito de Polvilho", "cat": "lanche", "price": 8, "desc": "Leve como uma nuvem, barulhento como um trovão. Recupera 35 de VIDA.", "use": { "target": "ally", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "amount": 35 }] } },
+    "pao_queijo": { "name": "Pão de Queijo", "cat": "lanche", "price": 18, "desc": "Quentinho, de dentro do forno da Dona Broa. Recupera 70 de VIDA.", "use": { "target": "ally", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "amount": 70 }] } },
+    "coxinha": { "name": "Coxinha", "cat": "lanche", "price": 35, "desc": "Crocante por fora, segredos por dentro. Recupera 120 de VIDA.", "use": { "target": "ally", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "amount": 120 }] } },
+    "bolo_fuba": { "name": "Bolo de Fubá", "cat": "lanche", "price": 60, "desc": "Cheira a tarde de domingo. Recupera 60% da VIDA.", "use": { "target": "ally", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "pct": 0.6 }] } },
+    "bolo_lunar": { "name": "Bolo de Fubá Lunar", "cat": "lanche", "price": 90, "desc": "A receita perdida da Dona Broa. Brilha um pouquinho. Recupera 50% da VIDA de TODO o grupo.", "use": { "target": "allies", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "pct": 0.5 }] } },
+    "pipoca_doce": { "name": "Pipoca Doce", "cat": "lanche", "price": 30, "desc": "Um saco para dividir. Recupera 40 de VIDA de todo o grupo.", "use": { "target": "allies", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "amount": 40 }] } },
+    "brigadeiro": { "name": "Brigadeiro", "cat": "lanche", "price": 80, "desc": "O doce mais sério do mundo. Recupera TODA a VIDA de um amigo.", "use": { "target": "ally", "fx": "snack", "sfx": "heal", "effects": [{ "type": "heal", "pct": 1 }] } },
+    "suco_caju": { "name": "Suco de Caju", "cat": "lanche", "price": 12, "desc": "Amarra a boca, acende o olho. Recupera 15 de BRILHO.", "use": { "target": "ally", "fx": "heal", "sfx": "heal", "effects": [{ "type": "healBr", "amount": 15 }] } },
+    "guarana": { "name": "Guaraná", "cat": "lanche", "price": 25, "desc": "Borbulhante. Recupera 30 de BRILHO.", "use": { "target": "ally", "fx": "heal", "sfx": "heal", "effects": [{ "type": "healBr", "amount": 30 }] } },
+    "caldo_cana": { "name": "Caldo de Cana", "cat": "lanche", "price": 45, "desc": "Doce de feira. Recupera 20 de BRILHO de todo o grupo.", "use": { "target": "allies", "fx": "heal", "sfx": "heal", "effects": [{ "type": "healBr", "amount": 20 }] } },
+    "curativo": { "name": "Curativo de Estrelinha", "cat": "lanche", "price": 50, "desc": "Com desenho de estrela, funciona melhor. Traz de volta um amigo APAGADO com 40% da VIDA.", "use": { "target": "allyDead", "fx": "shine", "sfx": "heal", "effects": [{ "type": "revive", "pct": 0.4 }] } },
+
+    "confete": { "name": "Confete", "cat": "brinquedo", "price": 15, "desc": "Festa instantânea! Deixa o alvo FELIZ (amigo ou inimigo).", "use": { "target": "any", "field": false, "fx": "star", "sfx": "emoHappy", "effects": [{ "type": "emotion", "emotion": "feliz", "steps": 1 }] } },
+    "cebola": { "name": "Cebola", "cat": "brinquedo", "price": 15, "desc": "Ninguém resiste. Deixa o alvo TRISTE (amigo ou inimigo).", "use": { "target": "any", "field": false, "fx": "water", "sfx": "emoSad", "effects": [{ "type": "emotion", "emotion": "triste", "steps": 1 }] } },
+    "pimenta": { "name": "Pimenta Dedo-de-Moça", "cat": "brinquedo", "price": 15, "desc": "Arde até a alma. Deixa o alvo IRRITADO (amigo ou inimigo).", "use": { "target": "any", "field": false, "fx": "fire", "sfx": "emoAngry", "effects": [{ "type": "emotion", "emotion": "irritado", "steps": 1 }] } },
+    "cha_camomila": { "name": "Chá de Camomila", "cat": "brinquedo", "price": 20, "desc": "Acalma qualquer um. Remove a emoção, o medo e o sono do alvo.", "use": { "target": "any", "field": false, "fx": "heal", "sfx": "emoCalm", "effects": [{ "type": "emotion", "emotion": "neutro" }, { "type": "cleanse" }] } },
+    "bombinha": { "name": "Bombinha Junina", "cat": "brinquedo", "price": 20, "desc": "POW! Causa 40 de dano em um inimigo (afetado pelas emoções).", "use": { "target": "foe", "field": false, "fx": "bat", "sfx": "bigHit", "effects": [{ "type": "fixed", "amount": 40 }] } },
+    "estalinho": { "name": "Estalinhos", "cat": "brinquedo", "price": 30, "desc": "Um punhado jogado no chão. Causa 24 de dano em todos os inimigos.", "use": { "target": "foes", "field": false, "fx": "star", "sfx": "crit", "effects": [{ "type": "fixed", "amount": 24 }] } },
+    "bolha_sabao": { "name": "Bolhas de Sabão", "cat": "brinquedo", "price": 25, "desc": "Lindas e escorregadias. Todos os inimigos ficam mais lentos por 2 rodadas.", "use": { "target": "foes", "field": false, "fx": "water", "sfx": "pop", "effects": [{ "type": "buff", "stat": "vel", "mult": 0.7, "turns": 2 }] } },
+    "ioio": { "name": "Ioiô de Chumbo", "cat": "brinquedo", "price": 45, "desc": "Vai e volta, e volta com força. Causa 70 de dano em um inimigo.", "use": { "target": "foe", "field": false, "fx": "star", "sfx": "bigHit", "effects": [{ "type": "fixed", "amount": 70 }] } },
+
+    "lamparina_velha": { "name": "Lamparina Velha", "cat": "arma", "for": "lamparina", "price": 10, "stats": { "atq": 2 }, "desc": "Presente do Vô Faísca. A chama nunca apagou de verdade. ATQ +2." },
+    "lamparina_cobre": { "name": "Lamparina de Cobre", "cat": "arma", "for": "lamparina", "price": 90, "stats": { "atq": 6, "vel": 1 }, "desc": "Consertada pelo Seu Parafuso com engrenagens novas. ATQ +6, VEL +1." },
+    "lamparina_estrela": { "name": "Lamparina Estrela", "cat": "arma", "for": "lamparina", "price": 200, "stats": { "atq": 11, "sor": 3 }, "desc": "Feita com vidro de farol. Brilha mesmo no escuro mais escuro. ATQ +11, SOR +3." },
+    "taco_de_bets": { "name": "Taco de Bets", "cat": "arma", "for": "taco", "price": 10, "stats": { "atq": 3 }, "desc": "Lascado de tanto jogo de bets na rua. ATQ +3." },
+    "taco_cravejado": { "name": "Taco Adesivado", "cat": "arma", "for": "taco", "price": 120, "stats": { "atq": 8 }, "desc": "Coberto de adesivos de estrela. Dá sorte (e dói). ATQ +8." },
+    "taco_relampago": { "name": "Taco Relâmpago", "cat": "arma", "for": "taco", "price": 220, "stats": { "atq": 14, "vel": 2 }, "desc": "Pintado com um raio amarelo. Ninguém sabe quem pintou. ATQ +14, VEL +2." },
+    "guarda_chuva_listrado": { "name": "Guarda-chuva Listrado", "cat": "arma", "for": "guarda_chuva", "price": 10, "stats": { "atq": 2, "def": 2 }, "desc": "Grande o suficiente para três. ATQ +2, DEF +2." },
+    "guarda_chuva_reforcado": { "name": "Guarda-chuva Reforçado", "cat": "arma", "for": "guarda_chuva", "price": 110, "stats": { "atq": 6, "def": 4 }, "desc": "Varetas de metal do Seu Parafuso. ATQ +6, DEF +4." },
+    "guarda_chuva_arcoiris": { "name": "Guarda-chuva Arco-íris", "cat": "arma", "for": "guarda_chuva", "price": 200, "stats": { "atq": 10, "def": 6, "hp": 20 }, "desc": "Abre sozinho quando alguém precisa. ATQ +10, DEF +6, VIDA +20." },
+    "caderno_de_rimas": { "name": "Caderno de Rimas", "cat": "arma", "for": "caderno", "price": 10, "stats": { "atq": 2, "br": 4 }, "desc": "Metade poemas, metade desenhos de gato. ATQ +2, BR +4." },
+    "caderno_capa_dura": { "name": "Caderno de Capa Dura", "cat": "arma", "for": "caderno", "price": 100, "stats": { "atq": 5, "br": 8 }, "desc": "Capa dura também serve para bater. ATQ +5, BR +8." },
+    "diario_estrelas": { "name": "Diário das Estrelas", "cat": "arma", "for": "caderno", "price": 220, "stats": { "atq": 9, "br": 14 }, "desc": "Cada página tem uma constelação diferente. ATQ +9, BR +14." },
+
+    "fita_bonfim": { "name": "Fitinha do Bonfim", "cat": "amuleto", "price": 40, "stats": { "sor": 3 }, "desc": "Três nós, três desejos. SOR +3." },
+    "chaveiro_estrela": { "name": "Chaveiro de Estrela", "cat": "amuleto", "price": 50, "stats": { "vel": 3 }, "desc": "Tilinta quando você corre. VEL +3." },
+    "coroa_flores": { "name": "Coroa de Flores", "cat": "amuleto", "price": 60, "stats": { "hp": 5 }, "special": { "startEmotion": "feliz" }, "desc": "Quem usa começa toda batalha FELIZ. VIDA +5." },
+    "oculos_escuros": { "name": "Óculos Escuros", "cat": "amuleto", "price": 60, "stats": { "atq": 2 }, "special": { "startEmotion": "irritado" }, "desc": "Quem usa começa toda batalha IRRITADO. ATQ +2." },
+    "cachecol_azul": { "name": "Cachecol Azul", "cat": "amuleto", "price": 60, "stats": { "def": 3 }, "special": { "startEmotion": "triste" }, "desc": "Quem usa começa toda batalha TRISTE. DEF +3." },
+    "sino_gato": { "name": "Sino de Gato", "cat": "amuleto", "price": 80, "stats": { "vel": 5, "sor": 3 }, "desc": "Presente do Novelo (ou da Dona Lã). VEL +5, SOR +3." },
+    "botao_dourado": { "name": "Botão Dourado", "cat": "amuleto", "price": 100, "stats": { "hp": 20, "br": 4 }, "desc": "Um botão que nunca foi de nenhuma roupa. VIDA +20, BR +4." },
+    "selo_coragem": { "name": "Selo de Coragem", "cat": "amuleto", "price": 120, "stats": { "def": 3 }, "special": { "fearless": true }, "desc": "Um selo de carta com um leão desenhado. Quem usa não sente MEDO. DEF +3." },
+    "relogio_corda": { "name": "Relógio de Corda", "cat": "amuleto", "price": 150, "stats": { "vel": 6 }, "special": { "brRegen": 2 }, "desc": "Tique-taque. VEL +6 e recupera 2 de BRILHO por rodada." },
+    "oculos_vo": { "name": "Óculos do Vô", "cat": "amuleto", "price": 150, "stats": { "sor": 5, "atq": 2 }, "special": { "emotionMaxUp": "triste" }, "desc": "Lentes grossas e riscadas. SOR +5, ATQ +2 e +1 de intensidade máxima de TRISTE." },
+    "pedrinha": { "name": "Pedrinha Bonita", "cat": "amuleto", "price": 1, "stats": { "def": 1 }, "desc": "É bonita. Só isso. DEF +1." },
+    "meia_sorte": { "name": "Meia da Sorte", "cat": "amuleto", "price": 70, "stats": { "sor": 6 }, "desc": "Só um pé. O outro foi perdido para a sorte. SOR +6." },
+
+    "carta_prefeito": { "name": "Bilhete do Prefeito", "cat": "chave", "desc": "\"LUME, o Farol apagou. Venha à prefeitura. Urgente!!! — Prefeito Pavio\" (tem uma mancha de cera derretida)." },
+    "mapa": { "name": "Mapa de Algodoal", "cat": "chave", "desc": "Desenhado à mão pelo Prefeito. Pressione M para abrir." },
+    "brasa_floresta": { "name": "Brasa da Floresta", "cat": "chave", "desc": "Um pedaço da Chama-Mãe do Farol. Verde por dentro, como folha contra o sol." },
+    "brasa_aguas": { "name": "Brasa das Águas", "cat": "chave", "desc": "Um pedaço da Chama-Mãe do Farol. Queima mesmo molhada." },
+    "brasa_esquecida": { "name": "Brasa Esquecida", "cat": "chave", "desc": "Um pedaço da Chama-Mãe do Farol. Quando você olha para ela, lembra de um cheiro de hospital." },
+    "diario_vo": { "name": "Diário do Vô", "cat": "chave", "desc": "Capa de couro, páginas de maré. A última página foi arrancada.", "examine": "\"Toda luz que apaga pode ser acesa de novo. Só precisa de alguém teimoso o bastante.\" — a letra tremida do Vô." },
+    "engrenagem": { "name": "Engrenagem Perdida", "cat": "chave", "max": 3, "desc": "Uma engrenagem do Seu Parafuso. Ele perdeu três." },
+    "pagina_receita": { "name": "Página de Receita", "cat": "chave", "max": 3, "desc": "Um pedaço da receita perdida da Dona Broa. Tem farinha grudada." },
+    "carta_perdida": { "name": "Carta sem Remetente", "cat": "chave", "max": 3, "desc": "Um envelope endereçado a \"LUME\". O selo é de um lugar que não existe em Algodoal." },
+    "pipa_pipoca": { "name": "Pipa do Pipoca", "cat": "chave", "desc": "Vermelha, com rabiola amarela. Um pouco amassada." },
+    "novelo": { "name": "Novelo (o gato)", "cat": "chave", "desc": "Um gato laranja que ronrona no seu colo. Ele claramente acha que você é dele agora." },
+    "foto_barco": { "name": "Foto do Barco", "cat": "chave", "desc": "Uma foto: LUME e o Vô num barquinho, rindo. Atrás está escrito: \"último dia de férias\"." },
+    "chave_porao": { "name": "Chave do Porão", "cat": "chave", "desc": "Fria como água de rio. Abre a porta do porão da casa abandonada." },
+    "remedio_sono": { "name": "Pulseira de Hospital", "cat": "chave", "desc": "Uma pulseirinha de plástico. O nome está borrado, mas termina em \"-UME\"." }
+  },
+  "shops": {
+    "padaria": {
+      "name": "Padaria da Dona Broa", "keeper": "dona_broa",
+      "greeting": "Fornada fresquinha! Tudo feito com fubá, carinho e um tiquinho de preguiça.",
+      "thanks": "Volte sempre, meu bem!",
+      "items": [
+        { "id": "biscoito", "price": 8 }, { "id": "pao_queijo", "price": 18 }, { "id": "coxinha", "price": 35, "cond": "phase>=2" },
+        { "id": "pipoca_doce", "price": 30 }, { "id": "bolo_fuba", "price": 60, "cond": "phase>=2" }, { "id": "bolo_lunar", "price": 90, "cond": "flag:receita_completa" },
+        { "id": "brigadeiro", "price": 80, "cond": "phase>=3" }, { "id": "suco_caju", "price": 12 }, { "id": "guarana", "price": 25 }
+      ]
+    },
+    "oficina": {
+      "name": "Oficina do Seu Parafuso", "keeper": "seu_parafuso",
+      "greeting": "CLIQUE. CLAQUE. Compra ou não compra? Meu tempo é corda, e corda acaba.",
+      "thanks": "CLIQUE. Negócio fechado.",
+      "items": [
+        { "id": "taco_cravejado", "price": 120, "stock": 1 }, { "id": "guarda_chuva_reforcado", "price": 110, "stock": 1 }, { "id": "caderno_capa_dura", "price": 100, "stock": 1 },
+        { "id": "fita_bonfim", "price": 40, "stock": 1 }, { "id": "chaveiro_estrela", "price": 50, "stock": 1 },
+        { "id": "curativo", "price": 50 }, { "id": "bombinha", "price": 20 }, { "id": "estalinho", "price": 30 }, { "id": "ioio", "price": 45, "cond": "phase>=3" }
+      ]
+    },
+    "sapo": {
+      "name": "Barraca do Sapo Conselheiro", "keeper": "sapo",
+      "greeting": "Croac. Vendo sentimentos em pacotinhos. E conselhos, mas esses são de graça e quase sempre errados.",
+      "thanks": "Croac-croac. Use com sabedoria. Ou não.",
+      "items": [
+        { "id": "confete", "price": 15 }, { "id": "cebola", "price": 15 }, { "id": "pimenta", "price": 15 }, { "id": "cha_camomila", "price": 20 },
+        { "id": "bolha_sabao", "price": 25 }, { "id": "caldo_cana", "price": 45 },
+        { "id": "coroa_flores", "price": 60, "stock": 1 }, { "id": "oculos_escuros", "price": 60, "stock": 1 }, { "id": "cachecol_azul", "price": 60, "stock": 1 }
+      ]
+    },
+    "rochedo": {
+      "name": "Barraca do Seu Gonçalo", "keeper": "velhinho",
+      "greeting": "Ah, fregueses! Eu vendia aqui antes de ser esquecido. Agora vendo de novo!",
+      "thanks": "Lembrem de mim, hein!",
+      "items": [
+        { "id": "coxinha", "price": 35 }, { "id": "brigadeiro", "price": 80 }, { "id": "guarana", "price": 25 }, { "id": "caldo_cana", "price": 45 },
+        { "id": "curativo", "price": 50 }, { "id": "ioio", "price": 45 }, { "id": "meia_sorte", "price": 70, "stock": 1 }
+      ]
+    }
+  }
+}

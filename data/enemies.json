@@ -1,0 +1,748 @@
+{
+ "enemies": {
+  "pirulinho": {
+   "name": "PIRULINHO",
+   "sprite": "pirulinho",
+   "hp": 30,
+   "atq": 7,
+   "def": 4,
+   "vel": 6,
+   "exp": 12,
+   "money": 4,
+   "attackFx": "claw",
+   "drops": [
+    {
+     "item": "biscoito",
+     "chance": 0.25
+    }
+   ],
+   "ai": [
+    {
+     "skill": "atacar",
+     "w": 3
+    },
+    {
+     "skill": "e_lambida",
+     "w": 2
+    }
+   ],
+   "desc": "Um doce que ganhou pernas. Ninguém sabe de quem foi a ideia."
+  },
+  "abelhao": {
+   "name": "ABELHÃO ALGODÃO",
+   "sprite": "abelhao",
+   "hp": 28,
+   "atq": 8,
+   "def": 3,
+   "vel": 11,
+   "exp": 13,
+   "money": 5,
+   "drops": [
+    {
+     "item": "suco_caju",
+     "chance": 0.2
+    }
+   ],
+   "ai": [
+    {
+     "skill": "atacar",
+     "w": 3
+    },
+    {
+     "skill": "e_ferroada",
+     "w": 2
+    },
+    {
+     "skill": "e_polen",
+     "w": 1
+    }
+   ],
+   "desc": "Faz mel de algodão-doce. Pica de leve, mas pica."
+  },
+  "nuvenzinha": {
+   "name": "NUVENZINHA CHORONA",
+   "sprite": "nuvenzinha",
+   "hp": 36,
+   "atq": 6,
+   "def": 6,
+   "vel": 5,
+   "exp": 14,
+   "money": 5,
+   "startEmotion": [
+    "triste",
+    1
+   ],
+   "drops": [
+    {
+     "item": "cebola",
+     "chance": 0.15
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_chuvisco",
+     "w": 3
+    },
+    {
+     "skill": "e_choro",
+     "w": 1
+    },
+    {
+     "skill": "atacar",
+     "w": 1
+    }
+   ],
+   "desc": "Chora por tudo. Chora por nada. Começa a luta TRISTE."
+  },
+  "cogumelo": {
+   "name": "COGUMELO RESMUNGÃO",
+   "sprite": "cogumelo",
+   "hp": 62,
+   "atq": 13,
+   "def": 9,
+   "vel": 6,
+   "exp": 30,
+   "money": 10,
+   "drops": [
+    {
+     "item": "pimenta",
+     "chance": 0.2
+    }
+   ],
+   "ai": [
+    {
+     "skill": "atacar",
+     "w": 3
+    },
+    {
+     "skill": "e_resmungo",
+     "w": 2
+    },
+    {
+     "skill": "e_esporos",
+     "w": 1
+    }
+   ],
+   "desc": "Está bravo desde que nasceu. Ninguém lembra por quê."
+  },
+  "raposa": {
+   "name": "RAPOSA DE FOLHAS",
+   "sprite": "raposa",
+   "hp": 50,
+   "atq": 15,
+   "def": 7,
+   "vel": 15,
+   "exp": 32,
+   "money": 11,
+   "drops": [
+    {
+     "item": "pao_queijo",
+     "chance": 0.2
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_bote",
+     "w": 3
+    },
+    {
+     "skill": "atacar",
+     "w": 2
+    },
+    {
+     "skill": "e_truque",
+     "w": 1,
+     "cond": "!self:feliz"
+    }
+   ],
+   "desc": "Rápida e convencida. Fica mais rápida ainda quando está FELIZ."
+  },
+  "coruja": {
+   "name": "CORUJA INSONE",
+   "sprite": "coruja",
+   "hp": 58,
+   "atq": 12,
+   "def": 9,
+   "vel": 9,
+   "exp": 34,
+   "money": 11,
+   "drops": [
+    {
+     "item": "cha_camomila",
+     "chance": 0.25
+    }
+   ],
+   "ai": [
+    {
+     "skill": "atacar",
+     "w": 2
+    },
+    {
+     "skill": "e_olhar_insone",
+     "w": 2
+    },
+    {
+     "skill": "e_pio",
+     "w": 1
+    }
+   ],
+   "desc": "Não dorme há anos. Quer que ninguém mais durma também."
+  },
+  "brotinho": {
+   "name": "BROTINHO",
+   "sprite": "brotinho",
+   "hp": 42,
+   "atq": 8,
+   "def": 6,
+   "vel": 4,
+   "exp": 4,
+   "money": 0,
+   "ai": [
+    {
+     "skill": "e_cutucada",
+     "w": 1
+    }
+   ],
+   "desc": "Filho da Mamãe Raiz. Enquanto existir, dá seiva para ela."
+  },
+  "mamae_raiz": {
+   "name": "MAMÃE RAIZ",
+   "sprite": "mamae_raiz",
+   "boss": true,
+   "hp": 480,
+   "atq": 18,
+   "def": 22,
+   "vel": 7,
+   "exp": 260,
+   "money": 90,
+   "emotionMax": {
+    "feliz": 2,
+    "triste": 3,
+    "irritado": 3
+   },
+   "desc": "Guardou a Brasa achando que era um filho. A casca só racha quando ela se IRRITA."
+  },
+  "peixe_lanterna": {
+   "name": "PEIXE-LANTERNA",
+   "sprite": "peixe_lanterna",
+   "hp": 82,
+   "atq": 19,
+   "def": 12,
+   "vel": 11,
+   "exp": 48,
+   "money": 16,
+   "drops": [
+    {
+     "item": "guarana",
+     "chance": 0.2
+    }
+   ],
+   "ai": [
+    {
+     "skill": "atacar",
+     "w": 2
+    },
+    {
+     "skill": "e_isca_luz",
+     "w": 2
+    }
+   ],
+   "desc": "Usa a luz para atrair e assustar."
+  },
+  "caranguejo": {
+   "name": "CARANGUEJO-XÍCARA",
+   "sprite": "caranguejo",
+   "hp": 96,
+   "atq": 18,
+   "def": 20,
+   "vel": 6,
+   "exp": 50,
+   "money": 18,
+   "drops": [
+    {
+     "item": "coxinha",
+     "chance": 0.15
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_pinca",
+     "w": 3
+    },
+    {
+     "skill": "e_casca",
+     "w": 1
+    }
+   ],
+   "desc": "Mora numa xícara de chá. Esconde-se nela quando apanha."
+  },
+  "medusa": {
+   "name": "MEDUSA DE LÁGRIMA",
+   "sprite": "medusa",
+   "hp": 72,
+   "atq": 17,
+   "def": 10,
+   "vel": 10,
+   "exp": 49,
+   "money": 15,
+   "startEmotion": [
+    "triste",
+    1
+   ],
+   "drops": [
+    {
+     "item": "suco_caju",
+     "chance": 0.3
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_lagrima",
+     "w": 2
+    },
+    {
+     "skill": "e_choque",
+     "w": 2
+    },
+    {
+     "skill": "atacar",
+     "w": 1
+    }
+   ],
+   "desc": "Feita de uma lágrima que nunca caiu."
+  },
+  "isca": {
+   "name": "ISCA DE LUZ",
+   "sprite": "isca",
+   "hp": 70,
+   "atq": 1,
+   "def": 8,
+   "vel": 1,
+   "exp": 0,
+   "money": 0,
+   "noReward": true,
+   "fearless": true,
+   "emotionMax": {
+    "feliz": 0,
+    "triste": 0,
+    "irritado": 0
+   },
+   "ai": [],
+   "desc": "Enquanto brilhar, a maré sobe. Apague-a para baixar a maré e atordoar A COISA."
+  },
+  "coisa_fundo": {
+   "name": "A COISA NO FUNDO",
+   "sprite": "coisa_fundo",
+   "boss": true,
+   "hp": 700,
+   "atq": 22,
+   "def": 21,
+   "vel": 8,
+   "exp": 520,
+   "money": 150,
+   "startEmotion": [
+    "triste",
+    2
+   ],
+   "fearless": true,
+   "emotionMax": {
+    "feliz": 1,
+    "triste": 3,
+    "irritado": 2
+   },
+   "desc": "Mora onde a água fica parada. Começa ABATIDA. O corpo submerso resiste aos golpes."
+  },
+  "rabisco": {
+   "name": "RABISCO",
+   "sprite": "rabisco",
+   "hp": 112,
+   "atq": 26,
+   "def": 16,
+   "vel": 14,
+   "exp": 70,
+   "money": 24,
+   "drops": [
+    {
+     "item": "estalinho",
+     "chance": 0.15
+    }
+   ],
+   "ai": [
+    {
+     "skill": "atacar",
+     "w": 2
+    },
+    {
+     "skill": "e_garrancho",
+     "w": 2
+    },
+    {
+     "skill": "e_rasura",
+     "w": 1
+    }
+   ],
+   "desc": "Um desenho que alguém tentou apagar. Não deu certo."
+  },
+  "manequim": {
+   "name": "MANEQUIM SORRIDENTE",
+   "sprite": "manequim",
+   "hp": 130,
+   "atq": 27,
+   "def": 20,
+   "vel": 7,
+   "exp": 74,
+   "money": 26,
+   "drops": [
+    {
+     "item": "cha_camomila",
+     "chance": 0.2
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_sorriso",
+     "w": 2
+    },
+    {
+     "skill": "e_abraco_frio",
+     "w": 2
+    },
+    {
+     "skill": "atacar",
+     "w": 1
+    }
+   ],
+   "desc": "Só se mexe quando ninguém está olhando."
+  },
+  "tv_estatica": {
+   "name": "TV ESTÁTICA",
+   "sprite": "tv_estatica",
+   "hp": 104,
+   "atq": 24,
+   "def": 18,
+   "vel": 10,
+   "exp": 72,
+   "money": 28,
+   "drops": [
+    {
+     "item": "guarana",
+     "chance": 0.25
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_estatica",
+     "w": 2
+    },
+    {
+     "skill": "e_chiado",
+     "w": 2
+    },
+    {
+     "skill": "atacar",
+     "w": 1
+    }
+   ],
+   "desc": "Passa o mesmo noticiário há muito tempo. Ninguém quer assistir."
+  },
+  "dona_ninguem": {
+   "name": "DONA NINGUÉM",
+   "sprite": "dona_ninguem",
+   "boss": true,
+   "hp": 1250,
+   "atq": 31,
+   "def": 24,
+   "vel": 12,
+   "exp": 800,
+   "money": 250,
+   "fearless": true,
+   "emotionMax": {
+    "feliz": 3,
+    "triste": 3,
+    "irritado": 3
+   },
+   "desc": "Usa máscaras de emoção. Fica imune a quem estiver em DESVANTAGEM contra a máscara atual."
+  },
+  "gaivota": {
+   "name": "GAIVOTA TORTA",
+   "sprite": "gaivota",
+   "hp": 150,
+   "atq": 33,
+   "def": 20,
+   "vel": 20,
+   "exp": 100,
+   "money": 34,
+   "drops": [
+    {
+     "item": "coxinha",
+     "chance": 0.2
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_rasante_gaivota",
+     "w": 3
+    },
+    {
+     "skill": "e_roubo",
+     "w": 1
+    },
+    {
+     "skill": "atacar",
+     "w": 1
+    }
+   ],
+   "desc": "Voa de lado de propósito. Adora roubar lanches."
+  },
+  "sombra": {
+   "name": "SOMBRA COMPRIDA",
+   "sprite": "sombra",
+   "hp": 190,
+   "atq": 35,
+   "def": 26,
+   "vel": 12,
+   "exp": 110,
+   "money": 38,
+   "drops": [
+    {
+     "item": "curativo",
+     "chance": 0.15
+    }
+   ],
+   "ai": [
+    {
+     "skill": "e_alongar",
+     "w": 2
+    },
+    {
+     "skill": "e_engolir_sombra",
+     "w": 2
+    },
+    {
+     "skill": "atacar",
+     "w": 1
+    }
+   ],
+   "desc": "A sombra de alguém que foi embora sem levar ela junto."
+  },
+  "apagador": {
+   "name": "O APAGADOR",
+   "sprite": "apagador",
+   "boss": true,
+   "hp": 2200,
+   "atq": 33,
+   "def": 25,
+   "vel": 14,
+   "exp": 0,
+   "money": 0,
+   "fearless": true,
+   "noReward": true,
+   "emotionMax": {
+    "feliz": 1,
+    "triste": 3,
+    "irritado": 2
+   },
+   "desc": "Feito de cobertor, sono e vontade de não saber."
+  }
+ },
+ "troops": {
+  "tutorial": {
+   "enemies": [
+    "pirulinho"
+   ],
+   "bg": "tutorial",
+   "canFlee": false,
+   "intro": "Um PIRULINHO pulou do arbusto!"
+  },
+  "pirulinhos": {
+   "enemies": [
+    "pirulinho",
+    "pirulinho"
+   ],
+   "bg": "campos"
+  },
+  "campos_a": {
+   "enemies": [
+    "abelhao",
+    "pirulinho"
+   ],
+   "bg": "campos"
+  },
+  "campos_b": {
+   "enemies": [
+    "nuvenzinha",
+    "abelhao"
+   ],
+   "bg": "campos"
+  },
+  "campos_c": {
+   "enemies": [
+    "pirulinho",
+    "nuvenzinha",
+    "pirulinho"
+   ],
+   "bg": "campos"
+  },
+  "abelhas": {
+   "enemies": [
+    "abelhao",
+    "abelhao"
+   ],
+   "bg": "campos"
+  },
+  "floresta_a": {
+   "enemies": [
+    "cogumelo",
+    "raposa"
+   ],
+   "bg": "floresta"
+  },
+  "floresta_b": {
+   "enemies": [
+    "coruja",
+    "cogumelo"
+   ],
+   "bg": "floresta"
+  },
+  "floresta_c": {
+   "enemies": [
+    "raposa",
+    "raposa"
+   ],
+   "bg": "floresta"
+  },
+  "floresta_d": {
+   "enemies": [
+    "coruja",
+    "raposa",
+    "cogumelo"
+   ],
+   "bg": "floresta"
+  },
+  "chefe_raiz": {
+   "enemies": [
+    "mamae_raiz"
+   ],
+   "bg": "boss_raiz",
+   "music": "chefe",
+   "canFlee": false,
+   "brain": "mamae_raiz",
+   "intro": "A MAMÃE RAIZ se ergue da terra!"
+  },
+  "gruta_a": {
+   "enemies": [
+    "peixe_lanterna",
+    "medusa"
+   ],
+   "bg": "gruta"
+  },
+  "gruta_b": {
+   "enemies": [
+    "caranguejo",
+    "medusa"
+   ],
+   "bg": "gruta"
+  },
+  "gruta_c": {
+   "enemies": [
+    "peixe_lanterna",
+    "caranguejo",
+    "peixe_lanterna"
+   ],
+   "bg": "gruta"
+  },
+  "chefe_fundo": {
+   "enemies": [
+    "coisa_fundo",
+    "isca"
+   ],
+   "bg": "boss_fundo",
+   "music": "chefe",
+   "canFlee": false,
+   "brain": "coisa_fundo",
+   "intro": "Algo enorme sobe do fundo da água parada."
+  },
+  "bairro_a": {
+   "enemies": [
+    "rabisco",
+    "tv_estatica"
+   ],
+   "bg": "bairro"
+  },
+  "bairro_b": {
+   "enemies": [
+    "manequim"
+   ],
+   "bg": "bairro"
+  },
+  "bairro_c": {
+   "enemies": [
+    "rabisco",
+    "rabisco"
+   ],
+   "bg": "bairro"
+  },
+  "bairro_d": {
+   "enemies": [
+    "tv_estatica",
+    "manequim"
+   ],
+   "bg": "bairro"
+  },
+  "chefe_ninguem": {
+   "enemies": [
+    "dona_ninguem"
+   ],
+   "bg": "boss_ninguem",
+   "music": "chefe",
+   "canFlee": false,
+   "brain": "dona_ninguem",
+   "intro": "DONA NINGUÉM ajeita a máscara."
+  },
+  "rochedo_a": {
+   "enemies": [
+    "gaivota",
+    "gaivota"
+   ],
+   "bg": "rochedo"
+  },
+  "rochedo_b": {
+   "enemies": [
+    "sombra",
+    "gaivota"
+   ],
+   "bg": "rochedo"
+  },
+  "rochedo_c": {
+   "enemies": [
+    "sombra"
+   ],
+   "bg": "rochedo"
+  },
+  "farol_a": {
+   "enemies": [
+    "sombra",
+    "sombra"
+   ],
+   "bg": "farol"
+  },
+  "farol_b": {
+   "enemies": [
+    "rabisco",
+    "sombra",
+    "rabisco"
+   ],
+   "bg": "farol"
+  },
+  "chefe_final": {
+   "enemies": [
+    "apagador"
+   ],
+   "bg": "boss_apagador",
+   "music": "chefe_final",
+   "canFlee": false,
+   "brain": "apagador",
+   "intro": "O APAGADOR se ergue diante da grande lâmpada."
+  }
+ }
+}

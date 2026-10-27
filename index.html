@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0a24">
+  <meta name="description" content="VAGALUME — um RPG de navegador sobre amizade, sonhos e a coragem de acender a luz de novo.">
+  <title>Vagalume</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="game" aria-label="Área do jogo">
+    <canvas id="screen" width="384" height="216" tabindex="0" aria-label="Vagalume — use as setas para andar, Z para interagir, X para voltar"></canvas>
+    <div id="loading" role="status">
+      <div class="ld-title">VAGALUME</div>
+      <div class="ld-bar"><div class="ld-fill" id="ld-fill"></div></div>
+      <div class="ld-text" id="ld-text">Acendendo a lamparina...</div>
+      <noscript><p class="ld-text">Este jogo precisa de JavaScript ativado.</p></noscript>
+    </div>
+  </div>
+
+  <!-- controles de toque (aparecem em telas sensíveis ao toque ou pelas configurações) -->
+  <div id="touch" aria-hidden="true">
+    <div class="dpad">
+      <button data-act="up" class="d-up">▲</button>
+      <button data-act="left" class="d-left">◀</button>
+      <button data-act="right" class="d-right">▶</button>
+      <button data-act="down" class="d-down">▼</button>
+    </div>
+    <div class="abtns">
+      <button data-act="menu" class="b-menu">MENU</button>
+      <button data-act="run" class="b-run">CORRER</button>
+      <button data-act="cancel" class="b-b">X</button>
+      <button data-act="confirm" class="b-a">Z</button>
+    </div>
+  </div>
+
+  <!-- erros compreensíveis -->
+  <div id="error-overlay" role="alert">
+    <div class="err-box">
+      <div class="err-title">Algo deu errado</div>
+      <pre class="err-detail"></pre>
+      <div class="err-help">Se o jogo foi aberto direto do arquivo e não carregou, veja o README (seção "Como jogar localmente").</div>
+      <div class="err-actions">
+        <button class="err-continue" type="button">Continuar</button>
+        <button class="err-reload" type="button">Recarregar</button>
+        <button class="err-copy" type="button">Copiar detalhes</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+
+  <!-- módulos (scripts clássicos para funcionar também em file://) -->
+  <script src="js/core.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/font.js"></script>
+  <script src="js/pixel.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/art-sprites.js"></script>
+  <script src="js/art-tiles.js"></script>
+  <script src="js/art-enemies.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/quests.js"></script>
+  <script src="js/save.js"></script>
+  <script src="js/dialogue.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/screens.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/emotions.js"></script>
+  <script src="js/combat.js"></script>
+  <script src="js/combat-ai.js"></script>
+  <script src="js/combat-ui.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/debug.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

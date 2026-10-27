@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Prévia de arte</title>
+<style>body{background:#222;margin:0}canvas{image-rendering:pixelated;display:block}</style></head>
+<body><canvas id="c"></canvas>
+<script src="../js/core.js"></script>
+<script src="../js/font.js"></script>
+<script src="../js/pixel.js"></script>
+<script src="../js/renderer.js"></script>
+<script src="../js/art-sprites.js"></script>
+<script src="../js/art-tiles.js" onerror="void 0"></script>
+<script src="../js/art-enemies.js" onerror="void 0"></script>
+<script>
+(async function(){
+  const R = window.RPG;
+  const mode = (location.hash||'#chars').slice(1);
+  R.DB = { characters: await (await fetch('../data/characters.json')).json() };
+  const c = document.getElementById('c');
+  const S = 3;
+  const W = mode === "enemies" ? 1100 : 860, H = mode === "enemies" ? 560 : 300;
+  c.width = W; c.height = H; c.style.width = W*S+'px'; c.style.height = H*S+'px';
+  const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+  g.fillStyle = '#7fb069'; g.fillRect(0,0,W,H);
+  if (mode === 'chars') {
+    const ids = Object.keys(R.DB.characters.party).concat(Object.keys(R.DB.characters.npcs));
+    let x = 4, y = 4;
+    for (const id of ids) {
+      const sh = R.Art.sheet(id);
+      const dirs = ['down','left','right','up'];
+      for (let d=0; d<4; d++) for (let f=0; f<3; f++) g.drawImage(sh.frames[dirs[d]][f], x + (d*3+f)*17, y);
+      R.Font.draw(g, id, x, y+24, '#fff', {shadow:'#000'});
+      y += 36; if (y > H-36) { y = 4; x += 210; }
+    }
+  } else if (mode === 'portraits') {
+    const exprs = [['neutro',1],['feliz',1],['feliz',2],['feliz',3],['triste',1],['triste',2],['triste',3],['irritado',1],['irritado',2],['irritado',3],['medo',1],['ferido',1],['apagado',1]];
+    const ids = ['lume','brisa','toco','nina','vo','bia','prefeito','dona_broa','sapo'];
+    ids.forEach((id, row) => exprs.forEach(([e,t], col) => {
+      const bg = {neutro:'#3b3552',feliz:'#8a6b16',triste:'#1f4677',irritado:'#7a1f2a',medo:'#43286e',ferido:'#555',apagado:'#333'}[e];
+      g.fillStyle = bg; g.fillRect(4+col*40, 4+row*33, 38, 31);
+      const p = R.Art.portrait(id, e, t); if (p) g.drawImage(p, 3+col*40, 0+row*33, 40, 40);
+    }));
+  } else if (mode === 'text') {
+    R.Font.draw(g, 'VAGALUME — Ação, coração, ÇÃO! Você está bem? "Sim..." (é) 1234567890', 4, 4, '#fff');
+    R.Font.draw(g, 'ÁÉÍÓÚ ÂÊÔ ÃÕ À Ç áéíóú âêô ãõ à ç ü — …  ♥ ★ ♪ → ← ↑ ↓ %/+-=*', 4, 20, '#ffd86b');
+    R.Font.draw(g, 'O rato roeu a roupa do rei de Roma; jogar, queijo, pipoca, gyp.', 4, 36, '#9ad4ff', {shadow:'#000'});
+    R.Font.draw(g, 'TITULO', 4, 56, '#fff', {scale:3, outline:'#000'});
+    R.UI.window(g, 4, 100, 200, 60, {title:'Janela'});
+    R.Font.draw(g, 'Texto dentro da janela.', 14, 110, '#f6efe0');
+    R.UI.list(g, ['Novo Jogo', {label:'Continuar', disabled:true}, 'Configurações'], 14, 124, 0);
+    ['feliz','triste','irritado','medo','neutro','botao','coracao','brilho','chave','lanche','brinquedo','equip','amuleto','missao','check','laco'].forEach((n,i)=>R.UI.icon(g, n, 220+i*12, 110));
+  } else if (mode === 'tiles') {
+    const themes = Object.keys(R.Tiles.THEMES);
+    const types = ['grass','flowers','tallgrass','path','stone','sand','water','bridge','cliff','blank','asphalt','road_h'];
+    themes.forEach((thn, row) => {
+      types.forEach((ty, col) => {
+        const mask = ty==='path'||ty==='stone' ? 5 : ty==='water' ? 15 : ty === 'bridge' ? 10 : 0;
+        g.drawImage(R.Tiles.ground(ty, thn, null, col+row, mask, 0, ty==='cliff'?null:null), 4+col*17, 4+row*40);
+      });
+      g.drawImage(R.Tiles.ground('cliff', thn, null, 1, 0, 0, 'top'), 4+12*17, 4+row*40);
+      g.drawImage(R.Tiles.ground('water', thn, null, 1, 4, 1), 4+13*17, 4+row*40);
+      g.drawImage(R.Tiles.tree(thn, row), 4+14*17, 4+row*40 - 10);
+      ['bush','rock','stump','mushroom','fence','hedge'].forEach((o,i)=> g.drawImage(R.Tiles.object(o, thn, i, 10), 4+(16+i)*17 + 20, 4+row*40-8));
+      R.Font.draw(g, thn, 4, 22+row*40, '#fff', {shadow:'#000'});
+    });
+    const ints = Object.keys(R.Tiles.INTERIORS);
+    ints.forEach((n, i) => {
+      const x = 470 + (i%3)*130, y = 4 + Math.floor(i/3)*42;
+      g.drawImage(R.Tiles.ground('wall', null, n, 1, 0, 0, 'upper'), x, y);
+      g.drawImage(R.Tiles.ground('wall', null, n, 2, 0, 0, 'upper'), x+16, y);
+      g.drawImage(R.Tiles.ground('wall', null, n, 1, 0, 0, 'lower'), x, y+16);
+      g.drawImage(R.Tiles.ground('wall', null, n, 2, 0, 0, 'lower'), x+16, y+16);
+      g.drawImage(R.Tiles.ground('floor', null, n, 1, 0, 0), x+32, y+16);
+      g.drawImage(R.Tiles.ground('floor', null, n, 2, 0, 0), x+48, y+16);
+      g.drawImage(R.Tiles.ground('floor2', null, n, 2, 0, 0), x+64, y+16);
+      g.drawImage(R.Tiles.ground('rug', null, n, 3, 0, 0), x+80, y+16);
+      g.drawImage(R.Tiles.ground('wall', null, n, 3, 0, 0, 'top'), x+32, y);
+      R.Font.draw(g, n, x+50, y+2, '#fff', {shadow:'#000'});
+    });
+  } else if (mode === 'buildings') {
+    const defs = [['casa',5,4],['casa_azul',4,4],['padaria',6,4],['biblioteca',7,5],['oficina',6,4],['pousada',7,5],['prefeitura',8,5],['abandonada',5,4],['bairro',5,4],['arvore',5,6],['farol',4,3],['caverna',4,3],['branco',4,4]];
+    let x = 4, y = 30;
+    for (const [st,w,h] of defs) {
+      const cv = R.Tiles.building({style:st,w,h,number: st==='bairro'?7:undefined});
+      if (x + cv.width > W) { x = 4; y += 130; }
+      g.drawImage(cv, x, y + 100 - cv.height);
+      R.Font.draw(g, st, x, y + 102, '#fff', {shadow:'#000'});
+      x += cv.width + 8;
+    }
+  } else if (mode === 'props') {
+    const ids = Object.keys(R.Tiles.PROPS);
+    let x = 4, y = 4, rowH = 0;
+    for (const id of ids) {
+      const cv = R.Tiles.prop(id, id==='cama_lume'||id==='cama_hospital'||id==='espelho'?1:0);
+      if (x + cv.width > W) { x = 4; y += rowH + 14; rowH = 0; }
+      g.fillStyle = '#c89a6a'; g.fillRect(x, y, cv.width, cv.height);
+      g.drawImage(cv, x, y);
+      R.Font.draw(g, id.slice(0,9), x, y + cv.height, '#fff', {shadow:'#000'});
+      x += Math.max(cv.width, 44) + 4; rowH = Math.max(rowH, cv.height);
+    }
+  } else if (mode.startsWith('zoom')) {
+    const id = mode.split('-')[1] || 'lume';
+    const sh = R.Art.sheet(id);
+    c.style.width = W*S+'px';
+    ['down','left','up'].forEach((d,i)=>{ g.drawImage(sh.frames[d][0], 4+i*60, 4, 48, 72); });
+    const p = R.Art.portrait(id,'neutro',1); if (p) g.drawImage(p, 200, 4, 120, 120);
+  } else if (R.Art[mode]) {
+    R.Art[mode](g, W, H);
+  }
+  document.title = 'ready';
+})().catch(e => { document.title = 'error: ' + e.message; console.error(e); });
+</script></body></html>

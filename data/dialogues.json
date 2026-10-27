@@ -1,0 +1,5860 @@
+{
+ "_comentario": "Scripts de evento e diálogos. Cada script é uma lista de comandos [nome, ...args]. Ver README, seção Comandos de evento.",
+ "scripts": {
+  "atualiza_fase": [
+   [
+    "if",
+    [
+     "item:brasa_floresta",
+     "item:brasa_aguas",
+     "item:brasa_esquecida"
+    ],
+    [
+     [
+      "phase",
+      4
+     ]
+    ],
+    [
+     [
+      "if",
+      [
+       "item:brasa_floresta",
+       "item:brasa_aguas"
+      ],
+      [
+       [
+        "phase",
+        3
+       ]
+      ],
+      [
+       [
+        "phase",
+        2
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "ao_carregar": [
+   [
+    "if",
+    "flag:arco1_completo",
+    [
+     [
+      "if",
+      "!flag:posjogo_aviso",
+      [
+       [
+        "flag",
+        "posjogo_aviso"
+       ],
+       [
+        "say",
+        "",
+        "O Farol de Algodoal brilha lá longe.",
+        "Você pode continuar explorando e encontrar segredos que ficaram para trás."
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "intro": [
+   [
+    "hide",
+    "player"
+   ],
+   [
+    "card",
+    "Algodoal.",
+    "Um lugar onde nada de ruim dura muito.",
+    "...pelo menos, era assim."
+   ],
+   [
+    "music",
+    "quarto"
+   ],
+   [
+    "fade",
+    "in",
+    900
+   ],
+   [
+    "wait",
+    700
+   ],
+   [
+    "sfx",
+    "bump"
+   ],
+   [
+    "wait",
+    200
+   ],
+   [
+    "sfx",
+    "bump"
+   ],
+   [
+    "say",
+    "",
+    "{slow}Toc. Toc.{/}{P} Alguma coisa bate na janela."
+   ],
+   [
+    "say",
+    "",
+    "É só o vento. O vento de Algodoal tem mania de bater antes de entrar."
+   ],
+   [
+    "flag",
+    "acordou"
+   ],
+   [
+    "refresh"
+   ],
+   [
+    "setpos",
+    "player",
+    4,
+    3,
+    "down"
+   ],
+   [
+    "show",
+    "player"
+   ],
+   [
+    "sfx",
+    "pop"
+   ],
+   [
+    "think",
+    "...que horas são?",
+    "Sonhei com água de novo."
+   ],
+   [
+    "say",
+    "",
+    "Use as {yellow}SETAS{/} ou {yellow}WASD{/} para andar e {yellow}Z{/} para examinar e conversar.",
+    "{yellow}X{/} ou {yellow}ESC{/} abre o menu. {yellow}Shift{/} corre."
+   ],
+   [
+    "say",
+    "",
+    "Tem um papel no chão, perto do alçapão."
+   ]
+  ],
+  "arvore_carta": [
+   [
+    "sfx",
+    "page"
+   ],
+   [
+    "say",
+    "",
+    "Um bilhete com uma mancha de cera derretida:"
+   ],
+   [
+    "say",
+    "?:BILHETE",
+    "\"LUME, o FAROL APAGOU ontem à noite!!! Venha à PREFEITURA assim que acordar. URGENTE!!!\"",
+    "\"— Prefeito Pavio\""
+   ],
+   [
+    "say",
+    "",
+    "Embaixo, em letra menor: \"P.S.: traga a lamparina.\""
+   ],
+   [
+    "give",
+    "carta_prefeito",
+    1,
+    "silent"
+   ],
+   [
+    "flag",
+    "leu_carta"
+   ],
+   [
+    "think",
+    "O farol... apagou?",
+    "O farol nunca apaga."
+   ]
+  ],
+  "arvore_mesa": [
+   [
+    "if",
+    "!flag:pegou_lamparina",
+    [
+     [
+      "say",
+      "",
+      "Sua escrivaninha. Em cima dela, a {yellow}LAMPARINA{/} que o Vô Faísca te deu.",
+      "A chama é pequenininha, mas nunca apagou. Nem uma vez."
+     ],
+     [
+      "flag",
+      "pegou_lamparina"
+     ],
+     [
+      "sfx",
+      "item"
+     ],
+     [
+      "say",
+      "",
+      "Você pegou a {yellow}LAMPARINA{/}! (Ela já está equipada. Em lugares escuros, ela ilumina o caminho.)"
+     ],
+     [
+      "think",
+      "Pronto. Agora sim."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase>=5",
+      [
+       [
+        "say",
+        "",
+        "Lápis de cor, um caderno e uma pedra lisa do rio.",
+        "Tem um desenho novo no caderno: um farol aceso e uma pipa vermelha."
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase>=3",
+        [
+         [
+          "say",
+          "",
+          "Tem um desenho novo no caderno. Você não lembra de ter desenhado.",
+          "É um quarto branco, com uma cama, uma janela e uma pessoa sentada do lado."
+         ]
+        ],
+        [
+         [
+          "say",
+          "",
+          "Lápis de cor, um caderno de desenhos e uma pedra lisa do rio.",
+          "A pedra tem o formato de um coração, se você olhar com boa vontade."
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "arvore_espelho": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "",
+      "É você. A capa amarela já secou."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase>=3",
+      [
+       [
+        "say",
+        "",
+        "É você.{P} ...Você está de olhos fechados?"
+       ],
+       [
+        "glitch",
+        260
+       ],
+       [
+        "say",
+        "",
+        "Não. Não está. Você pisca. O reflexo pisca junto.",
+        "{slow}Quase junto.{/}"
+       ]
+      ],
+      [
+       [
+        "say",
+        "",
+        "É você. Cabelo bagunçado, capa de chuva amarela.",
+        "Você não lembra quando começou a usar a capa amarela. Parece que sempre usou."
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "arvore_desenho": [
+   [
+    "say",
+    "",
+    "Um desenho seu, preso com fita: você, BRISA, TOCO e NINA na frente do FAROL. O VÔ FAÍSCA acena lá de cima."
+   ],
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "",
+      "Alguém pintou o céu de azul por cima do branco."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Você pintou o céu de branco.",
+      "{slow}Por que você pintou o céu de branco?{/}"
+     ]
+    ]
+   ]
+  ],
+  "arvore_janela": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "",
+      "O facho do farol passa pela janela devagar, como quem dá boa noite."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==3",
+      [
+       [
+        "say",
+        "",
+        "Lá fora está escuro. Escuro de verdade.",
+        "Algodoal não costumava ter noite."
+       ]
+      ],
+      [
+       [
+        "say",
+        "",
+        "Lá fora, o céu de Algodoal tem cor de algodão-doce.",
+        "Ao longe, depois do Rochedo, dá pra ver o FAROL. Ele está apagado.",
+        "Ele nunca fica apagado."
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "arvore_cama": [
+   [
+    "say",
+    "",
+    "Sua cama. Ainda quentinha."
+   ],
+   [
+    "choice",
+    [
+     "Deitar um pouco",
+     [
+      [
+       "say",
+       "",
+       "Você deita e fecha os olhos..."
+      ],
+      [
+       "sleep",
+       900
+      ],
+      [
+       "heal",
+       "silent"
+      ],
+      [
+       "say",
+       "",
+       "...lá no fundo, uma vozinha diz: {p}{slow}\"acorda\".{/}"
+      ],
+      [
+       "say",
+       "",
+       "Você levanta. Todos se sentem descansados."
+      ]
+     ]
+    ],
+    [
+     "Agora não",
+     []
+    ]
+   ]
+  ],
+  "arvore_estante": [
+   [
+    "say",
+    "",
+    "Livros de figura, um atlas de peixes e \"COMO DAR NÓ EM CORDA DE BARCO\", com a letra do Vô na capa.",
+    "Tem um marcador de página no capítulo \"Nó que não solta\"."
+   ]
+  ],
+  "quintal_brisa_falar": [
+   [
+    "say",
+    "brisa",
+    "Ei! Vem cá!"
+   ]
+  ],
+  "quintal_brisa_chega": [
+   [
+    "wait",
+    300
+   ],
+   [
+    "say",
+    "brisa:feliz",
+    "LUUUUME!"
+   ],
+   [
+    "emote",
+    "brisa",
+    "!"
+   ],
+   [
+    "move",
+    "brisa",
+    "U2 L2"
+   ],
+   [
+    "face",
+    "brisa",
+    "left"
+   ],
+   [
+    "say",
+    "brisa:feliz",
+    "Finalmente! Achei que você ia hibernar até o Natal, dorminhoca."
+   ],
+   [
+    "say",
+    "brisa",
+    "Você viu? O FAROL! Apagou ontem à noite. Do nada!"
+   ],
+   [
+    "say",
+    "brisa:triste",
+    "E o Vô Faísca... ninguém acha ele. O Prefeito tá derretendo de nervoso. Literalmente."
+   ],
+   [
+    "choice",
+    [
+     "Vamos à Prefeitura.",
+     [
+      [
+       "say",
+       "brisa:feliz",
+       "É ISSO! Bora! Eu vou na frente... digo, do seu lado. Do lado é melhor."
+      ]
+     ]
+    ],
+    [
+     "...",
+     [
+      [
+       "say",
+       "brisa",
+       "Tá, tá, eu sei. Você não fala de manhã. Bora logo."
+      ]
+     ]
+    ]
+   ],
+   [
+    "flag",
+    "brisa_entrou"
+   ],
+   [
+    "hide",
+    "brisa"
+   ],
+   [
+    "join",
+    "brisa"
+   ],
+   [
+    "sfx",
+    "surprise"
+   ],
+   [
+    "shake",
+    2,
+    300
+   ],
+   [
+    "say",
+    "",
+    "{shake}CRUNCH!{/} Alguma coisa se mexe no arbusto!"
+   ],
+   [
+    "battle",
+    "tutorial",
+    {
+     "tutorial": true,
+     "canFlee": false
+    }
+   ],
+   [
+    "say",
+    "brisa:feliz",
+    "Viu só? A gente é imbatível!"
+   ],
+   [
+    "say",
+    "brisa",
+    "Se alguém se machucar, dá pra comer um lanche pelo {yellow}MENU{/}.",
+    "E aquele {yellow}LAMPIÃO{/} na sua casa cura todo mundo e \"escreve no diário\". O Vô dizia que isso é salvar o dia."
+   ],
+   [
+    "say",
+    "brisa",
+    "Agora bora pra Vila. A Prefeitura fica na praça."
+   ]
+  ],
+  "quintal_brilho": [
+   [
+    "say",
+    "",
+    "Tem alguma coisa brilhando no meio das folhas..."
+   ],
+   [
+    "flag",
+    "botao_quintal"
+   ],
+   [
+    "give",
+    "botao_dourado"
+   ],
+   [
+    "say",
+    "",
+    "Um {yellow}BOTÃO DOURADO{/}. Ele não pertence a nenhuma roupa. É um amuleto: equipe pelo menu."
+   ]
+  ],
+  "quintal_pneu": [
+   [
+    "if",
+    "phase==3",
+    [
+     [
+      "say",
+      "",
+      "O balanço de pneu está balançando sozinho.",
+      "Não tem vento."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um balanço de pneu. Você balança um pouquinho.",
+      "É bom."
+     ]
+    ]
+   ]
+  ],
+  "quintal_correio": [
+   [
+    "say",
+    "",
+    "Sua caixa de correio. Dentro, só uma aranha muito educada."
+   ],
+   [
+    "if",
+    "item:carta_perdida",
+    [
+     [
+      "say",
+      "",
+      "A aranha aponta para você com uma perninha, como quem diz: \"suas cartas estão com você\"."
+     ]
+    ]
+   ]
+  ],
+  "vila_guarda_oeste": [
+   [
+    "if",
+    "!flag:prefeito_fase1",
+    [
+     [
+      "say",
+      "guarda",
+      "ALTO! Ordem do Prefeito: ninguém sai da vila sem autorização!",
+      "Dizem que o {blue}Esquecimento{/} está rondando os Campos. Uma ovelha esqueceu de ser fofa ontem!"
+     ]
+    ],
+    [
+     [
+      "say",
+      "guarda",
+      "Liberados! Boa sorte, crianças.",
+      "E tragam a luz de volta. Eu tenho medo do escuro. Não conta pra ninguém."
+     ]
+    ]
+   ]
+  ],
+  "vila_guarda_ponte": [
+   [
+    "if",
+    "phase<4",
+    [
+     [
+      "say",
+      "guarda",
+      "A ponte para o ROCHEDO está interditada. O vento arrancou as tábuas do meio.",
+      "O Prefeito disse que só manda consertar quando vocês tiverem as três brasas. Disse que é \"simbólico\"."
+     ]
+    ],
+    [
+     [
+      "say",
+      "guarda",
+      "Ponte consertada! O Farol espera por vocês.",
+      "Cuidado com as gaivotas do Rochedo. Elas roubam lanche."
+     ]
+    ]
+   ]
+  ],
+  "vila_pingo": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "cerinha_rosa",
+      "O FAROL VOLTOU! Vou soprar ele no meu aniversário!",
+      "...brincadeira. Eu nunca sopraria um farol."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==4",
+      [
+       [
+        "say",
+        "cerinha_rosa",
+        "A noite foi embora!",
+        "Mas eu sonhei que eu era uma vela de hospital. Que sonho chato."
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase==3",
+        [
+         [
+          "say",
+          "cerinha_rosa",
+          "Minha mãe mandou eu entrar... mas eu tenho medo do escuro de dentro também."
+         ]
+        ],
+        [
+         [
+          "if",
+          "phase==2",
+          [
+           [
+            "say",
+            "cerinha_rosa",
+            "Vocês acharam uma BRASA? Posso ver? Posso tocar?",
+            "...AI. Tá bom. Não pode tocar."
+           ]
+          ],
+          [
+           [
+            "say",
+            "cerinha_rosa",
+            "O farol apagou e minha mãe disse que eu ia derreter de medo.",
+            "Eu não derreto! Eu sou uma vela de aniversário! A gente só derrete em festa!"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_fagulhinha": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "cerinha_azul",
+      "Meu nome é FAGULHINHA! Eu lembrei sozinho!"
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==4",
+      [
+       [
+        "say",
+        "cerinha_azul",
+        "Ontem eu esqueci meu nome por cinco minutos.",
+        "Foi legal, na verdade. Ninguém me mandou fazer lição."
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase==3",
+        [
+         [
+          "say",
+          "cerinha_azul",
+          "...shhh.",
+          "A casa que ninguém mora acendeu a luz."
+         ]
+        ],
+        [
+         [
+          "if",
+          "phase==2",
+          [
+           [
+            "say",
+            "cerinha_azul",
+            "Tem gente esquecendo coisas na vila.",
+            "A minha avó esqueceu a minha cor favorita. É azul. Eu acho."
+           ]
+          ],
+          [
+           [
+            "say",
+            "cerinha_azul",
+            "Sabia que quando você sopra uma vela ela não morre?",
+            "Ela só vai dormir em outro lugar."
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_pedra": [
+   [
+    "var",
+    "pedra",
+    "+",
+    1
+   ],
+   [
+    "if",
+    "var:pedra>=11",
+    [
+     [
+      "say",
+      "",
+      "(A pedra parece satisfeita.)"
+     ]
+    ],
+    [
+     [
+      "if",
+      "var:pedra==10",
+      [
+       [
+        "sfx",
+        "surprise"
+       ],
+       [
+        "say",
+        "pedra",
+        "OBRIGADA POR CONVERSAR COMIGO."
+       ],
+       [
+        "give",
+        "pedrinha"
+       ],
+       [
+        "say",
+        "",
+        "A pedra te deu uma pedrinha. Uma pedra filha?"
+       ]
+      ],
+      [
+       [
+        "if",
+        "var:pedra==8",
+        [
+         [
+          "say",
+          "",
+          "(Você tem quase certeza de que a pedra piscou.)"
+         ]
+        ],
+        [
+         [
+          "if",
+          "var:pedra==6",
+          [
+           [
+            "say",
+            "",
+            "(A pedra está... mais quentinha?)"
+           ]
+          ],
+          [
+           [
+            "if",
+            "var:pedra==4",
+            [
+             [
+              "say",
+              "",
+              "(Você conta para a pedra sobre o farol. Ela não diz nada. É uma ótima ouvinte.)"
+             ]
+            ],
+            [
+             [
+              "if",
+              "var:pedra==3",
+              [
+               [
+                "say",
+                "",
+                "(A pedra parece estar ouvindo.)"
+               ]
+              ],
+              [
+               [
+                "say",
+                "pedra",
+                "..."
+               ]
+              ]
+             ]
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_lesma": [
+   [
+    "if",
+    "flag:cartas_entregues",
+    [
+     [
+      "say",
+      "lesma",
+      "Cartas... entregues... Missão... do... correio... cumprida.",
+      "Eu... também... tenho... saudade... de alguém. Todo... mundo... tem."
+     ]
+    ],
+    [
+     [
+      "if",
+      "item:carta_perdida>=3",
+      [
+       [
+        "call",
+        "lesma_entrega"
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase>=3",
+        [
+         [
+          "say",
+          "lesma",
+          "Tem... cartas... aparecendo... sem... endereço...",
+          "Lá... do... outro... lado... da... vila. Do... bairro... que... ninguém... visita.",
+          "Coisas... que... alguém... quis... dizer... e... não... disse.",
+          "Se... achar... traz... aqui."
+         ],
+         [
+          "quest",
+          "q_cartas",
+          "start"
+         ]
+        ],
+        [
+         [
+          "say",
+          "lesma",
+          "Correio... de... Algodoal...",
+          "A carta... do... Prefeito? Fui... eu. Saiu... ontem... do... correio.",
+          "Chegou... hoje. RECORDE."
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "lesma_entrega": [
+   [
+    "say",
+    "lesma",
+    "Três... cartas...",
+    "Endereço... borrado...",
+    "Mas... o... nome... dá... pra... ler.",
+    "...São... todas... pra... você."
+   ],
+   [
+    "take",
+    "carta_perdida",
+    3
+   ],
+   [
+    "music",
+    "triste"
+   ],
+   [
+    "card",
+    "\"Filha, o médico disse que conversar ajuda. Então vou te contar do dia: choveu. O gato dormiu na sua cama. Estou com saudade da sua bagunça. — Mãe\"",
+    "\"LUME! A turma toda assinou! Volta logo que a gente guardou seu lugar na janela. — 5º ano B\"",
+    "\"Ei. Sou eu. Eu sei que você não pode ler isso agora. Mas eu prometi que ia escrever todo dia. Hoje é o dia 23. A pipa tá guardada. — B.\""
+   ],
+   [
+    "music",
+    "vila"
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:triste",
+      "...B.",
+      "Que engraçado. Eu também assino assim."
+     ]
+    ]
+   ],
+   [
+    "flag",
+    "cartas_entregues"
+   ],
+   [
+    "say",
+    "lesma",
+    "Guarda... isto... também.",
+    "Um... selo... de... coragem. Pra... quando... for... difícil... abrir... os... olhos."
+   ]
+  ],
+  "vila_coaxo": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "coaxo",
+      "Os peixes voltaram! E um deles me pediu desculpas. Estranho.",
+      "Croc. Dia bom pra pescar. Dia bom pra lembrar."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==3",
+      [
+       [
+        "say",
+        "coaxo",
+        "Hoje de noite o lago ficou parado. Parado até demais.",
+        "Igual a um espelho. Croc. Não gosto."
+       ]
+      ],
+      [
+       [
+        "if",
+        "item:brasa_aguas",
+        [
+         [
+          "say",
+          "coaxo",
+          "Vocês desceram lá na gruta? E voltaram? Croc. Respeito."
+         ]
+        ],
+        [
+         [
+          "if",
+          "flag:prefeito_fase1",
+          [
+           [
+            "say",
+            "coaxo",
+            "A gruta fica num buraco ao lado do laguinho dos Campos Pastel.",
+            "Leva luz. Lá embaixo é escuro como pensamento ruim."
+           ]
+          ],
+          [
+           [
+            "say",
+            "coaxo",
+            "Croc. Pescaria ruim desde que o farol apagou.",
+            "Os peixes ficam lá no fundo, quietinhos, escutando alguma coisa.",
+            "Dizem que a água do lago passa por baixo dos Campos e vai dar numa GRUTA. Água parada. Não gosto de água parada."
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_beto": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "menino_a",
+      "O céu voltou!",
+      "Mas por um segundo eu vi um teto. Um teto branco com aquelas luzes compridas.",
+      "Bobeira minha."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==3",
+      [
+       [
+        "say",
+        "menino_a",
+        "O céu tá escuro. Tô com medo, mas também tô curioso.",
+        "Dá pra sentir as duas coisas ao mesmo tempo?"
+       ]
+      ],
+      [
+       [
+        "say",
+        "menino_a",
+        "Eu tô olhando o céu. Ontem ele piscou.",
+        "Tipo uma lâmpada com mau contato. Vocês viram?"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_lia": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "menina_a",
+      "...Ele não voltou, né?",
+      "Tudo bem. Eu assobio pra ele mesmo assim."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==3",
+      [
+       [
+        "say",
+        "menina_a",
+        "Eu assobiei pra chamar o Vô Faísca.",
+        "O vento assobiou de volta. Não era o vento."
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase>=2",
+        [
+         [
+          "say",
+          "menina_a",
+          "Se vocês acharem o Vô Faísca, falem que eu já sei assobiar sozinha."
+         ]
+        ],
+        [
+         [
+          "say",
+          "menina_a",
+          "O Vô Faísca me ensinou a assobiar com folha de capim.",
+          "Ele sumiu junto com a luz. Será que a luz levou ele?"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_goncalo": [
+   [
+    "say",
+    "velhinho",
+    "Oi! Eu sou o GONÇALO! Eu moro aqui!",
+    "...eu estava onde, mesmo? No vento, acho. Lá no Rochedo.",
+    "Obrigado por lembrarem de mim. É pra isso que serve uma vila."
+   ]
+  ],
+  "vila_branco": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "",
+      "Uma casa verde com cortinas de bolinha. Sempre esteve aqui."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Tem uma casa aqui. Tinha.",
+      "Você não consegue lembrar a cor dela. Nem de quem morava nela.",
+      "Quando você tenta, a memória escorrega, como sabão."
+     ]
+    ]
+   ]
+  ],
+  "vila_fonte": [
+   [
+    "say",
+    "",
+    "Uma fonte de pedra. No fundo, alguns botões brilham."
+   ],
+   [
+    "if",
+    "flag:fonte_presente",
+    [
+     [
+      "say",
+      "",
+      "A água faz um barulho que parece \"obrigada\"."
+     ]
+    ],
+    [
+     [
+      "choice",
+      [
+       "Jogar um botão (1 botão)",
+       [
+        [
+         "if",
+         "money>=1",
+         [
+          [
+           "money",
+           -1,
+           "silent"
+          ],
+          [
+           "sfx",
+           "coin"
+          ],
+          [
+           "var",
+           "fonte",
+           "+",
+           1
+          ],
+          [
+           "if",
+           "var:fonte>=5",
+           [
+            [
+             "say",
+             "",
+             "A fonte sussurra: \"obrigada\".",
+             "...Uma meia boia até a borda."
+            ],
+            [
+             "flag",
+             "fonte_presente"
+            ],
+            [
+             "give",
+             "meia_sorte"
+            ]
+           ],
+           [
+            [
+             "say",
+             "",
+             "Plim. Você fez um pedido."
+            ]
+           ]
+          ]
+         ],
+         [
+          [
+           "say",
+           "",
+           "Você não tem botões."
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "vila_noite_cena": [
+   [
+    "music",
+    "vila_noite"
+   ],
+   [
+    "say",
+    "prefeito",
+    "CRIANÇAS! Graças à Chama-Mãe!"
+   ],
+   [
+    "camera",
+    "prefeito_noite"
+   ],
+   [
+    "say",
+    "prefeito",
+    "Desde que vocês trouxeram a segunda brasa... escureceu. ESCURECEU! Algodoal nunca teve noite!"
+   ],
+   [
+    "say",
+    "prefeito",
+    "E tem mais. A casa velha da beira do lago... acendeu a luz.",
+    "Ninguém mora lá. Ninguém nunca morou.",
+    "...Ela sempre esteve ali, não esteve?"
+   ],
+   [
+    "if",
+    "party:nina",
+    [
+     [
+      "say",
+      "nina:triste",
+      "...Eu não lembro dela. Eu passo por aqui todo dia."
+     ]
+    ]
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:irritado",
+      "A terceira brasa. Aposto que tá lá dentro. Num lugar que ninguém lembra."
+     ]
+    ]
+   ],
+   [
+    "say",
+    "prefeito",
+    "Tenham cuidado. E... se a casa pedir alguma coisa pra vocês...",
+    "...não deem."
+   ],
+   [
+    "camera",
+    "player"
+   ],
+   [
+    "flag",
+    "cena_noite"
+   ],
+   [
+    "hide",
+    "prefeito_noite"
+   ]
+  ],
+  "vila_prefeito_noite": [
+   [
+    "say",
+    "prefeito",
+    "A casa da beira do lago, crianças. Tenham cuidado."
+   ]
+  ],
+  "vila_ponte_cena": [
+   [
+    "music",
+    "vila"
+   ],
+   [
+    "say",
+    "",
+    "A manhã voltou para Algodoal. O ar tem cheiro de chuva que já passou."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Crianças! Vocês voltaram! E com a TERCEIRA brasa!"
+   ],
+   [
+    "say",
+    "prefeito",
+    "Mandei consertar a ponte do Rochedo agora mesmo. Os carpinteiros trabalharam a noite toda. Bom... a noite que teve."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Levem as brasas ao FAROL. Coloquem nos três pedestais da porta.",
+    "E tragam o Vô de volta. Ou... pelo menos a luz dele."
+   ],
+   [
+    "if",
+    "party:toco",
+    [
+     [
+      "say",
+      "toco:triste",
+      "...Lume. Você tá bem? Desde aquela casa você ficou quieta. Mais quieta."
+     ]
+    ]
+   ],
+   [
+    "choice",
+    [
+     "Estou bem.",
+     [
+      [
+       "if",
+       "party:toco",
+       [
+        [
+         "say",
+         "toco",
+         "Tá bom. Mas se não estiver, tudo bem também."
+        ]
+       ]
+      ]
+     ]
+    ],
+    [
+     "Não sei.",
+     [
+      [
+       "if",
+       "party:toco",
+       [
+        [
+         "say",
+         "toco:feliz",
+         "Não saber também é uma resposta. A gente vai junto."
+        ]
+       ]
+      ]
+     ]
+    ]
+   ],
+   [
+    "flag",
+    "cena_ponte"
+   ],
+   [
+    "autosave"
+   ]
+  ],
+  "prefeito_falar": [
+   [
+    "if",
+    "!flag:falou_prefeito",
+    [
+     [
+      "call",
+      "prefeito_intro"
+     ]
+    ],
+    [
+     [
+      "if",
+      "!flag:prefeito_fase1",
+      [
+       [
+        "if",
+        [
+         "party:toco",
+         "party:nina"
+        ],
+        [
+         [
+          "call",
+          "prefeito_briefing"
+         ]
+        ],
+        [
+         [
+          "say",
+          "prefeito",
+          "Ainda falta gente! O TOCO foi à PADARIA e a NINA deve estar na BIBLIOTECA.",
+          "Juntos! Vocês resolvem as coisas JUNTOS!"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "call",
+        "prefeito_conversa"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "prefeito_intro": [
+   [
+    "say",
+    "prefeito",
+    "LUME! BRISA! Graças à Chama-Mãe, vocês vieram!"
+   ],
+   [
+    "say",
+    "prefeito",
+    "O FAROL... o FAROL APAGOU! Ontem, às 11 e 47 da noite. Eu estava olhando. Ele piscou três vezes... e ploft."
+   ],
+   [
+    "say",
+    "prefeito",
+    "E o VÔ FAÍSCA, o guardião... sumiu. Nenhum bilhete. Nenhuma pegada. Só a cadeira dele, ainda balançando."
+   ],
+   [
+    "emote",
+    "prefeito",
+    "sweat"
+   ],
+   [
+    "say",
+    "",
+    "O Prefeito derrete um pouquinho."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Sem a luz do farol, o {blue}ESQUECIMENTO{/} avança. Já começou!",
+    "A casa do... do... do senhor que morava na rua de baixo virou um borrão branco.",
+    "E ninguém lembra quem era! Nem eu! E eu sou o PREFEITO!"
+   ],
+   [
+    "say",
+    "brisa:irritado",
+    "Então a gente acende o farol de novo. Simples."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Simples? SIMPLES?!",
+    "...Bom. Talvez seja. Vocês sempre resolveram as coisas juntos. Os quatro.",
+    "Cadê o TOCO e a NINA?"
+   ],
+   [
+    "say",
+    "brisa",
+    "O Toco disse que ia \"só provar um pão de queijo\" na PADARIA. Ontem."
+   ],
+   [
+    "say",
+    "brisa:triste",
+    "E a Nina... sei lá. Ela some quando fica com medo. Deve tá na BIBLIOTECA."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Então vão buscá-los! Ninguém sai da vila com o Esquecimento lá fora. Reúnam o grupo e voltem aqui."
+   ],
+   [
+    "flag",
+    "falou_prefeito"
+   ],
+   [
+    "quest",
+    "q_amigos",
+    "start"
+   ]
+  ],
+  "prefeito_briefing": [
+   [
+    "say",
+    "prefeito",
+    "Os quatro juntos! Ah, que alívio. Quase derreti de alegria."
+   ],
+   [
+    "say",
+    "toco",
+    "Bom dia, Prefeito. O senhor tá... pingando."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Escutem bem. Quando o farol apagou, eu vi a CHAMA-MÃE se partir em três BRASAS. Elas voaram pra longe!"
+   ],
+   [
+    "say",
+    "prefeito",
+    "Uma caiu a OESTE, depois dos CAMPOS PASTEL, na FLORESTA SUSSURRANTE."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Outra mergulhou no laguinho dos Campos... e afundou até a GRUTA DAS ÁGUAS PARADAS."
+   ],
+   [
+    "say",
+    "prefeito",
+    "A terceira... ninguém viu onde caiu. Ninguém.",
+    "É como se tivesse caído dentro de um lugar que a gente esqueceu."
+   ],
+   [
+    "say",
+    "nina:triste",
+    "...Um lugar esquecido."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Levem as brasas ao FAROL, no ROCHEDO UIVANTE, a leste. Quando tiverem as três, eu mando consertar a ponte."
+   ],
+   [
+    "say",
+    "prefeito",
+    "Tomem: o MAPA de Algodoal. Desenhei eu mesmo. O norte é pra cima. Na maioria das vezes."
+   ],
+   [
+    "give",
+    "mapa"
+   ],
+   [
+    "say",
+    "",
+    "Pressione {yellow}M{/} para ver o mapa. {yellow}I{/} abre os itens e {yellow}C{/} mostra o grupo."
+   ],
+   [
+    "say",
+    "prefeito",
+    "O guarda vai liberar a saída oeste. Vão!",
+    "E... crianças? Voltem. Todos vocês."
+   ],
+   [
+    "flag",
+    "prefeito_fase1"
+   ],
+   [
+    "phase",
+    1
+   ],
+   [
+    "quest",
+    "q_farol",
+    "start"
+   ],
+   [
+    "autosave"
+   ]
+  ],
+  "prefeito_conversa": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "prefeito",
+      "O FAROL VOLTOU! Eu nunca mais vou derreter de nervoso.",
+      "Só de alegria. Olha, já estou derretendo."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase==4",
+      [
+       [
+        "say",
+        "prefeito",
+        "A ponte está pronta! Vão ao FAROL, depressa!"
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase==3",
+        [
+         [
+          "say",
+          "prefeito",
+          "A casa da beira do lago, crianças. A terceira brasa só pode estar lá."
+         ]
+        ],
+        [
+         [
+          "if",
+          "item:brasa_floresta",
+          [
+           [
+            "say",
+            "prefeito",
+            "A Brasa da Floresta! Verde como esperança!",
+            "Agora a da GRUTA, no laguinho dos Campos."
+           ]
+          ],
+          [
+           [
+            "if",
+            "item:brasa_aguas",
+            [
+             [
+              "say",
+              "prefeito",
+              "A Brasa das Águas! Ainda quentinha, mesmo molhada!",
+              "Agora a da FLORESTA, a oeste."
+             ]
+            ],
+            [
+             [
+              "say",
+              "prefeito",
+              "A FLORESTA fica a oeste dos Campos. A GRUTA, num buraco ao lado do laguinho.",
+              "Levem lanches! E cuidado: nos Campos, até os doces mordem."
+             ]
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "prefeitura_secretaria": [
+   [
+    "if",
+    "phase>=5",
+    [
+     [
+      "say",
+      "secretaria",
+      "O Prefeito parou de derreter. Vou poder aposentar o balde."
+     ]
+    ],
+    [
+     [
+      "if",
+      "phase>=3",
+      [
+       [
+        "say",
+        "secretaria",
+        "Abri uma pasta nova: \"ESQUECIDOS\". Ela está ficando grossa.",
+        "Hoje esqueceram o nome de uma rua inteira."
+       ]
+      ],
+      [
+       [
+        "say",
+        "secretaria",
+        "Eu sou a DONA PARAFINA, secretária do Prefeito.",
+        "Ele derreteu dois centímetros desde ontem. Por favor, deem boas notícias pra ele."
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "prefeitura_relogio": [
+   [
+    "say",
+    "",
+    "Um relógio de pé. Parou às 11:47 da noite.",
+    "O ponteiro tenta andar... e volta."
+   ]
+  ],
+  "prefeitura_retrato": [
+   [
+    "say",
+    "",
+    "Um retrato do VÔ FAÍSCA, o guardião do farol, ao lado do Prefeito.",
+    "O Vô está rindo de alguma coisa fora do quadro."
+   ],
+   [
+    "if",
+    "phase>=3",
+    [
+     [
+      "think",
+      "Era de mim. Ele estava rindo de mim. Eu tinha caído do barco de propósito."
+     ]
+    ]
+   ]
+  ],
+  "padaria_toco": [
+   [
+    "say",
+    "",
+    "Um saco de farinha enorme... {p}roncando."
+   ],
+   [
+    "choice",
+    [
+     "Cutucar o saco",
+     [
+      [
+       "shake",
+       2,
+       250
+      ],
+      [
+       "sfx",
+       "pop"
+      ],
+      [
+       "say",
+       "toco",
+       "Hmmm... mais cinco minutinhos, Vô..."
+      ],
+      [
+       "say",
+       "brisa:irritado",
+       "TOCO! Acorda, seu pão de queijo gigante!"
+      ],
+      [
+       "sfx",
+       "surprise"
+      ],
+      [
+       "say",
+       "toco:feliz",
+       "Oi, gente. Eu tava só... testando a maciez da farinha. Pra Dona Broa."
+      ],
+      [
+       "say",
+       "dona_broa",
+       "Ele chegou ontem e dormiu antes do primeiro pão sair do forno. Coitadinho."
+      ],
+      [
+       "say",
+       "toco",
+       "O farol, né? Eu vi apagar.",
+       "Fiquei com tanto sono depois... Parecia que alguém tinha soprado a luz e o sono veio junto."
+      ],
+      [
+       "say",
+       "toco:feliz",
+       "Tô dentro. Alguém tem que segurar o guarda-chuva pra vocês."
+      ],
+      [
+       "join",
+       "toco"
+      ],
+      [
+       "say",
+       "toco",
+       "Dica: meu ABRIGO protege um amigo, e o LANCHINHO cura. Eu sou bom em aguentar pancada. É o meu talento."
+      ]
+     ]
+    ],
+    [
+     "Deixar dormir",
+     [
+      [
+       "say",
+       "",
+       "O saco ronca mais alto, satisfeito."
+      ]
+     ]
+    ]
+   ]
+  ],
+  "padaria_broa": [
+   [
+    "if",
+    "!flag:broa_conheceu",
+    [
+     [
+      "say",
+      "dona_broa",
+      "Bem-vindos à minha padaria! Eu sou a DONA BROA.",
+      "Sou uma capivara, mas faço pão como gente grande."
+     ],
+     [
+      "flag",
+      "broa_conheceu"
+     ]
+    ]
+   ],
+   [
+    "say",
+    "dona_broa",
+    "O que vai ser, meu bem?"
+   ],
+   [
+    "choice",
+    [
+     "Comprar",
+     [
+      [
+       "shop",
+       "padaria"
+      ]
+     ]
+    ],
+    [
+     "Conversar",
+     [
+      [
+       "call",
+       "broa_conversa"
+      ]
+     ]
+    ],
+    [
+     "Tchau",
+     [
+      [
+       "say",
+       "dona_broa",
+       "Vai com Deus e com fubá!"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "broa_conversa": [
+   [
+    "if",
+    "quest:q_receita=active",
+    [
+     [
+      "if",
+      "item:pagina_receita>=3",
+      [
+       [
+        "say",
+        "dona_broa",
+        "AS TRÊS PÁGINAS! Meu bem, você achou!"
+       ],
+       [
+        "take",
+        "pagina_receita",
+        3
+       ],
+       [
+        "flag",
+        "receita_completa"
+       ],
+       [
+        "say",
+        "dona_broa",
+        "O BOLO DE FUBÁ LUNAR... a receita da minha avó. Vou assar agora mesmo!",
+        "Tomem os primeiros. E agora ele fica à venda, pra sempre."
+       ]
+      ],
+      [
+       [
+        "say",
+        "dona_broa",
+        "Já achou alguma página da receita? Eram três. O vento levou pra longe: Campos, Floresta... uma eu vi voar pro laguinho."
+       ]
+      ]
+     ]
+    ],
+    [
+     [
+      "if",
+      "flag:receita_completa",
+      [
+       [
+        "say",
+        "dona_broa",
+        "O Bolo Lunar está fazendo sucesso! Até o Seu Parafuso comeu. Ele não tem boca. Não sei como."
+       ]
+      ],
+      [
+       [
+        "if",
+        "phase>=1",
+        [
+         [
+          "say",
+          "dona_broa",
+          "Sabe o BOLO DE FUBÁ LUNAR? Receita da minha avó.",
+          "Quando o farol apagou, o vento entrou pela janela e levou as TRÊS PÁGINAS da receita.",
+          "Se vocês acharem pelo caminho... eu faço valer a pena."
+         ],
+         [
+          "quest",
+          "q_receita",
+          "start"
+         ]
+        ],
+        [
+         [
+          "say",
+          "dona_broa",
+          "O Toco é o meu melhor cliente. Ele prova tudo. E dorme em tudo."
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ],
+   [
+    "if",
+    "phase==3",
+    [
+     [
+      "say",
+      "dona_broa",
+      "Essa noite eu sonhei com um hospital. Tinha cheiro de álcool e de flor murcha.",
+      "Capivara sonha muito, sabe."
+     ]
+    ]
+   ]
+  ],
+  "biblio_traca": [
+   [
+    "if",
+    "!party:nina",
+    [
+     [
+      "say",
+      "dona_traca",
+      "Shhh.",
+      "A NINA? Ela está aqui. Em algum lugar.",
+      "Quando a Nina fica com medo, ela entra dentro de um livro e se esconde numa página."
+     ],
+     [
+      "say",
+      "dona_traca",
+      "É só achar o livro certo. Procure nas estantes do meio. Shhh."
+     ]
+    ],
+    [
+     [
+      "if",
+      "flag:biblio_secreta",
+      [
+       [
+        "say",
+        "dona_traca",
+        "Vocês abriram a sala do Vô Faísca. Shhh. Ele adoraria saber.",
+        "Eu... comi só um pedacinho da capa do diário dele. Não contem."
+       ]
+      ],
+      [
+       [
+        "say",
+        "dona_traca",
+        "Shhh. Dizem que o Vô Faísca escondeu um livro aqui. Um livro que ninguém lê.",
+        "A pista está no poema do atril. Shhh."
+       ],
+       [
+        "quest",
+        "q_biblioteca",
+        "start"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "biblio_estante": [
+   [
+    "random",
+    [
+     [
+      "say",
+      "",
+      "\"Como Domar Sua Nuvem\". Edição revisada."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "\"Receitas com Fubá, Volume 9\". Volumes 1 a 8 desaparecidos."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "\"O Peixe Que Queria Ser Farol\". Tem uma dedicatória: \"Para L., que pesca peixe e devolve.\""
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "\"Dicionário de Sentimentos\". A página de SAUDADE está gasta de tanto ser aberta."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "\"Manual de Sobrevivência para Velas\". Capítulo 1: evite festas de aniversário."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um livro sem título. Você abre: todas as páginas estão em branco. Na última, escrito a lápis: \"acorda\"."
+     ]
+    ]
+   ]
+  ],
+  "biblio_nina": [
+   [
+    "say",
+    "",
+    "Um livro na estante está tremendo.",
+    "O título: \"COMO SER CORAJOSA (rascunho)\"."
+   ],
+   [
+    "choice",
+    [
+     "Abrir o livro",
+     [
+      [
+       "sfx",
+       "page"
+      ],
+      [
+       "flash",
+       "#ffffff",
+       0.6
+      ],
+      [
+       "say",
+       "",
+       "{wave}Fuuuup!{/} Uma menina de tranças sai das páginas, de cabeça para baixo."
+      ],
+      [
+       "say",
+       "nina:medo",
+       "Ai! Ai. Desculpa. Eu...",
+       "...oi, Lume. Oi, Brisa. Oi, Toco."
+      ],
+      [
+       "say",
+       "nina:triste",
+       "As palavras dos livros estão sumindo. Eu vi uma frase inteira desaparecer.",
+       "Fiquei com medo de sumir também. Então me escondi onde as palavras ainda existem."
+      ],
+      [
+       "choice",
+       [
+        "Estamos com você.",
+        [
+         [
+          "say",
+          "nina:feliz",
+          "...Tá. Com vocês eu consigo."
+         ],
+         [
+          "flag",
+          "nina_gentil"
+         ]
+        ]
+       ],
+       [
+        "Vem logo.",
+        [
+         [
+          "say",
+          "nina",
+          "T-tá bom. Já vou. Esperem."
+         ]
+        ]
+       ]
+      ],
+      [
+       "join",
+       "nina"
+      ],
+      [
+       "say",
+       "nina",
+       "Eu sei curar com versos. E sei mudar o que as pessoas sentem com rimas...",
+       "...isso soou assustador. Mas é útil. Prometo."
+      ]
+     ]
+    ],
+    [
+     "Deixar quieto",
+     [
+      [
+       "say",
+       "",
+       "O livro suspira."
+      ]
+     ]
+    ]
+   ]
+  ],
+  "biblio_atril": [
+   [
+    "say",
+    "",
+    "Um poema escrito à mão, preso no atril:"
+   ],
+   [
+    "say",
+    "?:POEMA",
+    "\"Primeiro o céu, depois o chão;",
+    "a fruta madura cai da mão;",
+    "por último a chama, o coração.\""
+   ],
+   [
+    "say",
+    "",
+    "Embaixo: \"— F.\""
+   ]
+  ],
+  "biblio_livro_azul": [
+   [
+    "if",
+    "flag:biblio_secreta",
+    [
+     [
+      "say",
+      "",
+      "Um livro AZUL. Ele já fez a parte dele."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um livro AZUL, mais grosso que os outros."
+     ],
+     [
+      "choice",
+      [
+       "Puxar o livro",
+       [
+        [
+         "if",
+         "var:biblio_seq==0",
+         [
+          [
+           "var",
+           "biblio_seq",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "click"
+          ],
+          [
+           "say",
+           "",
+           "Clique."
+          ],
+          [
+           "if",
+           "var:biblio_seq>=4",
+           [
+            [
+             "call",
+             "biblio_resolvido"
+            ]
+           ]
+          ]
+         ],
+         [
+          [
+           "var",
+           "biblio_seq",
+           "=",
+           0
+          ],
+          [
+           "var",
+           "biblio_erros",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "buzzer"
+          ],
+          [
+           "say",
+           "",
+           "Todos os livros voltam para o lugar com um \"shhh\" muito ofendido."
+          ],
+          [
+           "if",
+           [
+            "var:biblio_erros>=2",
+            "party:nina"
+           ],
+           [
+            [
+             "say",
+             "nina",
+             "O poema do atril... céu, chão, fruta, chama.",
+             "Cada coisa tem uma cor, né? O céu é azul..."
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "biblio_livro_verde": [
+   [
+    "if",
+    "flag:biblio_secreta",
+    [
+     [
+      "say",
+      "",
+      "Um livro VERDE. Ele já fez a parte dele."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um livro VERDE, mais grosso que os outros."
+     ],
+     [
+      "choice",
+      [
+       "Puxar o livro",
+       [
+        [
+         "if",
+         "var:biblio_seq==1",
+         [
+          [
+           "var",
+           "biblio_seq",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "click"
+          ],
+          [
+           "say",
+           "",
+           "Clique."
+          ],
+          [
+           "if",
+           "var:biblio_seq>=4",
+           [
+            [
+             "call",
+             "biblio_resolvido"
+            ]
+           ]
+          ]
+         ],
+         [
+          [
+           "var",
+           "biblio_seq",
+           "=",
+           0
+          ],
+          [
+           "var",
+           "biblio_erros",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "buzzer"
+          ],
+          [
+           "say",
+           "",
+           "Todos os livros voltam para o lugar com um \"shhh\" muito ofendido."
+          ],
+          [
+           "if",
+           [
+            "var:biblio_erros>=2",
+            "party:nina"
+           ],
+           [
+            [
+             "say",
+             "nina",
+             "O poema do atril... céu, chão, fruta, chama.",
+             "Cada coisa tem uma cor, né? O céu é azul..."
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "biblio_livro_vermelho": [
+   [
+    "if",
+    "flag:biblio_secreta",
+    [
+     [
+      "say",
+      "",
+      "Um livro VERMELHO. Ele já fez a parte dele."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um livro VERMELHO, mais grosso que os outros."
+     ],
+     [
+      "choice",
+      [
+       "Puxar o livro",
+       [
+        [
+         "if",
+         "var:biblio_seq==2",
+         [
+          [
+           "var",
+           "biblio_seq",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "click"
+          ],
+          [
+           "say",
+           "",
+           "Clique."
+          ],
+          [
+           "if",
+           "var:biblio_seq>=4",
+           [
+            [
+             "call",
+             "biblio_resolvido"
+            ]
+           ]
+          ]
+         ],
+         [
+          [
+           "var",
+           "biblio_seq",
+           "=",
+           0
+          ],
+          [
+           "var",
+           "biblio_erros",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "buzzer"
+          ],
+          [
+           "say",
+           "",
+           "Todos os livros voltam para o lugar com um \"shhh\" muito ofendido."
+          ],
+          [
+           "if",
+           [
+            "var:biblio_erros>=2",
+            "party:nina"
+           ],
+           [
+            [
+             "say",
+             "nina",
+             "O poema do atril... céu, chão, fruta, chama.",
+             "Cada coisa tem uma cor, né? O céu é azul..."
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "biblio_livro_amarelo": [
+   [
+    "if",
+    "flag:biblio_secreta",
+    [
+     [
+      "say",
+      "",
+      "Um livro AMARELO. Ele já fez a parte dele."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um livro AMARELO, mais grosso que os outros."
+     ],
+     [
+      "choice",
+      [
+       "Puxar o livro",
+       [
+        [
+         "if",
+         "var:biblio_seq==3",
+         [
+          [
+           "var",
+           "biblio_seq",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "click"
+          ],
+          [
+           "say",
+           "",
+           "Clique."
+          ],
+          [
+           "if",
+           "var:biblio_seq>=4",
+           [
+            [
+             "call",
+             "biblio_resolvido"
+            ]
+           ]
+          ]
+         ],
+         [
+          [
+           "var",
+           "biblio_seq",
+           "=",
+           0
+          ],
+          [
+           "var",
+           "biblio_erros",
+           "+",
+           1
+          ],
+          [
+           "sfx",
+           "buzzer"
+          ],
+          [
+           "say",
+           "",
+           "Todos os livros voltam para o lugar com um \"shhh\" muito ofendido."
+          ],
+          [
+           "if",
+           [
+            "var:biblio_erros>=2",
+            "party:nina"
+           ],
+           [
+            [
+             "say",
+             "nina",
+             "O poema do atril... céu, chão, fruta, chama.",
+             "Cada coisa tem uma cor, né? O céu é azul..."
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "biblio_resolvido": [
+   [
+    "sfx",
+    "solve"
+   ],
+   [
+    "shake",
+    3,
+    500
+   ],
+   [
+    "say",
+    "",
+    "Um rangido! A estante do canto desliza para o lado, revelando uma escada que desce."
+   ],
+   [
+    "flag",
+    "biblio_secreta"
+   ],
+   [
+    "if",
+    "quest:q_biblioteca=inactive",
+    [
+     [
+      "quest",
+      "q_biblioteca",
+      "start"
+     ]
+    ]
+   ]
+  ],
+  "biblio_estante_secreta": [
+   [
+    "say",
+    "",
+    "Uma estante pesada. Atrás dela, você sente um ventinho frio."
+   ]
+  ],
+  "secreta_diario": [
+   [
+    "if",
+    "!item:diario_vo",
+    [
+     [
+      "say",
+      "",
+      "Na mesa, um diário de capa de couro. Na capa: \"F. — DIÁRIO DE BORDO\"."
+     ],
+     [
+      "give",
+      "diario_vo"
+     ],
+     [
+      "music",
+      "triste"
+     ],
+     [
+      "card",
+      "\"Dia 1 de férias. A Lume pescou um peixe do tamanho do dedo dela e quis devolver pro lago porque ele 'tinha cara de quem tinha família'.\"",
+      "\"Dia 4. Ensinei o nó de marinheiro. Ela aprendeu em cinco minutos. Eu levei cinquenta anos.\"",
+      "\"Dia 9. Previsão de tempo bom. Amanhã levo a pequena até o meio do lago, onde a água fica parada e dá pra ver o céu duas vezes.\"",
+      "(As outras páginas foram arrancadas.)"
+     ],
+     [
+      "if",
+      "party:nina",
+      [
+       [
+        "say",
+        "nina:triste",
+        "\"Dá pra ver o céu duas vezes\"...",
+        "É bonito. Por que deu medo de ler?"
+       ]
+      ]
+     ],
+     [
+      "think",
+      "Eu lembro desse dia. Lembro do começo."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "A mesa onde o Vô escrevia. Tem um círculo de café seco, do tamanho de uma caneca grande."
+     ]
+    ]
+   ]
+  ],
+  "oficina_parafuso": [
+   [
+    "if",
+    "!flag:parafuso_conheceu",
+    [
+     [
+      "say",
+      "seu_parafuso",
+      "CLIQUE. CLAQUE. Cliente.",
+      "Eu sou o SEU PARAFUSO. Conserto tudo. Exceto sentimentos. Esses não têm peça de reposição."
+     ],
+     [
+      "flag",
+      "parafuso_conheceu"
+     ]
+    ]
+   ],
+   [
+    "choice",
+    [
+     "Comprar",
+     [
+      [
+       "shop",
+       "oficina"
+      ]
+     ]
+    ],
+    [
+     "Conversar",
+     [
+      [
+       "call",
+       "parafuso_conversa"
+      ]
+     ]
+    ],
+    [
+     "Tchau",
+     [
+      [
+       "say",
+       "seu_parafuso",
+       "CLIQUE."
+      ]
+     ]
+    ]
+   ]
+  ],
+  "parafuso_conversa": [
+   [
+    "if",
+    "flag:engrenagens_entregues",
+    [
+     [
+      "say",
+      "seu_parafuso",
+      "Com as engrenagens no lugar, minha corda dura o dobro. CLIQUE. Obrigado."
+     ]
+    ],
+    [
+     [
+      "if",
+      "quest:q_engrenagens=active",
+      [
+       [
+        "if",
+        "item:engrenagem>=3",
+        [
+         [
+          "say",
+          "seu_parafuso",
+          "AS TRÊS. CLIQUE-CLAQUE-CLIQUE!"
+         ],
+         [
+          "take",
+          "engrenagem",
+          3
+         ],
+         [
+          "say",
+          "seu_parafuso",
+          "Agora consigo trabalhar direito. Me dá essa lamparina aqui, Lume."
+         ],
+         [
+          "sfx",
+          "click"
+         ],
+         [
+          "wait",
+          300
+         ],
+         [
+          "sfx",
+          "click"
+         ],
+         [
+          "wait",
+          300
+         ],
+         [
+          "sfx",
+          "solve"
+         ],
+         [
+          "say",
+          "seu_parafuso",
+          "Pronto: LAMPARINA DE COBRE. Mesma chama, corpo novo.",
+          "E um RELÓGIO DE CORDA pra quem precisar de um pouquinho mais de tempo."
+         ],
+         [
+          "flag",
+          "engrenagens_entregues"
+         ],
+         [
+          "say",
+          "",
+          "(A Lamparina de Cobre foi para o inventário. Equipe pelo menu: EQUIPAR.)"
+         ]
+        ],
+        [
+         [
+          "say",
+          "seu_parafuso",
+          "Já achou as engrenagens? Uma pulou pra Floresta, uma rolou pra Gruta...",
+          "e a terceira... ouvi dizer que foi parar num lixo, num bairro que não existe. CLAQUE."
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "say",
+        "seu_parafuso",
+        "Quando o farol apagou, levei um susto. Pularam TRÊS ENGRENAGENS de mim. De mim!",
+        "Sem elas, não conserto nem um guarda-chuva. Se acharem... CLIQUE... eu faço uma coisa boa pra vocês."
+       ],
+       [
+        "quest",
+        "q_engrenagens",
+        "start"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "brisa_pipoca": [
+   [
+    "if",
+    "flag:pipa_devolvida",
+    [
+     [
+      "say",
+      "pipoca",
+      "Minha pipa voa mais alto que a da Brisa agora!",
+      "Brisa! Brisa! Olha! (ela não tá olhando.)"
+     ]
+    ],
+    [
+     [
+      "if",
+      "flag:pipa_vendida",
+      [
+       [
+        "say",
+        "pipoca",
+        "...O Sapo vendeu minha pipa pra outro sapo?",
+        "Tudo bem. Pipa a gente faz outra. Né?"
+       ],
+       [
+        "if",
+        "party:brisa",
+        [
+         [
+          "say",
+          "brisa:triste",
+          "...Né."
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "if",
+        "item:pipa_pipoca",
+        [
+         [
+          "say",
+          "pipoca",
+          "MINHA PIPA!!!"
+         ],
+         [
+          "take",
+          "pipa_pipoca"
+         ],
+         [
+          "flag",
+          "pipa_devolvida"
+         ],
+         [
+          "say",
+          "pipoca",
+          "Você é a melhor amiga da minha irmã do mundo inteiro!"
+         ],
+         [
+          "if",
+          "party:brisa",
+          [
+           [
+            "say",
+            "brisa:feliz",
+            "Ei! Eu tô aqui, sabia?"
+           ]
+          ]
+         ]
+        ],
+        [
+         [
+          "if",
+          "quest:q_pipa=active",
+          [
+           [
+            "say",
+            "pipoca",
+            "Ela ficou presa na árvore de pirulito mais alta dos Campos!",
+            "Alguém GRANDE tem que sacudir a árvore!"
+           ]
+          ],
+          [
+           [
+            "say",
+            "pipoca",
+            "BRISA! Você voltou!"
+           ],
+           [
+            "if",
+            "party:brisa",
+            [
+             [
+              "say",
+              "brisa",
+              "Pipoca, cadê a mãe?"
+             ],
+             [
+              "say",
+              "pipoca",
+              "No trabalho. Deixou bilhete na geladeira.",
+              "Brisa... minha pipa ficou presa numa árvore de pirulito, lá nos Campos. Bem no alto."
+             ],
+             [
+              "say",
+              "brisa:triste",
+              "Aquela que eu te dei? Ah, Pipoca..."
+             ]
+            ]
+           ],
+           [
+            "say",
+            "pipoca",
+            "Vocês trazem de volta? Por favooor?"
+           ],
+           [
+            "quest",
+            "q_pipa",
+            "start"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "brisa_geladeira": [
+   [
+    "say",
+    "",
+    "Um bilhete preso na geladeira com um ímã de abacaxi:"
+   ],
+   [
+    "say",
+    "?:BILHETE",
+    "\"Volto tarde. Cuida do Pipoca. Tem arroz. Te amo. — Mãe\""
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa",
+      "Ela trabalha muito. Mas sempre deixa bilhete.",
+      "Sempre."
+     ]
+    ]
+   ]
+  ],
+  "brisa_foto": [
+   [
+    "say",
+    "",
+    "Uma foto de família na parede. A Brisa, o Pipoca bebê, a mãe deles.",
+    "Um pedaço da foto foi cortado com tesoura."
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:irritado",
+      "Não pergunta."
+     ],
+     [
+      "say",
+      "brisa:triste",
+      "...Ele foi embora sem se despedir. Por isso eu odeio despedida.",
+      "Pronto. Agora você sabe."
+     ]
+    ]
+   ]
+  ],
+  "pousada_la": [
+   [
+    "if",
+    "!flag:la_conheceu",
+    [
+     [
+      "say",
+      "dona_la",
+      "Bem-vindos à POUSADA CAMA-DE-GATO... *bocejo*...",
+      "Eu sou a DONA LÃ. As camas são de graça. O sono também."
+     ],
+     [
+      "flag",
+      "la_conheceu"
+     ]
+    ]
+   ],
+   [
+    "if",
+    [
+     "quest:q_gato=active",
+     "item:novelo"
+    ],
+    [
+     [
+      "say",
+      "dona_la",
+      "NOVELO! Meu bebê laranja!"
+     ],
+     [
+      "take",
+      "novelo"
+     ],
+     [
+      "flag",
+      "novelo_devolvido"
+     ],
+     [
+      "say",
+      "dona_la",
+      "Onde você estava, seu pirata de bigode?",
+      "Obrigada, crianças. Tomem o sininho dele. Ele odeia o sininho. Vocês vão gostar mais."
+     ]
+    ],
+    [
+     [
+      "if",
+      "quest:q_gato=inactive",
+      [
+       [
+        "if",
+        "phase>=1",
+        [
+         [
+          "say",
+          "dona_la",
+          "Vocês vão sair da vila? Então... se virem um gato laranja chamado NOVELO...",
+          "Ele fugiu quando o farol apagou. Acho que foi atrás dos passarinhos da FLORESTA."
+         ],
+         [
+          "quest",
+          "q_gato",
+          "start"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "say",
+      "dona_la",
+      "Quer descansar? Qualquer cama livre é sua."
+     ]
+    ]
+   ]
+  ],
+  "pousada_cama": [
+   [
+    "say",
+    "",
+    "Uma cama macia de lã de verdade."
+   ],
+   [
+    "choice",
+    [
+     "Descansar",
+     [
+      [
+       "sleep",
+       1000
+      ],
+      [
+       "heal",
+       "silent"
+      ],
+      [
+       "if",
+       [
+        "phase>=2",
+        "!flag:pesadelo"
+       ],
+       [
+        [
+         "call",
+         "pousada_pesadelo"
+        ]
+       ],
+       [
+        [
+         "say",
+         "",
+         "Você dorme um soninho sem sonhos. Todos recuperaram VIDA e BRILHO."
+        ]
+       ]
+      ]
+     ]
+    ],
+    [
+     "Agora não",
+     []
+    ]
+   ]
+  ],
+  "pousada_pesadelo": [
+   [
+    "flag",
+    "pesadelo"
+   ],
+   [
+    "music",
+    null
+   ],
+   [
+    "ambience",
+    "hospital"
+   ],
+   [
+    "card",
+    "(Você sonha que está dormindo.)",
+    "(Num quarto branco, alguém segura sua mão.)",
+    "(Uma voz conta os dias. \"Vinte e um. Vinte e dois.\")",
+    "(Você tenta responder, mas a boca está cheia de água.)"
+   ],
+   [
+    "ambience",
+    null
+   ],
+   [
+    "music",
+    "quarto"
+   ],
+   [
+    "vision",
+    "teto",
+    120
+   ],
+   [
+    "say",
+    "",
+    "Você acorda. Todos recuperaram VIDA e BRILHO.",
+    "...mas você não se sente descansada."
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa",
+      "Lume? Você falou dormindo.",
+      "Disse \"vinte e três\"."
+     ]
+    ]
+   ]
+  ],
+  "pousada_viajante": [
+   [
+    "if",
+    "phase>=3",
+    [
+     [
+      "say",
+      "viajante",
+      "Viajei por Algodoal inteira. Ela está ficando menor, sabia?",
+      "Bordas brancas. Como uma folha de papel que alguém está apagando."
+     ]
+    ],
+    [
+     [
+      "say",
+      "viajante",
+      "Zzz... hã? Eu sou um viajante. Viajo dormindo. É mais barato.",
+      "Vi o farol apagar lá do Rochedo. Antes dele apagar, a luz ficou... molhada."
+     ]
+    ]
+   ]
+  ],
+  "pousada_novelo": [
+   [
+    "say",
+    "novelo",
+    "Miau."
+   ],
+   [
+    "say",
+    "",
+    "Ele te olha como quem diz: \"eu sei o que você fez. obrigado.\""
+   ]
+  ],
+  "campos_arvore_pipa": [
+   [
+    "say",
+    "",
+    "Uma árvore de pirulito altíssima. Lá em cima, presa no doce, uma PIPA vermelha com rabiola amarela."
+   ],
+   [
+    "if",
+    "party:toco",
+    [
+     [
+      "if",
+      "quest:q_pipa=inactive",
+      [
+       [
+        "say",
+        "brisa:triste",
+        "Ei... essa é a pipa do Pipoca. Eu que dei pra ele."
+       ]
+      ]
+     ],
+     [
+      "say",
+      "toco",
+      "Deixa comigo. Eu sou grande pra alguma coisa."
+     ],
+     [
+      "choice",
+      [
+       "TOCO, sacode a árvore!",
+       [
+        [
+         "shake",
+         4,
+         600
+        ],
+        [
+         "sfx",
+         "bigHit"
+        ],
+        [
+         "say",
+         "",
+         "{shake}TUM. TUM. TUM.{/}",
+         "A pipa despenca, junto com três pirulitos e uma abelha muito ofendida."
+        ],
+        [
+         "flag",
+         "pipa_caiu"
+        ],
+        [
+         "give",
+         "pipa_pipoca"
+        ],
+        [
+         "if",
+         "quest:q_pipa=inactive",
+         [
+          [
+           "quest",
+           "q_pipa",
+           "start"
+          ]
+         ]
+        ],
+        [
+         "say",
+         "toco:feliz",
+         "Pronto. Árvore sacudida. Agora eu preciso de um cochilo."
+        ]
+       ]
+      ],
+      [
+       "Deixar pra depois",
+       []
+      ]
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Alta demais. Alguém GRANDE talvez conseguisse sacudir a árvore."
+     ]
+    ]
+   ]
+  ],
+  "campos_sapo": [
+   [
+    "if",
+    "!flag:sapo_conheceu",
+    [
+     [
+      "say",
+      "sapo",
+      "Croac. Eu sou o SAPO CONSELHEIRO.",
+      "Vendo sentimentos em pacotinho. E dou conselhos. Os conselhos são de graça. Você vai entender por quê."
+     ],
+     [
+      "flag",
+      "sapo_conheceu"
+     ]
+    ]
+   ],
+   [
+    "choice",
+    [
+     "Comprar",
+     [
+      [
+       "shop",
+       "sapo"
+      ]
+     ]
+    ],
+    [
+     "Pedir um conselho",
+     [
+      [
+       "random",
+       [
+        [
+         "say",
+         "sapo",
+         "Croac. Nunca confie numa nuvem que chora. Ela quer sua atenção."
+        ]
+       ],
+       [
+        [
+         "say",
+         "sapo",
+         "Se alguém está TRISTE, deixe IRRITADO. Se está IRRITADO, deixe FELIZ. Se está FELIZ... bom, aí você é um monstro."
+        ]
+       ],
+       [
+        [
+         "say",
+         "sapo",
+         "A casca de uma árvore brava racha mais fácil. Isso serve pra árvores. E pra gente."
+        ]
+       ],
+       [
+        [
+         "say",
+         "sapo",
+         "Croac. Quando o LAÇO de vocês estiver cheio, ataquem JUNTOS. Os quatro. Sentindo a mesma coisa."
+        ]
+       ],
+       [
+        [
+         "say",
+         "sapo",
+         "Água parada esconde coisa grande. Apaguem a luzinha antes que a maré suba."
+        ]
+       ],
+       [
+        [
+         "say",
+         "sapo",
+         "Croac. Você dorme demais, menina. Já te disseram isso?"
+        ]
+       ]
+      ]
+     ]
+    ],
+    [
+     "Vender a pipa do Pipoca",
+     [
+      [
+       "call",
+       "sapo_pipa"
+      ]
+     ],
+     "item:pipa_pipoca"
+    ],
+    [
+     "Tchau",
+     [
+      [
+       "say",
+       "sapo",
+       "Croac."
+      ]
+     ]
+    ]
+   ]
+  ],
+  "sapo_pipa": [
+   [
+    "say",
+    "sapo",
+    "Croac. Bela pipa. Vermelha, rabiola amarela. Te dou 50 botões nela."
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:irritado",
+      "Lume. Essa pipa é do meu IRMÃO."
+     ]
+    ]
+   ],
+   [
+    "choice",
+    [
+     "Vender (50 botões)",
+     [
+      [
+       "take",
+       "pipa_pipoca"
+      ],
+      [
+       "money",
+       50
+      ],
+      [
+       "flag",
+       "pipa_vendida"
+      ],
+      [
+       "say",
+       "",
+       "O Sapo pendura a pipa na barraca. Ela não parece feliz ali."
+      ],
+      [
+       "if",
+       "party:brisa",
+       [
+        [
+         "say",
+         "brisa:irritado2",
+         "...Inacreditável."
+        ],
+        [
+         "say",
+         "brisa:triste",
+         "Ele vai achar que a gente esqueceu dele."
+        ]
+       ]
+      ]
+     ]
+    ],
+    [
+     "Não vender",
+     [
+      [
+       "say",
+       "sapo",
+       "Croac. Bom conselho você mesma se deu."
+      ]
+     ]
+    ]
+   ]
+  ],
+  "campos_piquenique": [
+   [
+    "if",
+    "flag:piquenique",
+    [
+     [
+      "say",
+      "",
+      "A toalha de piquenique ainda está aqui. Tem farelo de biscoito e um silêncio esquisito."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Uma toalha de piquenique xadrez, esticada como se alguém tivesse acabado de levantar.",
+      "Tem até uma cesta."
+     ],
+     [
+      "if",
+      "party:nina",
+      [
+       [
+        "choice",
+        [
+         "Fazer um piquenique",
+         [
+          [
+           "call",
+           "piquenique_cena"
+          ]
+         ]
+        ],
+        [
+         "Agora não",
+         []
+        ]
+       ]
+      ],
+      [
+       [
+        "say",
+        "",
+        "Seria bom fazer um piquenique aqui. Com todo mundo."
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "piquenique_cena": [
+   [
+    "fade",
+    "out",
+    400
+   ],
+   [
+    "wait",
+    300
+   ],
+   [
+    "fade",
+    "in",
+    400
+   ],
+   [
+    "say",
+    "toco:feliz",
+    "Eu trouxe biscoito. E pão de queijo. E outro biscoito."
+   ],
+   [
+    "say",
+    "brisa:feliz",
+    "Quem fizer a cara mais feia ganha o último pão de queijo! Valendo!"
+   ],
+   [
+    "say",
+    "nina:feliz",
+    "Eu fiz um poema sobre isso.",
+    "\"Quatro amigos numa toalha, / o pão some, a Brisa ralha...\""
+   ],
+   [
+    "say",
+    "brisa:irritado",
+    "EU NÃO RALHO!"
+   ],
+   [
+    "say",
+    "toco:feliz",
+    "Ralha um pouquinho."
+   ],
+   [
+    "heal",
+    "silent"
+   ],
+   [
+    "think",
+    "Seria bom se fosse sempre assim."
+   ],
+   [
+    "music",
+    null
+   ],
+   [
+    "wait",
+    500
+   ],
+   [
+    "vision",
+    "teto",
+    140
+   ],
+   [
+    "sfx",
+    "beep"
+   ],
+   [
+    "wait",
+    900
+   ],
+   [
+    "sfx",
+    "beep"
+   ],
+   [
+    "wait",
+    1200
+   ],
+   [
+    "say",
+    "brisa",
+    "...Vocês ouviram isso?"
+   ],
+   [
+    "say",
+    "toco",
+    "Ouvi o quê?"
+   ],
+   [
+    "say",
+    "nina:triste",
+    "...Nada. Não foi nada."
+   ],
+   [
+    "music",
+    "campos"
+   ],
+   [
+    "flag",
+    "piquenique"
+   ],
+   [
+    "say",
+    "",
+    "Embaixo da cesta, dobrada em quatro, tinha uma PÁGINA DE RECEITA."
+   ],
+   [
+    "give",
+    "pagina_receita"
+   ],
+   [
+    "say",
+    "",
+    "Todos recuperaram VIDA e BRILHO."
+   ]
+  ],
+  "floresta_init": [
+   [
+    "var",
+    "coruja1",
+    "=",
+    2
+   ],
+   [
+    "var",
+    "coruja2",
+    "=",
+    1
+   ],
+   [
+    "var",
+    "coruja3",
+    "=",
+    3
+   ],
+   [
+    "flag",
+    "corujas_init"
+   ],
+   [
+    "say",
+    "",
+    "A Floresta Sussurrante. As árvores aqui conversam baixinho quando você não está ouvindo."
+   ],
+   [
+    "if",
+    "party:nina",
+    [
+     [
+      "say",
+      "nina:medo",
+      "Elas estão falando da gente?"
+     ],
+     [
+      "say",
+      "brisa",
+      "Deixa elas. Fofoca de árvore não machuca."
+     ]
+    ]
+   ]
+  ],
+  "floresta_coruja1": [
+   [
+    "if",
+    "flag:floresta_portao",
+    [
+     [
+      "say",
+      "",
+      "A coruja de pedra olha para a lua, satisfeita."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Uma coruja de pedra."
+     ],
+     [
+      "choice",
+      [
+       "Girar a estátua",
+       [
+        [
+         "sfx",
+         "push"
+        ],
+        [
+         "var",
+         "coruja1",
+         "+",
+         1
+        ],
+        [
+         "if",
+         "var:coruja1>=4",
+         [
+          [
+           "var",
+           "coruja1",
+           "=",
+           0
+          ]
+         ]
+        ],
+        [
+         "var",
+         "coruja2",
+         "+",
+         1
+        ],
+        [
+         "if",
+         "var:coruja2>=4",
+         [
+          [
+           "var",
+           "coruja2",
+           "=",
+           0
+          ]
+         ]
+        ],
+        [
+         "refresh"
+        ],
+        [
+         "call",
+         "coruja_check"
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "floresta_coruja2": [
+   [
+    "if",
+    "flag:floresta_portao",
+    [
+     [
+      "say",
+      "",
+      "A coruja de pedra olha para a lua, satisfeita."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Uma coruja de pedra."
+     ],
+     [
+      "choice",
+      [
+       "Girar a estátua",
+       [
+        [
+         "sfx",
+         "push"
+        ],
+        [
+         "var",
+         "coruja2",
+         "+",
+         1
+        ],
+        [
+         "if",
+         "var:coruja2>=4",
+         [
+          [
+           "var",
+           "coruja2",
+           "=",
+           0
+          ]
+         ]
+        ],
+        [
+         "var",
+         "coruja3",
+         "+",
+         1
+        ],
+        [
+         "if",
+         "var:coruja3>=4",
+         [
+          [
+           "var",
+           "coruja3",
+           "=",
+           0
+          ]
+         ]
+        ],
+        [
+         "refresh"
+        ],
+        [
+         "call",
+         "coruja_check"
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "floresta_coruja3": [
+   [
+    "if",
+    "flag:floresta_portao",
+    [
+     [
+      "say",
+      "",
+      "A coruja de pedra olha para a lua, satisfeita."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Uma coruja de pedra."
+     ],
+     [
+      "choice",
+      [
+       "Girar a estátua",
+       [
+        [
+         "sfx",
+         "push"
+        ],
+        [
+         "var",
+         "coruja3",
+         "+",
+         1
+        ],
+        [
+         "if",
+         "var:coruja3>=4",
+         [
+          [
+           "var",
+           "coruja3",
+           "=",
+           0
+          ]
+         ]
+        ],
+        [
+         "refresh"
+        ],
+        [
+         "call",
+         "coruja_check"
+        ]
+       ]
+      ],
+      [
+       "Deixar",
+       []
+      ]
+     ]
+    ]
+   ]
+  ],
+  "coruja_check": [
+   [
+    "if",
+    [
+     "var:coruja1==0",
+     "var:coruja2==0",
+     "var:coruja3==0"
+    ],
+    [
+     [
+      "sfx",
+      "solve"
+     ],
+     [
+      "shake",
+      2,
+      500
+     ],
+     [
+      "say",
+      "",
+      "As três corujas olham para a lua.",
+      "Os cipós do portão se recolhem, como quem acorda."
+     ],
+     [
+      "flag",
+      "floresta_portao"
+     ]
+    ]
+   ]
+  ],
+  "floresta_sussurro": [
+   [
+    "say",
+    "",
+    "As árvores sussurram:"
+   ],
+   [
+    "say",
+    "?:ÁRVORES",
+    "\"...a primeira coruja puxa a segunda...\"",
+    "\"...a segunda puxa a terceira... a terceira não puxa ninguém...\"",
+    "\"...todas devem olhar para a lua...\""
+   ],
+   [
+    "if",
+    "party:nina",
+    [
+     [
+      "say",
+      "nina",
+      "Se girar a primeira, a segunda gira junto. Então é melhor arrumar da primeira pra última!"
+     ]
+    ]
+   ]
+  ],
+  "floresta_cipos": [
+   [
+    "say",
+    "",
+    "Cipós grossos fecham a passagem para o oeste.",
+    "Eles parecem estar esperando alguma coisa. Talvez as corujas."
+   ]
+  ],
+  "floresta_toco": [
+   [
+    "if",
+    "!flag:pagina_floresta",
+    [
+     [
+      "say",
+      "",
+      "Um toco de árvore. Em cima, preso por uma pedrinha, um papel com farinha grudada."
+     ],
+     [
+      "flag",
+      "pagina_floresta"
+     ],
+     [
+      "give",
+      "pagina_receita"
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um toco de árvore. Os anéis contam muitos anos. Você não sabe contar tantos."
+     ]
+    ]
+   ]
+  ],
+  "floresta_novelo": [
+   [
+    "say",
+    "novelo",
+    "Miau."
+   ],
+   [
+    "say",
+    "",
+    "Um gato laranja, sentado num toco como se fosse dono da floresta."
+   ],
+   [
+    "if",
+    "quest:q_gato=active",
+    [
+     [
+      "say",
+      "",
+      "Deve ser o NOVELO, da Dona Lã!"
+     ]
+    ]
+   ],
+   [
+    "choice",
+    [
+     "Pegar o gato",
+     [
+      [
+       "give",
+       "novelo"
+      ],
+      [
+       "hide",
+       "novelo"
+      ],
+      [
+       "say",
+       "",
+       "Novelo se aninha no seu colo e começa a ronronar. Missão: ser carregado."
+      ],
+      [
+       "if",
+       "quest:q_gato=inactive",
+       [
+        [
+         "quest",
+         "q_gato",
+         "start"
+        ]
+       ]
+      ]
+     ]
+    ],
+    [
+     "Fazer carinho",
+     [
+      [
+       "say",
+       "",
+       "Ele aceita o carinho como quem aceita um imposto."
+      ]
+     ]
+    ]
+   ]
+  ],
+  "raiz_chefe": [
+   [
+    "music",
+    null
+   ],
+   [
+    "say",
+    "",
+    "Um toco gigantesco, cheio de raízes. No meio dele, algo verde pulsa como um coração."
+   ],
+   [
+    "say",
+    "brisa",
+    "Ali! A BRASA! Tá presa nas raízes!"
+   ],
+   [
+    "shake",
+    3,
+    800
+   ],
+   [
+    "sfx",
+    "bigHit"
+   ],
+   [
+    "say",
+    "",
+    "{shake}O toco abre os olhos.{/}"
+   ],
+   [
+    "say",
+    "?:MAMÃE RAIZ",
+    "Quem... quem vem pisar no meu ninho?",
+    "Essa luzinha caiu do céu. Caiu chorando. Eu peguei. Eu cuidei.",
+    "Agora ela é minha filha."
+   ],
+   [
+    "say",
+    "nina:triste",
+    "Ela não é sua filha... ela é do farol."
+   ],
+   [
+    "say",
+    "?:MAMÃE RAIZ",
+    "Todo mundo que eu cuido vai embora.",
+    "{shake}ESSA NÃO VAI.{/}"
+   ],
+   [
+    "battle",
+    "chefe_raiz"
+   ],
+   [
+    "flag",
+    "raiz_derrotada"
+   ],
+   [
+    "music",
+    "triste"
+   ],
+   [
+    "say",
+    "?:MAMÃE RAIZ",
+    "...Vocês não vão embora? Mesmo depois de eu brigar?"
+   ],
+   [
+    "say",
+    "toco",
+    "A gente vai. Mas a gente volta pra visitar. Prometido."
+   ],
+   [
+    "say",
+    "?:MAMÃE RAIZ",
+    "Então leva.",
+    "Luz não é coisa de guardar. É coisa de passar adiante.",
+    "Eu esqueci disso. Obrigada por me lembrar."
+   ],
+   [
+    "sfx",
+    "lightup"
+   ],
+   [
+    "flash",
+    "#d0ffd8",
+    0.6
+   ],
+   [
+    "give",
+    "brasa_floresta"
+   ],
+   [
+    "say",
+    "",
+    "A lamparina de Lume brilha um pouco mais forte."
+   ],
+   [
+    "call",
+    "atualiza_fase"
+   ],
+   [
+    "music",
+    "floresta"
+   ],
+   [
+    "autosave"
+   ]
+  ],
+  "raiz_depois": [
+   [
+    "say",
+    "?:MAMÃE RAIZ",
+    "Os brotinhos perguntaram de vocês.",
+    "Eu disse que vocês voltam. Vocês voltam, né?"
+   ]
+  ],
+  "gruta_garrafa": [
+   [
+    "say",
+    "",
+    "Uma garrafa encalhada. Dentro, uma folha enrolada com cheiro de fubá."
+   ],
+   [
+    "flag",
+    "pagina_gruta"
+   ],
+   [
+    "give",
+    "pagina_receita"
+   ]
+  ],
+  "gruta_portao_abre": [
+   [
+    "sfx",
+    "solve"
+   ],
+   [
+    "shake",
+    3,
+    600
+   ],
+   [
+    "say",
+    "",
+    "{shake}CLANC.{/} Ouve-se um portão se abrindo mais ao sul."
+   ],
+   [
+    "refresh"
+   ]
+  ],
+  "gruta_voz": [
+   [
+    "flag",
+    "gruta_voz"
+   ],
+   [
+    "music",
+    null
+   ],
+   [
+    "wait",
+    300
+   ],
+   [
+    "vision",
+    "agua",
+    150
+   ],
+   [
+    "say",
+    "",
+    "{slow}...LUME!{/}{P}",
+    "{slow}Segura minha mão!{/}"
+   ],
+   [
+    "wait",
+    600
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:medo",
+      "Quem... quem falou isso?"
+     ]
+    ]
+   ],
+   [
+    "think",
+    "Era a voz do Vô."
+   ],
+   [
+    "music",
+    "gruta"
+   ]
+  ],
+  "fundo_chefe": [
+   [
+    "music",
+    null
+   ],
+   [
+    "say",
+    "",
+    "A água do lago subterrâneo está completamente parada.",
+    "Dá pra ver o teto refletido nela. O teto não é de pedra. É branco, com luzes compridas."
+   ],
+   [
+    "wait",
+    400
+   ],
+   [
+    "shake",
+    2,
+    1200
+   ],
+   [
+    "sfx",
+    "tide"
+   ],
+   [
+    "say",
+    "?:A COISA NO FUNDO",
+    "Shhh. Não acorda ninguém.",
+    "Aqui embaixo é quietinho. A água segura a gente. A água não deixa doer."
+   ],
+   [
+    "say",
+    "toco:medo",
+    "Lume... tem uma luz lá no fundo. É a BRASA?"
+   ],
+   [
+    "say",
+    "?:A COISA NO FUNDO",
+    "Fica aqui comigo, menina.",
+    "Lá em cima vão te contar uma coisa. Uma coisa que dói.",
+    "{shake}FICA.{/}"
+   ],
+   [
+    "battle",
+    "chefe_fundo"
+   ],
+   [
+    "flag",
+    "fundo_derrotada"
+   ],
+   [
+    "music",
+    "triste"
+   ],
+   [
+    "say",
+    "",
+    "A água se mexe pela primeira vez em muito tempo. Uma onda pequena, quase um suspiro."
+   ],
+   [
+    "say",
+    "?:A COISA NO FUNDO",
+    "...Eu só não queria que você soubesse.",
+    "Mas você já sabe, não sabe?"
+   ],
+   [
+    "think",
+    "..."
+   ],
+   [
+    "sfx",
+    "lightup"
+   ],
+   [
+    "flash",
+    "#d0ecff",
+    0.6
+   ],
+   [
+    "give",
+    "brasa_aguas"
+   ],
+   [
+    "say",
+    "",
+    "A Brasa das Águas queima mesmo molhada. A lamparina de Lume brilha mais."
+   ],
+   [
+    "call",
+    "atualiza_fase"
+   ],
+   [
+    "autosave"
+   ]
+  ],
+  "aband_entrada": [
+   [
+    "flag",
+    "aband_entrou"
+   ],
+   [
+    "say",
+    "",
+    "A casa cheira a chuva velha. A porta se fecha devagar atrás de vocês."
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa",
+      "Eu NÃO tô com medo. Só pra constar."
+     ]
+    ]
+   ],
+   [
+    "if",
+    "party:toco",
+    [
+     [
+      "say",
+      "toco:medo",
+      "Eu tô. Bastante. Pode constar também."
+     ]
+    ]
+   ],
+   [
+    "if",
+    "party:nina",
+    [
+     [
+      "say",
+      "nina:triste",
+      "Esta casa... parece a casa de alguém que eu conheço. Mas eu não conheço ninguém que more numa casa assim."
+     ]
+    ]
+   ]
+  ],
+  "aband_toca": [
+   [
+    "flag",
+    "telefone_tocou"
+   ],
+   [
+    "sfx",
+    "phone"
+   ],
+   [
+    "wait",
+    900
+   ],
+   [
+    "sfx",
+    "phone"
+   ],
+   [
+    "say",
+    "",
+    "Um telefone toca em algum lugar da casa."
+   ]
+  ],
+  "aband_telefone": [
+   [
+    "if",
+    "!flag:telefone_tocou",
+    [
+     [
+      "say",
+      "",
+      "Um telefone antigo, de disco. Está mudo."
+     ]
+    ],
+    [
+     [
+      "if",
+      "flag:atendeu",
+      [
+       [
+        "say",
+        "",
+        "O telefone está mudo. Só dá pra ouvir a sua própria respiração no fone."
+       ]
+      ],
+      [
+       [
+        "say",
+        "",
+        "O telefone está tocando."
+       ],
+       [
+        "choice",
+        [
+         "Atender",
+         [
+          [
+           "flag",
+           "atendeu"
+          ],
+          [
+           "ambience",
+           "estatica"
+          ],
+          [
+           "sfx",
+           "static"
+          ],
+          [
+           "say",
+           "?:???",
+           "...ume...",
+           "...você... consegue... me ouvir...?",
+           "...se consegue... aperta... a minha mão..."
+          ],
+          [
+           "glitch",
+           500
+          ],
+          [
+           "sfx",
+           "static"
+          ],
+          [
+           "say",
+           "?:???",
+           "...hoje é... dia vinte e... três..."
+          ],
+          [
+           "ambience",
+           "pingos"
+          ],
+          [
+           "say",
+           "",
+           "Tu-tu-tu-tu."
+          ],
+          [
+           "if",
+           "party:nina",
+           [
+            [
+             "say",
+             "nina:medo",
+             "Era... uma voz de menina?"
+            ]
+           ]
+          ],
+          [
+           "if",
+           "party:brisa",
+           [
+            [
+             "say",
+             "brisa:triste",
+             "..."
+            ],
+            [
+             "say",
+             "brisa",
+             "Era a voz de alguém que tava chorando e fingindo que não."
+            ]
+           ]
+          ]
+         ]
+        ],
+        [
+         "Deixar tocar",
+         [
+          [
+           "say",
+           "",
+           "O telefone toca até cansar."
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "aband_foto": [
+   [
+    "if",
+    "!item:foto_barco",
+    [
+     [
+      "say",
+      "",
+      "Uma foto de família na parede, torta.",
+      "Uma criança de capa amarela e um velho de barba branca, num barquinho, rindo."
+     ],
+     [
+      "give",
+      "foto_barco"
+     ],
+     [
+      "think",
+      "Eu conheço essa capa."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Uma marquinha clara na parede, onde a foto ficava."
+     ]
+    ]
+   ]
+  ],
+  "aband_loop": [
+   [
+    "var",
+    "loop",
+    "+",
+    1
+   ],
+   [
+    "teleport",
+    "abandonada",
+    12,
+    4,
+    "right",
+    "none"
+   ],
+   [
+    "if",
+    "var:loop==1",
+    [
+     [
+      "say",
+      "",
+      "...Você está no começo do corredor de novo?"
+     ]
+    ],
+    [
+     [
+      "if",
+      "var:loop==2",
+      [
+       [
+        "glitch",
+        300
+       ],
+       [
+        "say",
+        "",
+        "O corredor recomeça.",
+        "O quadro na parede está de cabeça para baixo."
+       ],
+       [
+        "if",
+        "party:toco",
+        [
+         [
+          "say",
+          "toco:medo",
+          "Tem alguém no fim do corredor. Alto. Parado."
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "if",
+        "var:loop==3",
+        [
+         [
+          "say",
+          "",
+          "O corredor parece mais curto agora.",
+          "No chão, alguma coisa brilha como água."
+         ]
+        ],
+        [
+         [
+          "say",
+          "",
+          "O corredor recomeça. De novo. E de novo."
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "aband_chave": [
+   [
+    "say",
+    "",
+    "Uma chave, fria como água de rio. Ela pinga."
+   ],
+   [
+    "give",
+    "chave_porao"
+   ],
+   [
+    "sfx",
+    "glitch"
+   ],
+   [
+    "glitch",
+    300
+   ],
+   [
+    "say",
+    "",
+    "Em algum lugar da casa, um alçapão destranca."
+   ]
+  ],
+  "aband_parede": [
+   [
+    "say",
+    "",
+    "Onde antes tinha uma porta, agora é só parede. Parede quente, como se tivesse alguém do outro lado."
+   ]
+  ],
+  "bairro_chegada": [
+   [
+    "flag",
+    "entrou_bairro"
+   ],
+   [
+    "music",
+    null
+   ],
+   [
+    "wait",
+    500
+   ],
+   [
+    "say",
+    "",
+    "Uma rua. Uma rua de verdade, com asfalto e postes que zumbem.",
+    "Nada aqui parece Algodoal. Nada aqui parece sonho."
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa",
+      "...Eu conheço esta rua.",
+      "Não. Não conheço. Por que eu disse isso?"
+     ]
+    ]
+   ],
+   [
+    "if",
+    "party:nina",
+    [
+     [
+      "say",
+      "nina:triste",
+      "Está tudo cinza. Até o silêncio."
+     ]
+    ]
+   ],
+   [
+    "say",
+    "",
+    "Ao longe, figuras pálidas estão paradas na calçada. Paradas demais."
+   ],
+   [
+    "music",
+    "bairro"
+   ]
+  ],
+  "bairro_porta_pintada": [
+   [
+    "say",
+    "",
+    "A porta está pintada na parede.",
+    "Alguém pintou até a maçaneta, com sombra e tudo."
+   ]
+  ],
+  "bairro_menina": [
+   [
+    "flag",
+    "menina_sumiu"
+   ],
+   [
+    "say",
+    "",
+    "Na janela da casa 6, uma menina de cabelo ruivo olha para você."
+   ],
+   [
+    "wait",
+    600
+   ],
+   [
+    "glitch",
+    200
+   ],
+   [
+    "refresh"
+   ],
+   [
+    "say",
+    "",
+    "Você pisca. A janela está vazia."
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:medo",
+      "...Aquela menina... ela parecia comigo. Só que mais velha. E cansada."
+     ]
+    ]
+   ]
+  ],
+  "bairro_correio": [
+   [
+    "if",
+    "!flag:carta_correio",
+    [
+     [
+      "say",
+      "",
+      "Uma caixa de correio cinza. Dentro, um envelope úmido."
+     ],
+     [
+      "flag",
+      "carta_correio"
+     ],
+     [
+      "give",
+      "carta_perdida"
+     ],
+     [
+      "if",
+      "quest:q_cartas=inactive",
+      [
+       [
+        "quest",
+        "q_cartas",
+        "start"
+       ]
+      ]
+     ],
+     [
+      "say",
+      "",
+      "O endereço está borrado. Só dá pra ler o nome: LUME."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Vazia. Uma caixa de correio sem cartas é a coisa mais triste do mundo."
+     ]
+    ]
+   ]
+  ],
+  "bairro_lixo": [
+   [
+    "if",
+    "!flag:engrenagem_lixo",
+    [
+     [
+      "say",
+      "",
+      "Uma lixeira. Lá dentro, no meio de papéis amassados... uma engrenagem!"
+     ],
+     [
+      "flag",
+      "engrenagem_lixo"
+     ],
+     [
+      "give",
+      "engrenagem"
+     ],
+     [
+      "say",
+      "",
+      "Os papéis amassados são desenhos de um farol. Todos riscados."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Desenhos de farol amassados. Alguém tentou muitas vezes."
+     ]
+    ]
+   ]
+  ],
+  "casa3_mesa": [
+   [
+    "if",
+    "!flag:carta_casa3",
+    [
+     [
+      "say",
+      "",
+      "Uma escrivaninha com um estojo, um caderno e um envelope."
+     ],
+     [
+      "flag",
+      "carta_casa3"
+     ],
+     [
+      "give",
+      "carta_perdida"
+     ],
+     [
+      "if",
+      "quest:q_cartas=inactive",
+      [
+       [
+        "quest",
+        "q_cartas",
+        "start"
+       ]
+      ]
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "O caderno está aberto numa página de redação: \"MINHAS FÉRIAS COM O VÔ\". Só tem o título."
+     ]
+    ]
+   ]
+  ],
+  "casa3_calendario": [
+   [
+    "say",
+    "",
+    "Um calendário. Um dia está circulado com caneta vermelha:",
+    "{red}\"PESCARIA COM O VÔ ♥\"{/}",
+    "Todos os dias depois dele estão em branco."
+   ],
+   [
+    "think",
+    "..."
+   ]
+  ],
+  "casa5_radio": [
+   [
+    "say",
+    "",
+    "Um rádio velho. Está ligado, baixinho."
+   ],
+   [
+    "ambience",
+    "estatica"
+   ],
+   [
+    "say",
+    "?:RÁDIO",
+    "\"...e a previsão era de tempo bom. O temporal surpreendeu...\"",
+    "\"...um barco virou no meio do lago...\"",
+    "\"...um senhor de setenta e dois anos... a criança foi resgatada e levada ao hospital...\""
+   ],
+   [
+    "glitch",
+    400
+   ],
+   [
+    "sfx",
+    "static"
+   ],
+   [
+    "say",
+    "?:RÁDIO",
+    "\"...ksshhh... estado estável... ainda não acordou...\""
+   ],
+   [
+    "ambience",
+    "pingos"
+   ],
+   [
+    "say",
+    "",
+    "O rádio desliga sozinho."
+   ],
+   [
+    "if",
+    "party:toco",
+    [
+     [
+      "say",
+      "toco:triste",
+      "...Lume? Você tá tremendo."
+     ]
+    ]
+   ],
+   [
+    "if",
+    "party:nina",
+    [
+     [
+      "say",
+      "nina:triste",
+      "Era só uma história. Rádio conta histórias. ...Né?"
+     ]
+    ]
+   ]
+  ],
+  "casa5_mesa": [
+   [
+    "if",
+    "!flag:carta_casa5",
+    [
+     [
+      "say",
+      "",
+      "Na mesa, um envelope ao lado de um copo de suco que alguém esqueceu."
+     ],
+     [
+      "flag",
+      "carta_casa5"
+     ],
+     [
+      "give",
+      "carta_perdida"
+     ],
+     [
+      "if",
+      "quest:q_cartas=inactive",
+      [
+       [
+        "quest",
+        "q_cartas",
+        "start"
+       ]
+      ]
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "Um copo de suco de caju. Ninguém toma suco de caju além de você."
+     ]
+    ]
+   ]
+  ],
+  "casa7_entrada": [
+   [
+    "flag",
+    "casa7_entrou"
+   ],
+   [
+    "say",
+    "",
+    "Dentro da casa 7 não tem casa.",
+    "Tem um corredor branco, comprido, com cheiro de álcool e de flor murcha."
+   ],
+   [
+    "sfx",
+    "beep"
+   ],
+   [
+    "wait",
+    1000
+   ],
+   [
+    "sfx",
+    "beep"
+   ],
+   [
+    "if",
+    "party:brisa",
+    [
+     [
+      "say",
+      "brisa:medo",
+      "Isso é... um hospital?"
+     ]
+    ]
+   ]
+  ],
+  "casa7_chefe": [
+   [
+    "music",
+    null
+   ],
+   [
+    "say",
+    "dona_ninguem",
+    "Ah. Visita.",
+    "Ninguém vem visitar. Ninguém. Ninguém. Ninguém."
+   ],
+   [
+    "say",
+    "dona_ninguem",
+    "Eu sou a DONA NINGUÉM. Eu cuido deste quarto.",
+    "Aqui dentro guardo uma luz que caiu do céu. Ela é quentinha. Ela tem cheiro de alguém."
+   ],
+   [
+    "say",
+    "dona_ninguem",
+    "Vocês trouxeram uma cara nova pra mim? Eu tenho {yellow}tantas{/}..."
+   ],
+   [
+    "battle",
+    "chefe_ninguem"
+   ],
+   [
+    "flag",
+    "ninguem_derrotada"
+   ],
+   [
+    "music",
+    "triste"
+   ],
+   [
+    "say",
+    "dona_ninguem",
+    "...Lembra... de lembrar...",
+    "Todo mundo que esquece vira um pouco de mim."
+   ],
+   [
+    "say",
+    "",
+    "Dona Ninguém some como um desenho apagado. No lugar dela, uma brasa roxa flutua."
+   ],
+   [
+    "sfx",
+    "lightup"
+   ],
+   [
+    "flash",
+    "#e8d8ff",
+    0.6
+   ],
+   [
+    "give",
+    "brasa_esquecida"
+   ],
+   [
+    "call",
+    "atualiza_fase"
+   ],
+   [
+    "say",
+    "",
+    "Ao lado da última cama, um monitor apita devagar. Tem alguém deitado, coberto até a cabeça."
+   ]
+  ],
+  "casa7_leito": [
+   [
+    "if",
+    "!flag:ninguem_derrotada",
+    [
+     [
+      "say",
+      "",
+      "Tem alguém deitado nesta cama. Você não consegue chegar perto agora."
+     ]
+    ],
+    [
+     [
+      "if",
+      "flag:viu_leito",
+      [
+       [
+        "say",
+        "",
+        "Você não quer olhar de novo."
+       ]
+      ],
+      [
+       [
+        "say",
+        "",
+        "Tem alguém deitado, coberto até a cabeça. O monitor faz bip. Bip. Bip."
+       ],
+       [
+        "choice",
+        [
+         "Olhar",
+         [
+          [
+           "flag",
+           "viu_leito"
+          ],
+          [
+           "flag",
+           "olhou"
+          ],
+          [
+           "wait",
+           500
+          ],
+          [
+           "glitch",
+           300
+          ],
+          [
+           "say",
+           "",
+           "Você puxa o lençol devagar."
+          ],
+          [
+           "wait",
+           800
+          ],
+          [
+           "say",
+           "",
+           "{slow}...É você.{/}"
+          ],
+          [
+           "wait",
+           400
+          ],
+          [
+           "if",
+           "party:nina",
+           [
+            [
+             "say",
+             "nina:triste",
+             "Lume..."
+            ]
+           ]
+          ],
+          [
+           "if",
+           "party:brisa",
+           [
+            [
+             "say",
+             "brisa:triste2",
+             "Não. Não, não, não. Você tá aqui. Você tá AQUI com a gente."
+            ]
+           ]
+          ],
+          [
+           "think",
+           "Eu tô aqui.",
+           "Eu também tô lá."
+          ],
+          [
+           "call",
+           "casa7_saida"
+          ]
+         ]
+        ],
+        [
+         "Não olhar",
+         [
+          [
+           "flag",
+           "viu_leito"
+          ],
+          [
+           "say",
+           "",
+           "Você vira o rosto. O monitor continua: bip. Bip."
+          ],
+          [
+           "think",
+           "Ainda não."
+          ],
+          [
+           "call",
+           "casa7_saida"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "casa7_saida": [
+   [
+    "fade",
+    "out",
+    1200,
+    "#ffffff"
+   ],
+   [
+    "music",
+    null
+   ],
+   [
+    "ambience",
+    null
+   ],
+   [
+    "wait",
+    900
+   ],
+   [
+    "card",
+    "(As luzes do corredor se apagam, uma por uma.)",
+    "(Quando você abre os olhos, está na praça da Vila. É de manhã.)"
+   ],
+   [
+    "teleport",
+    "vila",
+    21,
+    19,
+    "up",
+    "none"
+   ],
+   [
+    "fade",
+    "in",
+    900
+   ]
+  ],
+  "rochedo_goncalo": [
+   [
+    "if",
+    "!flag:goncalo_conheceu",
+    [
+     [
+      "say",
+      "velhinho",
+      "Fregueses! Fregueses de verdade!",
+      "Eu tinha uma casa lá na vila. Acho. Uma casa verde, com cortina de bolinha.",
+      "Um dia acordei aqui, no vento. Ninguém lembrava de mim. Então resolvi vender coisas. Quem vende, alguém lembra."
+     ],
+     [
+      "flag",
+      "goncalo_conheceu"
+     ]
+    ]
+   ],
+   [
+    "choice",
+    [
+     "Comprar",
+     [
+      [
+       "shop",
+       "rochedo"
+      ]
+     ]
+    ],
+    [
+     "Conversar",
+     [
+      [
+       "say",
+       "velhinho",
+       "O vento daqui não esquece ninguém. Ele leva e traz.",
+       "Quando o farol acender, acho que eu volto pra casa. Vocês me ajudam a lembrar o caminho?"
+      ]
+     ]
+    ],
+    [
+     "Tchau",
+     []
+    ]
+   ]
+  ],
+  "rochedo_pedestal": [
+   [
+    "if",
+    "flag:brasas_no_farol",
+    [
+     [
+      "say",
+      "",
+      "As três brasas brilham nos pedestais. A porta do farol está aberta."
+     ]
+    ],
+    [
+     [
+      "if",
+      [
+       "item:brasa_floresta",
+       "item:brasa_aguas",
+       "item:brasa_esquecida"
+      ],
+      [
+       [
+        "say",
+        "",
+        "Três pedestais vazios, cada um com uma cavidade do tamanho de uma brasa."
+       ],
+       [
+        "choice",
+        [
+         "Colocar as três brasas",
+         [
+          [
+           "music",
+           null
+          ],
+          [
+           "sfx",
+           "lightup"
+          ],
+          [
+           "flash",
+           "#d0ffd8",
+           0.4
+          ],
+          [
+           "wait",
+           400
+          ],
+          [
+           "flash",
+           "#d0ecff",
+           0.4
+          ],
+          [
+           "wait",
+           400
+          ],
+          [
+           "flash",
+           "#e8d8ff",
+           0.5
+          ],
+          [
+           "flag",
+           "brasas_no_farol"
+          ],
+          [
+           "refresh"
+          ],
+          [
+           "shake",
+           3,
+           800
+          ],
+          [
+           "say",
+           "",
+           "As brasas se acendem nos pedestais. A porta do farol se abre com um suspiro de ferrugem."
+          ],
+          [
+           "say",
+           "brisa",
+           "É agora. Bora."
+          ],
+          [
+           "say",
+           "toco",
+           "Juntos."
+          ],
+          [
+           "say",
+           "nina",
+           "Juntos."
+          ],
+          [
+           "music",
+           "rochedo"
+          ]
+         ]
+        ],
+        [
+         "Ainda não",
+         []
+        ]
+       ]
+      ],
+      [
+       [
+        "say",
+        "",
+        "Três pedestais vazios. Faltam brasas."
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "farol_foto": [
+   [
+    "say",
+    "",
+    "Uma foto: o Vô Faísca e Lume no barco, os dois de capa de chuva.",
+    "Atrás está escrito: \"Minha marinheira. Último dia de férias.\""
+   ]
+  ],
+  "farol_radio": [
+   [
+    "say",
+    "",
+    "O rádio do Vô. Ele sempre ouvia a previsão do tempo antes de sair com o barco."
+   ],
+   [
+    "ambience",
+    "estatica"
+   ],
+   [
+    "say",
+    "?:RÁDIO",
+    "\"...previsão: tempo bom o dia todo...\""
+   ],
+   [
+    "ambience",
+    null
+   ],
+   [
+    "think",
+    "Mentira."
+   ]
+  ],
+  "farol_memorias": [
+   [
+    "if",
+    "!flag:memorias",
+    [
+     [
+      "flag",
+      "memorias"
+     ],
+     [
+      "music",
+      null
+     ],
+     [
+      "card",
+      "(Cada degrau range como o casco de um barco.)",
+      "(O Vô te ensinando a dar nó de marinheiro.)",
+      "(O céu ficando cinza de repente, no meio do lago.)",
+      "(A água fria. Muito fria.)",
+      "(Uma mão enorme segurando a sua. Te empurrando pra cima.)",
+      "(E depois não segurando mais.)"
+     ]
+    ]
+   ]
+  ],
+  "topo_chefe": [
+   [
+    "flag",
+    "topo_farol"
+   ],
+   [
+    "music",
+    null
+   ],
+   [
+    "say",
+    "",
+    "A sala da lâmpada. A grande lâmpada do farol está fria e escura.",
+    "Na frente dela, uma figura alta feita de cobertor espera."
+   ],
+   [
+    "battle",
+    "chefe_final",
+    {
+     "keepMusic": true
+    }
+   ],
+   [
+    "call",
+    "final_farol"
+   ]
+  ],
+  "topo_lampada": [
+   [
+    "if",
+    "flag:farol_aceso",
+    [
+     [
+      "say",
+      "",
+      "A lâmpada gira devagar. A luz passa por Algodoal inteira e não esquece ninguém."
+     ]
+    ],
+    [
+     [
+      "say",
+      "",
+      "A grande lâmpada do farol. Fria."
+     ]
+    ]
+   ]
+  ],
+  "topo_carta": [
+   [
+    "call",
+    "carta_vo"
+   ]
+  ],
+  "carta_vo": [
+   [
+    "say",
+    "",
+    "Um envelope encostado na lâmpada. Na frente, com a letra tremida do Vô: \"Para a minha marinheira\"."
+   ],
+   [
+    "card",
+    "\"Lume.",
+    "Se você está lendo isto, a luz apagou e você acendeu de novo. Eu sabia. Você sempre foi teimosa.",
+    "Eu não posso ir com você daqui pra frente. Mas eu vou estar em todo farol, em todo vagalume, em todo nó que não solta.",
+    "Não tenha medo de saber. Saber dói, mas esquecer dói mais devagar e por mais tempo.",
+    "Agora acorda, minha menina. Tem gente esperando por você do lado de lá. — Vô\""
+   ]
+  ],
+  "final_farol": [
+   [
+    "flag",
+    "farol_aceso"
+   ],
+   [
+    "refresh"
+   ],
+   [
+    "music",
+    "triste"
+   ],
+   [
+    "flash",
+    "#ffffff",
+    1
+   ],
+   [
+    "sfx",
+    "lightup"
+   ],
+   [
+    "say",
+    "",
+    "O FAROL ACENDE.",
+    "A luz atravessa Algodoal inteira: os Campos, a Floresta, a Vila, a Gruta, o Bairro.",
+    "Onde ela passa, as coisas brancas ganham cor de novo."
+   ],
+   [
+    "call",
+    "carta_vo"
+   ],
+   [
+    "say",
+    "toco:triste",
+    "...Ele não volta, né, Lume?"
+   ],
+   [
+    "think",
+    "Não."
+   ],
+   [
+    "say",
+    "nina:triste",
+    "Eu escrevi um poema pra ele. Posso ler?"
+   ],
+   [
+    "say",
+    "nina",
+    "\"A luz que você deixou acesa / ninguém apaga, ninguém leva. / Fica no peito, fica na mesa, / fica na água, fica na treva.\""
+   ],
+   [
+    "say",
+    "toco:triste2",
+    "..."
+   ],
+   [
+    "say",
+    "toco",
+    "Ficou bonito, Nina."
+   ],
+   [
+    "say",
+    "brisa:triste",
+    "Lume... você vai acordar, né? De verdade, lá do outro lado."
+   ],
+   [
+    "say",
+    "brisa:triste2",
+    "Eu odeio despedida. Você sabe."
+   ],
+   [
+    "say",
+    "brisa",
+    "Então não é despedida. Ei. Promete que vai voltar pra gente soltar pipa?"
+   ],
+   [
+    "choice",
+    [
+     "Prometo.",
+     [
+      [
+       "flag",
+       "prometeu"
+      ],
+      [
+       "say",
+       "brisa:feliz2",
+       "Promessa de marinheira não solta. Igual nó."
+      ]
+     ]
+    ],
+    [
+     "...",
+     [
+      [
+       "say",
+       "brisa:feliz",
+       "Tá. Eu sei que é sim. Você não fala de manhã."
+      ]
+     ]
+    ]
+   ],
+   [
+    "fade",
+    "out",
+    2200,
+    "#ffffff"
+   ],
+   [
+    "wait",
+    600
+   ],
+   [
+    "teleport",
+    "hospital",
+    3,
+    6,
+    "down",
+    "none"
+   ]
+  ],
+  "epilogo": [
+   [
+    "flag",
+    "epilogo_visto"
+   ],
+   [
+    "hide",
+    "player"
+   ],
+   [
+    "fade",
+    "in",
+    2500
+   ],
+   [
+    "wait",
+    1200
+   ],
+   [
+    "say",
+    "",
+    "Bip.{P} Bip.{P} Bip."
+   ],
+   [
+    "say",
+    "bia",
+    "Oi, Lume. Sou eu de novo.",
+    "Hoje é dia vinte e quatro. Eu sei que você tá contando. Você sempre conta as coisas."
+   ],
+   [
+    "say",
+    "bia",
+    "O Tomás mandou um bolo de fubá. A mãe dele que fez, mas ele disse que ajudou. Ele dormiu na metade."
+   ],
+   [
+    "say",
+    "bia",
+    "A Nina escreveu mais um poema. Ela lê pra você quando eu não tô. Ela tem vergonha de ler na minha frente."
+   ],
+   [
+    "say",
+    "bia",
+    "Os médicos dizem que você pode ouvir a gente.",
+    "...Então escuta."
+   ],
+   [
+    "say",
+    "bia",
+    "Eu trouxe a pipa. A gente vai soltar quando você sair daqui.",
+    "Promete?"
+   ],
+   [
+    "say",
+    "",
+    "Você tenta mexer o corpo. Ele está pesado, como se estivesse cheio de água."
+   ],
+   [
+    "choice",
+    [
+     "Apertar a mão dela",
+     [
+      [
+       "wait",
+       600
+      ],
+      [
+       "sfx",
+       "heartbeat"
+      ],
+      [
+       "wait",
+       400
+      ],
+      [
+       "say",
+       "bia",
+       "...",
+       "...Lume?"
+      ],
+      [
+       "say",
+       "bia",
+       "LUME?! Ela apertou! Ela apertou minha mão!",
+       "{shake}ENFERMEIRA!{/}"
+      ]
+     ]
+    ]
+   ],
+   [
+    "fade",
+    "out",
+    2500,
+    "#ffffff"
+   ],
+   [
+    "music",
+    "creditos"
+   ],
+   [
+    "card",
+    "VAGALUME",
+    "FIM DO PRIMEIRO ARCO"
+   ],
+   [
+    "credits"
+   ],
+   [
+    "flag",
+    "arco1_completo"
+   ],
+   [
+    "phase",
+    5
+   ],
+   [
+    "quest",
+    "q_ultima_chama",
+    "complete"
+   ],
+   [
+    "cleared"
+   ],
+   [
+    "call",
+    "pos_creditos"
+   ]
+  ],
+  "pos_creditos": [
+   [
+    "teleport",
+    "arvore",
+    4,
+    3,
+    "down",
+    "none"
+   ],
+   [
+    "show",
+    "player"
+   ],
+   [
+    "heal",
+    "silent"
+   ],
+   [
+    "fade",
+    "in",
+    1200
+   ],
+   [
+    "say",
+    "",
+    "Algodoal continua aqui. A luz do Farol passa pela janela devagar.",
+    "Você pode continuar explorando, conversar com todo mundo e encontrar o que ficou para trás."
+   ],
+   [
+    "autosave"
+   ]
+  ]
+ },
+ "credits": [
+  "## VAGALUME",
+  "",
+  "um sonho que não quer acabar",
+  "",
+  "",
+  "# Direção, roteiro e design",
+  "Criado com Claude (Anthropic)",
+  "",
+  "# Programação",
+  "Motor em JavaScript puro",
+  "Canvas 2D • Web Audio API",
+  "",
+  "# Arte",
+  "Pixel art 100% procedural",
+  "desenhada pixel a pixel em código",
+  "",
+  "# Música e sons",
+  "Sintetizados em tempo real",
+  "nenhum arquivo de áudio externo",
+  "",
+  "# Elenco",
+  "LUME — a que guarda a luz",
+  "BRISA — a que nunca fica para trás",
+  "TOCO — o abrigo grandão",
+  "NINA — a que escreve o que sente",
+  "",
+  "PREFEITO PAVIO • DONA PARAFINA",
+  "DONA BROA • SEU PARAFUSO • DONA TRAÇA",
+  "DONA LÃ • NOVELO • PIPOCA",
+  "SAPO CONSELHEIRO • SEU LESMA • SEU COAXO",
+  "PINGO • FAGULHINHA • BETO • LIA • A PEDRA",
+  "SEU GONÇALO (que voltou)",
+  "",
+  "MAMÃE RAIZ",
+  "A COISA NO FUNDO",
+  "DONA NINGUÉM",
+  "O APAGADOR",
+  "",
+  "e o VÔ FAÍSCA",
+  "",
+  "",
+  "# Inspiração",
+  "Uma carta de amor aos RPGs que nos ensinaram",
+  "que sentir também é uma forma de lutar.",
+  "(inspirado na experiência de OMORI, de OMOCAT;",
+  "todo o conteúdo deste jogo é original)",
+  "",
+  "",
+  "# Obrigado por jogar.",
+  "",
+  "Acenda a luz de alguém hoje.",
+  "",
+  "",
+  ""
+ ]
+}
